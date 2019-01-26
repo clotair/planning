@@ -19,3 +19,16 @@
  */
 
 Encore\Admin\Form::forget(['map', 'editor']);
+use Encore\Admin\Facades\Admin;
+
+
+Admin::js('/vendor/chartjs/dist/Chart.min.js');
+Admin::navbar(function (\Encore\Admin\Widgets\Navbar $navbar) {
+
+    $navbar->left(view('search-bar'));
+    $navbar->right(new \App\Admin\Extensions\Nav\Links());
+    
+
+});
+
+
