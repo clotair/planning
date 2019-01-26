@@ -312,6 +312,48 @@ return [
     |
     */
     'extensions' => [
-
+        'json-editor' => [
+            // set to false if you want to disable this extension
+            'enable' => true,
+            'config' =>
+                [
+                    'mode' => 'tree',
+                    'modes' => ['code', 'form', 'text', 'tree', 'view'], // allowed modes
+                ],
+        ],
+        'php-editor' => [
+        
+            //Set to false if you want to disable this extension
+            'enable' => true,
+            
+            // Editor configuration
+            'config' => [
+                
+            ]
+        ],
+        'js-editor' => [
+        
+            // Set to false if you want to disable this extension
+            'enable' => true,
+            
+            // Editor configuration
+            'config' => [
+                
+            ]
+        ],
+        'css-editor' => [
+        
+            // set to false if you want to disable this exteions
+            'enable' => true,
+            
+            // editor configuration 
+            'config' => [
+                
+            ]
+        ],
+        'material-ui' => [
+            // If the value is set to false, this extension will be disabled
+            'enable' => true
+        ]
     ],
 ];

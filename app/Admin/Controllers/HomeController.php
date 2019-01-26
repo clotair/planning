@@ -15,26 +15,28 @@ class HomeController extends Controller
         return $content
             ->header('Planning')
             ->description('Une Gestion efficace pour une grande rentabilite');
-           
+            
     }
     public function reunion(Content $content)
     {
   
         return $content
             ->header('Planning')
-            ->description('Une Gestion efficace pour une grande rentabilite');
+            ->description('Une Gestion efficace pour une grande rentabilite')
+            ->body(view('admin.reunion'));
     }
     public function cour(Content $content)
     {
         return $content
             ->header('Planning')
-            ->description('Une Gestion efficace pour une grande rentabilite');
-           
+            ->description('Une Gestion efficace pour une grande rentabilite')
+            ->body(view('admin.cour'));
     }
     public function materiel(Content $content)
     {
         return $content
             ->header('Planning')
-            ->description('Une Gestion efficace pour une grande rentabilite');
+            ->description('Une Gestion efficace pour une grande rentabilite')
+            ->body(view('admin.materiel'));
     }
 }
