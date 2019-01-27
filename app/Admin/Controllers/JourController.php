@@ -2,7 +2,7 @@
 
 namespace App\Admin\Controllers;
 
-use App\Models\Matiere;
+use App\Models\Jour;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\HasResourceActions;
 use Encore\Admin\Form;
@@ -10,7 +10,7 @@ use Encore\Admin\Grid;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Show;
 
-class MatiereController extends Controller
+class JourController extends Controller
 {
     use HasResourceActions;
 
@@ -23,8 +23,8 @@ class MatiereController extends Controller
     public function index(Content $content)
     {
         return $content
-            ->header('Matiere')
-            ->description('toutes les matieres')
+            ->header('Index')
+            ->description('description')
             ->body($this->grid());
     }
 
@@ -79,7 +79,7 @@ class MatiereController extends Controller
      */
     protected function grid()
     {
-        $grid = new Grid(new Matiere);
+        $grid = new Grid(new Jour);
         $grid->filter(function($filter){
 
             // Remove the default id filter
@@ -87,16 +87,10 @@ class MatiereController extends Controller
         
             // Add a column filter
             $filter->like('nom', 'nom');
-            $filter->scope('new', 'Recently modified')
-                    ->whereDate('created_at', date('Y-m-d'))
-                    ->orWhere('updated_at', date('Y-m-d'));
-        
         });
         $grid->id('ID');
-        $grid->code('CODE');
-        $grid->intituler('INTITULER');
-        $grid->created_at('CREER');
-        $grid->updated_at('MODIFIER');       
+        $grid->nom('NOM');
+
         return $grid;
     }
 
@@ -108,13 +102,11 @@ class MatiereController extends Controller
      */
     protected function detail($id)
     {
-        $show = new Show(Matiere::findOrFail($id));
+        $show = new Show(Jour::findOrFail($id));
 
         $show->id('ID');
-        $show->code('CODE');
-        $show->intituler('INTITULER');
-        $show->created_at('CREER');
-        $show->updated_at('MODIFIER');
+        $show->nom('NOM');
+
         return $show;
     }
 
@@ -125,11 +117,12 @@ class MatiereController extends Controller
      */
     protected function form()
     {
-        $form = new Form(new Matiere);
+        $form = new Form(new Jour);
 
-        $form->display('id', 'ID');
-        $form->text('code', 'CODE')->rules('required');
-        $form->text('intituler', 'INTITULER')->nullable();
+        $form->display('id','ID');
+        $form->text('nom','NOM')->rules('required');
+      
+
         return $form;
     }
 }

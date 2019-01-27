@@ -3,6 +3,7 @@ use App\Admin\Controllers;
 use Illuminate\Routing\Router;
 
 Admin::registerAuthRoutes();
+use App\Models\Jour;
 
 Route::group([
     'prefix'        => config('admin.route.prefix'),
@@ -13,7 +14,15 @@ Route::group([
     $router->get('/', 'HomeController@index');
     $router->get('/reunion', 'HomeController@reunion');
     $router->get('/salle', 'HomeController@cour');
-    $router->get('/materiel', 'HomeController@materiel');
+    Route::resource('/filiere', 'FiliereController');
+    Route::resource('/typeemplacement', 'TypeEmplacementController');
+    Route::resource('/classe', 'ClasseController');
+    Route::resource('/enseignement', 'EnseignementController');
+    Route::resource('/jour', 'JourController');
+    Route::resource('/frequence', 'FrequenceController');
+    Route::resource('/materiel', 'MaterielController');
     Route::resource('/matiere', 'MatiereController');
-
+    Route::get('/api/jour',function(){   
+        return Jour::find();
+    });
 });

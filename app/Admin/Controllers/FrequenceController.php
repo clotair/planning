@@ -2,7 +2,8 @@
 
 namespace App\Admin\Controllers;
 
-use App\Models\Matiere;
+use App\Models\Frequence;
+use App\Models\Jour;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\HasResourceActions;
 use Encore\Admin\Form;
@@ -10,7 +11,7 @@ use Encore\Admin\Grid;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Show;
 
-class MatiereController extends Controller
+class FrequenceController extends Controller
 {
     use HasResourceActions;
 
@@ -23,8 +24,8 @@ class MatiereController extends Controller
     public function index(Content $content)
     {
         return $content
-            ->header('Matiere')
-            ->description('toutes les matieres')
+            ->header('Index')
+            ->description('description')
             ->body($this->grid());
     }
 
@@ -79,24 +80,22 @@ class MatiereController extends Controller
      */
     protected function grid()
     {
-        $grid = new Grid(new Matiere);
+        $grid = new Grid(new Frequence);
+        $grid->id('ID');
+        $grid->jour();
         $grid->filter(function($filter){
 
             // Remove the default id filter
             $filter->disableIdFilter();
         
             // Add a column filter
-            $filter->like('nom', 'nom');
-            $filter->scope('new', 'Recently modified')
-                    ->whereDate('created_at', date('Y-m-d'))
-                    ->orWhere('updated_at', date('Y-m-d'));
-        
+            $filter->like('jour', 'JOUR');
+            $filter->like('heure_debut', 'HEURE DE DEBUT');
+            $filter->like('heure_fin', 'HEURE DE FIN');
         });
-        $grid->id('ID');
-        $grid->code('CODE');
-        $grid->intituler('INTITULER');
-        $grid->created_at('CREER');
-        $grid->updated_at('MODIFIER');       
+        $grid->heure_debut('HEURE DE DEBUT');
+        $grid->heure_fin('HEURE DE FIN');
+
         return $grid;
     }
 
@@ -108,13 +107,12 @@ class MatiereController extends Controller
      */
     protected function detail($id)
     {
-        $show = new Show(Matiere::findOrFail($id));
-
+        $show = new Show(Frequence::findOrFail($id));
         $show->id('ID');
-        $show->code('CODE');
-        $show->intituler('INTITULER');
-        $show->created_at('CREER');
-        $show->updated_at('MODIFIER');
+        $show->jour('JOUR');
+        $show->heure_debut('HEURE DE DEBUT');
+        $show->heure_fin('HEURE DE FIN');
+
         return $show;
     }
 
@@ -125,11 +123,12 @@ class MatiereController extends Controller
      */
     protected function form()
     {
-        $form = new Form(new Matiere);
+        $form = new Form(new Frequence);
+        $form->display('id','ID');
+        $form->select('jour','JOUR')->options(Jour::all()->pluck('nom', 'nom'))->default(1)->rules('required');
+        $form->time('heure_debut','HEURE DE DEBUT')->default(12);
+        $form->time('heure_fin','HEURE DE FIN')->default(12);
 
-        $form->display('id', 'ID');
-        $form->text('code', 'CODE')->rules('required');
-        $form->text('intituler', 'INTITULER')->nullable();
         return $form;
     }
 }

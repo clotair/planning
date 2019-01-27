@@ -2,7 +2,7 @@
 
 namespace App\Admin\Controllers;
 
-use App\Models\Matiere;
+use App\Models\Materiel;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\HasResourceActions;
 use Encore\Admin\Form;
@@ -10,7 +10,7 @@ use Encore\Admin\Grid;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Show;
 
-class MatiereController extends Controller
+class MaterielController extends Controller
 {
     use HasResourceActions;
 
@@ -23,8 +23,8 @@ class MatiereController extends Controller
     public function index(Content $content)
     {
         return $content
-            ->header('Matiere')
-            ->description('toutes les matieres')
+            ->header('Index')
+            ->description('description')
             ->body($this->grid());
     }
 
@@ -79,24 +79,26 @@ class MatiereController extends Controller
      */
     protected function grid()
     {
-        $grid = new Grid(new Matiere);
+        $grid = new Grid(new Materiel);
         $grid->filter(function($filter){
 
             // Remove the default id filter
             $filter->disableIdFilter();
         
             // Add a column filter
-            $filter->like('nom', 'nom');
-            $filter->scope('new', 'Recently modified')
+            $filter->like('nom', 'NOM');
+            $filter->like('quantite', 'QUANTITE');
+            $filter->scope('new', 'RECEMENT  MODIFIER')
                     ->whereDate('created_at', date('Y-m-d'))
                     ->orWhere('updated_at', date('Y-m-d'));
-        
         });
         $grid->id('ID');
-        $grid->code('CODE');
-        $grid->intituler('INTITULER');
+        $grid->nom('NOM');
+        $grid->quantite_disponible('DISPONIBLE');
+        $grid->quantite('TOTALE');
         $grid->created_at('CREER');
-        $grid->updated_at('MODIFIER');       
+        $grid->updated_at('MODIFIER');
+
         return $grid;
     }
 
@@ -108,13 +110,15 @@ class MatiereController extends Controller
      */
     protected function detail($id)
     {
-        $show = new Show(Matiere::findOrFail($id));
+        $show = new Show(Materiel::findOrFail($id));
 
         $show->id('ID');
-        $show->code('CODE');
-        $show->intituler('INTITULER');
-        $show->created_at('CREER');
-        $show->updated_at('MODIFIER');
+        $show->nom('NOM');
+        $show->quantite_disponible('DISPONIBLE');
+        $show->quantite('TOTALE');
+        $show->created_at('Created at');
+        $show->updated_at('Updated at');
+
         return $show;
     }
 
@@ -125,11 +129,13 @@ class MatiereController extends Controller
      */
     protected function form()
     {
-        $form = new Form(new Matiere);
+        $form = new Form(new Materiel);
 
-        $form->display('id', 'ID');
-        $form->text('code', 'CODE')->rules('required');
-        $form->text('intituler', 'INTITULER')->nullable();
+        $form->display('id','ID');
+        $form->text('nom','NOM')->rules('required|unique:materiels');
+        $form->number('quantite_disponible','QUANTITE DISPONIBLE')->rules('required')->min(0);
+        $form->number('quantite','QUANTITE')->rules('required')->min(0);
+
         return $form;
     }
 }
