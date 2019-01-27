@@ -1,5 +1,5 @@
 <?php
-
+use App\Admin\Controllers;
 use Illuminate\Routing\Router;
 
 Admin::registerAuthRoutes();
@@ -12,7 +12,8 @@ Route::group([
 
     $router->get('/', 'HomeController@index');
     $router->get('/reunion', 'HomeController@reunion');
-    $router->get('/cour', 'HomeController@cour');
+    $router->get('/salle', 'HomeController@cour');
     $router->get('/materiel', 'HomeController@materiel');
+    Route::resource('/matiere', 'MatiereController');
 
 });
