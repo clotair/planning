@@ -17,7 +17,6 @@ class CreateMaterielsTable extends Migration
             $table->increments('id');
             $table->string('nom');
             $table->integer('quantite');
-            $table->timestamps();
             $table->index('nom');
         });
     }

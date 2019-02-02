@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateClassesTable extends Migration
+class CreateNiveauxTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateClassesTable extends Migration
      */
     public function up()
     {
-        Schema::create('classes', function (Blueprint $table) {
+        Schema::create('niveaux', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('code')->unique()->index();
-            $table->integer('niveau')->index();
-            $table->string('filiere')->index();
             $table->string('nom');
+            $table->integer('valeur');
         });
     }
 
@@ -29,6 +27,6 @@ class CreateClassesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('classes');
+        Schema::dropIfExists('niveaux');
     }
 }

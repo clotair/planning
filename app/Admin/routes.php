@@ -23,6 +23,10 @@ Route::group([
     Route::resource('/materiel', 'MaterielController');
     Route::resource('/matiere', 'MatiereController');
     Route::resource('/grade', 'GradeController');
+    Route::resource('/enseignant', 'EnseignantController');
+    Route::resource('/niveau', 'NiveauController');
+    Route::resource('/ue', 'UeController');
+    Route::resource('/enseignementtype', '  EnseignementTypeController');
     Route::get('/api/jour',function(){   
         return Jour::find();
     });

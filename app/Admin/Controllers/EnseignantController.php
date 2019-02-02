@@ -2,9 +2,9 @@
 
 namespace App\Admin\Controllers;
 
-use App\Models\Classe;
-use App\Models\Filiere;
-use App\Models\Niveau;
+use Illuminate\Support\Facades\DB;
+use App\Models\Enseignant;
+use App\Models\Grade;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\HasResourceActions;
 use Encore\Admin\Form;
@@ -12,7 +12,7 @@ use Encore\Admin\Grid;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Show;
 
-class ClasseController extends Controller
+class EnseignantController extends Controller
 {
     use HasResourceActions;
 
@@ -81,7 +81,11 @@ class ClasseController extends Controller
      */
     protected function grid()
     {
-        $grid = new Grid(new Classe);
+        $enseignant = DB::table('enseignants')
+            ->join('grades', 'enseignants.id', '=', 'grades.id')
+            ->select('enseignants.nom', 'enseignants.id', 'grades.nom')
+            ->get();
+        $grid = new Grid(new Enseignant);
         $grid->filter(function($filter){
 
             // Remove the default id filter
@@ -89,18 +93,15 @@ class ClasseController extends Controller
         
             // Add a column filter
             $filter->like('nom', 'nom');
-            $filter->like('code', 'CODE');
-            $filter->like('filiere', 'FILIERE');
+        
         });
+
         $grid->id('ID');
         $grid->nom('NOM');
-        $grid->code('CODE');
-        $grid->niveau('NIVEAU')->display(function($niveau){
-            return Niveau::find($niveau)->nom;
+        $grid->grade('GRADE')->display(function($grade) {
+            return Grade::find($grade)->nom;
         });
-        $grid->filiere('FILIERE')->display(function($filiere){
-            return Filiere::find($filiere)->nom;
-        });
+        
         return $grid;
     }
 
@@ -112,17 +113,16 @@ class ClasseController extends Controller
      */
     protected function detail($id)
     {
-        $show = new Show(Classe::findOrFail($id));
+        $enseignant = DB::table('enseignants')
+            ->join('grades', $id, '=', 'grades.id')
+            ->select('enseignants.nom', 'enseignants.id', 'grades.nom')
+            ->get();
+        $show = new Show($enseignant);
 
         $show->id('ID');
         $show->nom('NOM');
-        $show->code('CODE');
-        $show->niveau('NIVEAU')->display(function($niveau){
-            return Niveau::find($niveau)->nom;
-        });
-        $show->code_filiere('CODE FILIERE')->display(function($filiere){
-            return Filiere::find($filiere)->nom;
-        });
+        $show->grade('GRADE');
+        
 
         return $show;
     }
@@ -134,13 +134,12 @@ class ClasseController extends Controller
      */
     protected function form()
     {
-        $form = new Form(new Classe);
+        $form = new Form(new Enseignant);
 
         $form->display('id','ID');
         $form->text('nom','NOM')->rules('required');
-        $form->text('code','CODE')->rules('required');
-        $form->select('niveau','NIVEAU')->options(Niveau::all()->pluck('nom', 'id'))->default(1)->rules('required');
-        $form->select('filiere','CODE FILIERE')->options(Filiere::all()->pluck('nom', 'id'))->default(1)->rules('required');
+        $form->select('grade','GRADE')->options(Grade::all()->pluck('nom', 'id'))->default(1)->rules('required');
+        
 
         return $form;
     }

@@ -88,16 +88,13 @@ class MaterielController extends Controller
             // Add a column filter
             $filter->like('nom', 'NOM');
             $filter->like('quantite', 'QUANTITE');
-            $filter->scope('new', 'RECEMENT  MODIFIER')
-                    ->whereDate('created_at', date('Y-m-d'))
-                    ->orWhere('updated_at', date('Y-m-d'));
+
         });
         $grid->id('ID');
         $grid->nom('NOM');
         $grid->quantite_disponible('DISPONIBLE');
         $grid->quantite('TOTALE');
-        $grid->created_at('CREER');
-        $grid->updated_at('MODIFIER');
+ 
 
         return $grid;
     }
@@ -116,8 +113,7 @@ class MaterielController extends Controller
         $show->nom('NOM');
         $show->quantite_disponible('DISPONIBLE');
         $show->quantite('TOTALE');
-        $show->created_at('Created at');
-        $show->updated_at('Updated at');
+ 
 
         return $show;
     }
@@ -133,8 +129,7 @@ class MaterielController extends Controller
 
         $form->display('id','ID');
         $form->text('nom','NOM')->rules('required|unique:materiels');
-        $form->number('quantite_disponible','QUANTITE DISPONIBLE')->rules('required')->min(0);
-        $form->number('quantite','QUANTITE')->rules('required')->min(0);
+        $form->number('quantite','QUANTITE')->rules('required')->min(1);
 
         return $form;
     }
