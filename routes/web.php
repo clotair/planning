@@ -12,5 +12,27 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('acceuil');
+});
+Route::get('/acceuil', function () {
+    return view('acceuil');
+});
+
+Route::prefix('salle')->group(function () {
+    Route::get('', function () {
+       
+        return view('salle.liste');
+    });
+});
+Route::prefix('materiel')->group(function () {
+    Route::get('', function () {
+        
+        return view('materiel.liste');
+    });
+});
+Route::prefix('enseignant')->group(function () {
+    Route::get('', function () {
+        
+        return view('enseignant.liste');
+    });
 });
