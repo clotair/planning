@@ -22,6 +22,7 @@ Route::group([
     Route::resource('/frequence', 'FrequenceController');
     Route::resource('/materiel', 'MaterielController');
     Route::resource('/matiere', 'MatiereController');
+    Route::resource('/grade', 'GradeController');
     Route::get('/api/jour',function(){   
         return Jour::find();
     });
