@@ -1,10 +1,6 @@
-<!DOCTYPE>
+<!DOCTYPE html>
 <html>
-    <head>
-        <title> salle de cours</title>
-        <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-    </head>
-    
+
     <body>
   <header>
     <h1>Mon Blogue</h1>
