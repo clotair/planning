@@ -3,6 +3,7 @@
 namespace App\Admin\Controllers;
 
 use App\Models\Salle;
+use App\Models\TypeEmplacement;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\HasResourceActions;
 use Encore\Admin\Form;
@@ -82,8 +83,12 @@ class SalleController extends Controller
         $grid = new Grid(new Salle);
 
         $grid->id('ID');
-        $grid->created_at('Created at');
-        $grid->updated_at('Updated at');
+        $grid->nom('NOM');
+        $grid->code('CODE');
+        $grid->type('CATHEGORIE')->display(function($type){
+            return TypeEmplacement::find($type)->nom;
+        });
+        $grid->places('PLACES');
 
         return $grid;
     }
@@ -99,9 +104,12 @@ class SalleController extends Controller
         $show = new Show(Salle::findOrFail($id));
 
         $show->id('ID');
-        $show->created_at('Created at');
-        $show->updated_at('Updated at');
-
+        $show->nom('NOM');
+        $show->code('CODE');
+        $show->type('CATHEGORIE')->display(function($type){
+            return TypeEmplacement::find($type)->nom;
+        });
+        $show->places('PLACES');
         return $show;
     }
 
@@ -114,10 +122,11 @@ class SalleController extends Controller
     {
         $form = new Form(new Salle);
 
-        $form->display('ID');
-        $form->display('Created at');
-        $form->display('Updated at');
-
+        $form->display('id','ID');
+        $form->text('nom');
+        $form->text('code')->rules('required');
+        $form->select('type','CATHEGORIE')->options(TypeEmplacement::all()->pluck('nom', 'id'))->default(1)->rules('required');
+        $form->number('places','PLACES')->min(1);
         return $form;
     }
 }

@@ -20,6 +20,7 @@
 
     <!-- Custom styles for this template -->
     <link href="css/starter-template.css" rel="stylesheet">
+    <link href="css/style1.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -34,7 +35,7 @@
 
   <body>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -47,9 +48,10 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li class="active"><a class = "orientation"s href="/">Home</a></li>
+            <li><a class = "orientation" href="/salle">Nos Salles</a></li>
+            <li><a class = "orientation" href="/materiel">Materiels</a></li>
+            <li><a class = "orientation" href="/enseignant">Enseignants</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -58,20 +60,37 @@
     <div class="container">
 
       <div class="starter-template">
-        <h1>Bienvennue dans GooD PlanninG</h1>
+        <h1>Bienvenue sur GooD PlanninG</h1>
         <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
       </div>
 
     </div><!-- /.container -->
+    <div class = "container-fluid">
+      <div class="row">
+          <div class="col-lg-4">
+            <div class="col-lg-12">
+              <h4>Nos salles</h4>
+              <p>Consultez l'emploi de temps en fonction des salles.</p>
+              <input type="submit" class="btn-info" value="salles">
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="col-lg-12">
+              <h4>Nos matériels</h4>
+              <p>Consultez l'emploi de temps en fonction des matériels.</p>
+              <input type="submit" class="btn-info" value="materiels">
+            </div>
+          </div> 
+          <div class="col-lg-4">
+            <div class="col-lg-12">
+              <h4>Nos enseignants</h4>
+              <p>Consultez l'emploi de temps en fonction des enseignants.</p>
+              <input type="submit" class="btn-info" value="enseignants">
+            </div>
+          </div> 
+       </div>
+    </div>
 
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="bootstrap/js/bootstrap.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-  </body>
+
 </html>

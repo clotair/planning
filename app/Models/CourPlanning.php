@@ -9,5 +9,8 @@ class CourPlanning extends Model
     protected $table = 'planning_cours';
 
     public $timestamps = false;
-
+    public function frequence()
+    {
+        return $this->hasMany(Frequence::class,'cour');
+    }
 }
