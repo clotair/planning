@@ -20,6 +20,7 @@
 
     <!-- Custom styles for this template -->
     <link href="css/starter-template.css" rel="stylesheet">
+    <link href="css/style1.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -93,9 +94,35 @@
     <div class="container texte" style="width:50%;">
 
       <div class="starter-template">
-        <h1>Bienvennue dans GooD PlanninG</h1>
+        <h1>Bienvenue sur GooD PlanninG</h1>
         <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
       </div>
+
+    </div><!-- /.container -->
+    <div class = "container-fluid">
+      <div class="row">
+          <div class="col-lg-4">
+            <div class="col-lg-12">
+              <h4>Nos salles</h4>
+              <p>Consultez l'emploi de temps en fonction des salles.</p>
+              <input type="submit" class="btn-info" value="salles">
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="col-lg-12">
+              <h4>Nos matériels</h4>
+              <p>Consultez l'emploi de temps en fonction des matériels.</p>
+              <input type="submit" class="btn-info" value="materiels">
+            </div>
+          </div> 
+          <div class="col-lg-4">
+            <div class="col-lg-12">
+              <h4>Nos enseignants</h4>
+              <p>Consultez l'emploi de temps en fonction des enseignants.</p>
+              <input type="submit" class="btn-info" value="enseignants">
+            </div>
+          </div> 
+       </div>
     </div>
     <script src="bootstrap/js/jquery.min.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>

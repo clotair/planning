@@ -2,15 +2,16 @@
 
 namespace App\Admin\Controllers;
 
-use App\Models\TypeEmplacement;
+use App\Models\Etalle;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\HasResourceActions;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Show;
+use Illuminate\Http\Request;
 
-class TypeEmplacementController extends Controller
+class EtalleController extends Controller
 {
     use HasResourceActions;
 
@@ -79,19 +80,11 @@ class TypeEmplacementController extends Controller
      */
     protected function grid()
     {
-        $grid = new Grid(new TypeEmplacement);
-        $grid->filter(function($filter){
+        $grid = new Grid(new Etalle);
 
-            // Remove the default id filter
-            $filter->disableIdFilter();
-        
-            // Add a column filter
-            $filter->like('nom', 'nom');
-
-        });
         $grid->id('ID');
-        $grid->nom('NOM');
-  
+        $grid->created_at('Created at');
+        $grid->updated_at('Updated at');
 
         return $grid;
     }
@@ -104,10 +97,11 @@ class TypeEmplacementController extends Controller
      */
     protected function detail($id)
     {
-        $show = new Show(TypeEmplacement::findOrFail($id));
+        $show = new Show(Etalle::findOrFail($id));
 
         $show->id('ID');
-        $show->nom('NOM');
+        $show->created_at('Created at');
+        $show->updated_at('Updated at');
 
         return $show;
     }
@@ -119,10 +113,17 @@ class TypeEmplacementController extends Controller
      */
     protected function form()
     {
-        $form = new Form(new TypeEmplacement);
+        $form = new Form(new Etalle);
 
-        $form->display('id','ID');
-        $form->text('nom','NOM')->rules('required');
+        $form->display('ID');
+        $form->display('Created at');
+        $form->display('Updated at');
+
         return $form;
+    }
+    public function add(Request $request)
+    {
+         $request->all();
+         return redirect('/admin/planning/cour');
     }
 }
