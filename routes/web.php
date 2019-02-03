@@ -12,10 +12,10 @@
 */
 
 Route::get('/', function () {
-    return view('acceuil');
+    return view('accueil');
 });
-Route::get('/acceuil', function () {
-    return view('acceuil');
+Route::get('/accueil', function () {
+    return view('accueil');
 });
 
 Route::prefix('salle')->group(function () {
