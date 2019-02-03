@@ -2,9 +2,7 @@
 
 namespace App\Admin\Controllers;
 
-use App\Models\Classe;
-use App\Models\Filiere;
-use App\Models\Niveau;
+use App\Models\CourPlanning;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\HasResourceActions;
 use Encore\Admin\Form;
@@ -12,7 +10,7 @@ use Encore\Admin\Grid;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Show;
 
-class ClasseController extends Controller
+class CourPlanningController extends Controller
 {
     use HasResourceActions;
 
@@ -81,26 +79,12 @@ class ClasseController extends Controller
      */
     protected function grid()
     {
-        $grid = new Grid(new Classe);
-        $grid->filter(function($filter){
+        $grid = new Grid(new CourPlanning);
 
-            // Remove the default id filter
-            $filter->disableIdFilter();
-        
-            // Add a column filter
-            $filter->like('nom', 'nom');
-            $filter->like('code', 'CODE');
-            $filter->like('filiere', 'FILIERE');
-        });
         $grid->id('ID');
-        $grid->nom('NOM');
-        $grid->code('CODE');
-        $grid->niveau('NIVEAU')->display(function($niveau){
-            return Niveau::find($niveau)->nom;
-        });
-        $grid->filiere('FILIERE')->display(function($filiere){
-            return Filiere::find($filiere)->nom;
-        });
+        $grid->created_at('Created at');
+        $grid->updated_at('Updated at');
+
         return $grid;
     }
 
@@ -112,17 +96,11 @@ class ClasseController extends Controller
      */
     protected function detail($id)
     {
-        $show = new Show(Classe::findOrFail($id));
+        $show = new Show(CourPlanning::findOrFail($id));
 
         $show->id('ID');
-        $show->nom('NOM');
-        $show->code('CODE');
-        $show->niveau('NIVEAU')->display(function($niveau){
-            return Niveau::find($niveau)->nom;
-        });
-        $show->code_filiere('CODE FILIERE')->display(function($filiere){
-            return Filiere::find($filiere)->nom;
-        });
+        $show->created_at('Created at');
+        $show->updated_at('Updated at');
 
         return $show;
     }
@@ -134,13 +112,11 @@ class ClasseController extends Controller
      */
     protected function form()
     {
-        $form = new Form(new Classe);
+        $form = new Form(new CourPlanning);
 
-        $form->display('id','ID');
-        $form->text('nom','NOM')->rules('required');
-        $form->text('code','CODE')->rules('required');
-        $form->select('niveau','NIVEAU')->options(Niveau::all()->pluck('nom', 'id'))->default(1)->rules('required');
-        $form->select('filiere','CODE FILIERE')->options(Filiere::all()->pluck('nom', 'id'))->default(1)->rules('required');
+        $form->display('ID');
+        $form->display('Created at');
+        $form->display('Updated at');
 
         return $form;
     }

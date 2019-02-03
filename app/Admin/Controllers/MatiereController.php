@@ -86,17 +86,12 @@ class MatiereController extends Controller
             $filter->disableIdFilter();
         
             // Add a column filter
-            $filter->like('nom', 'nom');
-            $filter->scope('new', 'Recently modified')
-                    ->whereDate('created_at', date('Y-m-d'))
-                    ->orWhere('updated_at', date('Y-m-d'));
-        
+            $filter->like('nom', 'NOM');
+            
         });
         $grid->id('ID');
-        $grid->code('CODE');
-        $grid->intituler('INTITULER');
-        $grid->created_at('CREER');
-        $grid->updated_at('MODIFIER');       
+        $grid->nom('NOM');
+       
         return $grid;
     }
 
@@ -111,10 +106,8 @@ class MatiereController extends Controller
         $show = new Show(Matiere::findOrFail($id));
 
         $show->id('ID');
-        $show->code('CODE');
-        $show->intituler('INTITULER');
-        $show->created_at('CREER');
-        $show->updated_at('MODIFIER');
+        $show->nom('NOM');
+     
         return $show;
     }
 
@@ -128,8 +121,7 @@ class MatiereController extends Controller
         $form = new Form(new Matiere);
 
         $form->display('id', 'ID');
-        $form->text('code', 'CODE')->rules('required');
-        $form->text('intituler', 'INTITULER')->nullable();
+        $form->text('nom', 'NOM');
         return $form;
     }
 }

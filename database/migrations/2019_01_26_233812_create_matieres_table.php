@@ -15,10 +15,7 @@ class CreateMatieresTable extends Migration
     {
         Schema::create('matieres', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('code')->unique()->comment("code d'une matiere dans le si exemple INFO 201");
-            $table->string('intituler')->nullable()->comment("nom usuel de la l'UE exemple introduction a la programmation web");
-            $table->timestamps();
-            $table->index('code');
+            $table->string('nom')->nullable()->comment("nom usuel de la l'UE exemple introduction a la programmation web");
         });
     }
 
