@@ -15,8 +15,7 @@ class CreateTypesEmplacementsTable extends Migration
     {
         Schema::create('types_emplacements', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nom')->nullable();
-            $table->string('code')->unique()->index();
+            $table->string('nom');
         });
     }
 

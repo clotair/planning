@@ -87,11 +87,11 @@ class TypeEmplacementController extends Controller
         
             // Add a column filter
             $filter->like('nom', 'nom');
-            $filter->like('code', 'CODE');
+
         });
         $grid->id('ID');
         $grid->nom('NOM');
-        $grid->code('CODE');
+  
 
         return $grid;
     }
@@ -108,7 +108,6 @@ class TypeEmplacementController extends Controller
 
         $show->id('ID');
         $show->nom('NOM');
-        $show->code('CODE');;
 
         return $show;
     }
@@ -123,9 +122,7 @@ class TypeEmplacementController extends Controller
         $form = new Form(new TypeEmplacement);
 
         $form->display('id','ID');
-        $form->text('nom','NOM');
-        $form->text('code','CODE')->rules('required');
-
+        $form->text('nom','NOM')->rules('required');
         return $form;
     }
 }
