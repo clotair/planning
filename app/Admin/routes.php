@@ -1,6 +1,7 @@
 <?php
 use App\Admin\Controllers;
 use Illuminate\Routing\Router;
+use Illuminate\Http\Request;
 
 Admin::registerAuthRoutes();
 use App\Models\Jour;
@@ -32,6 +33,7 @@ Route::group([
         //Route::resource('/salle', 'SalleController');
         Route::resource('/cour', 'CourPlanningController');
     });
+    Route::post('/api/etallage','EtalleController@add');
     Route::get('/api/jour',function(){   
         return Jour::find();
     });
