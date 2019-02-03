@@ -34,7 +34,7 @@
 
   <body>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -47,9 +47,10 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li class="active"><a class = "orientation"s href="/">Home</a></li>
+            <li><a class = "orientation" href="/salle">Nos Salles</a></li>
+            <li><a class = "orientation" href="/materiel">Materiels</a></li>
+            <li><a class = "orientation" href="/enseignant">Enseignant</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -63,15 +64,43 @@
       </div>
 
     </div><!-- /.container -->
+    <div class = "container">
+    <table class = " table table-bordered">
+        <caption>Programme</caption>
+        <tr>
+            <th></th><th>LUNDI</th><th>MARDI</th><th>MERCEDI</th><th>JEUDI</th><th>VENDREDI</th><th>SAMEDI</th>
+        </tr>
+    
+        <tr>
+            <td>gfsdgsdg</td>
+            <td>gsdfgsdfg</td>
+            <td>gsdqgsqgs</td>
+            <td>gfsdgsdg</td>
+            <td>gsdfgsdfg</td>
+            <td>gsdqgsqgs</td>
+            <td>gsdqgsqgs</td>
+        </tr>
+        <tr>
+            <td>gfsdgsdg</td>
+            <td>gsdfgsdfg</td>
+            <td>gsdqgsqgs</td>
+            <td>gfsdgsdg</td>
+            <td>gsdfgsdfg</td>
+            <td>gsdqgsqgs</td>
+            <td>gsdqgsqgs</td>
+        </tr>
+        <tr>
+            <td>gfsdgsdg</td>
+            <td>gsdfgsdfg</td>
+            <td>gsdqgsqgs</td>
+            <td>gfsdgsdg</td>
+            <td>gsdfgsdfg</td>
+            <td>gsdqgsqgs</td>
+            <td>gsdqgsqgs</td>
+        </tr>
+    </table>
+    </div>
 
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="bootstrap/js/bootstrap.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-  </body>
+
 </html>
