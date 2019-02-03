@@ -16,7 +16,6 @@ class HomeController extends Controller
             ->header('Planning')
             ->description('Une Gestion efficace pour une grande rentabilite');
             
-        
             
     }
     public function reunion(Content $content)

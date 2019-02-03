@@ -3,6 +3,13 @@
 namespace App\Admin\Controllers;
 
 use App\Models\CourPlanning;
+use App\Models\Salle;
+use App\Models\Frequence;
+use App\Models\Enseignant;
+use App\Models\Jour;
+use App\Models\Ue;
+use App\Models\Classe;
+use App\Models\EnseignementType;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\HasResourceActions;
 use Encore\Admin\Form;
@@ -114,10 +121,20 @@ class CourPlanningController extends Controller
     {
         $form = new Form(new CourPlanning);
 
-        $form->display('ID');
-        $form->display('Created at');
-        $form->display('Updated at');
-
+        $form->display('id','ID');
+        $form->select('salle','SALLE')->options(Salle::all()->pluck('nom', 'id'))->default(1)->rules('required');
+        $form->select('enseigant','Enseignant')->options(Enseignant::all()->pluck('nom', 'id'))->default(1)->rules('required');
+        $form->select('classe','CLASSE')->options(Classe::all()->pluck('nom', 'id'))->default(1)->rules('required');
+        $form->select('matiere','MATIERE')->options(Ue::all()->pluck('nom', 'id'))->default(1)->rules('required');
+        $form->select('type_cour','CATHEGORIE')->options(EnseignementType::all()->pluck('nom', 'id'))->default(1)->rules('required');
+        $form->date('date_debut','DATE DE DEBUT');
+        $form->date('date_fin','DATE DE FIN');
+        $form->hasMany('frequence', function (Form\NestedForm $form) {
+            $form->time('heure_debut');
+            $form->time('heure_fin');
+            $form->select('jour','JOUR')->options(Jour::all()->pluck('nom', 'id'))->default(1)->rules('required');
+        });
+        $form->setAction('/admin/api/etallage');
         return $form;
     }
 }
