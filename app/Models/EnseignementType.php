@@ -4,9 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Matiere extends Model
+class EnseignementType extends Model
 {
-    protected $table = 'matieres';
-    
+    protected $table = 'types_enseignements';
+
     public $timestamps = false;
+
 }

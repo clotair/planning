@@ -113,9 +113,8 @@ class GradeController extends Controller
     {
         $form = new Form(new Grade);
 
-        $form->display('ID');
-        $form->display('Created at');
-        $form->display('Updated at');
+        $form->display('id','ID');
+        $form->text('nom','NOM');
 
         return $form;
     }
