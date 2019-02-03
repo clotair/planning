@@ -1,3 +1,39 @@
+<<<<<<< HEAD
+<!DOCTYPE>
+<html>
+    <head>
+        <title> salle de cours</title>
+        <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    </head>
+    
+    <body>
+  <header>
+    <h1>Mon Blogue</h1>
+  </header>
+  <article>
+    <h1>Mon billet de mon blogue</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+    eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    <aside>
+      <!—Vu que ce aside est à l’intérieur de la balise article, l’analyseur syntaxique va comprendre que le contenu de la balise est directement relié à l’article lui-même. -->
+      <h1>Glossaire</h1>
+      <dl>
+        <dt>Lorem</dt>
+        <dd>ipsum dolor sit amet</dd>
+      </dl>
+    </aside>
+  </article>
+  <aside>
+    <!—Ce aside est en dehors de la balise article. Son contenu est relié à la page, mais pas autant que la balise aside à l’intérieur de la balise article. -->
+    <h2>Mes liens préférés</h2>
+    <ul>
+      <li><a href="#">Mon ami</a></li>
+      <li><a href="#">Mon autre ami</a></li>
+      <li><a href="#">Mon meilleur ami</a></li>
+    </ul>
+  </aside>
+</body>
+=======
 
 <!DOCTYPE html>
 <html lang="en">
@@ -47,10 +83,10 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a class = "orientation" href="/">Home</a></li>
-            <li class="active"><a class = "orientation" href="/salle">Nos Salles</a></li>
-            <li><a class = "orientation" href="/materiel">Materiels</a></li>
-            <li><a class = "orientation" href="/enseignant">Enseignant</a></li>
+            <li><a class = "orientation" href="/"><span class="glyphicon glyphicon-home"></span>&nbsp;Home</a></li>
+            <li class="active"><a class = "orientation" href="/salle"><span class ="glyphicon glyphicon-inbox"></span> &nbsp;Nos Salles</a></li>
+            <li><a class = "orientation" href="/materiel"><span class ="glyphicon glyphicon-scissors"></span> &nbsp;Materiels</a></li>
+            <li><a class = "orientation" href="/enseignant"><span class ="glyphicon glyphicon-briefcase"></span> &nbsp;Enseignant</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -67,5 +103,6 @@
 
   
     <script src="bootstrap/js/bootstrap.js"></script>
+>>>>>>> 72edaa9e6c0a39aa652c20beed9b19010be3fed6
 
 </html>
