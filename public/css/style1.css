@@ -14,10 +14,20 @@
 }
 .btn-info{
     float:right;
-    margin-right:5%;
+    margin-right:0%;
     padding: 0.5% 4% 0.5% 4%;
 }
 h4{
     font-weight: bold;
 
+}
+.logo{
+    color: rgb(135, 194, 250);
+    font-size: 30px;
+}
+.orientation{
+    font-size: 15px;
+}
+a{
+    text-decoration: none;
 }

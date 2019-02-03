@@ -76,8 +76,8 @@
           </div>
           <div class="col-lg-4">
             <div class="col-lg-12">
-              <h4>Nos matériels</h4>
-              <p>Consultez l'emploi de temps en fonction des matériels.</p>
+              <h4>Matériels</h4>
+              <p>Consultez l'emploi de temps en fonction du matériel.</p>
               <input type="submit" class="btn-info" value="materiels">
             </div>
           </div> 
