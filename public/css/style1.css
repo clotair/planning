@@ -1,0 +1,23 @@
+.row{
+    
+}
+.col-lg-12{
+    /*border: 5px solid rgb(229, 247, 202);*/
+    box-shadow: 2px 2px 2px rgb(66, 46, 80);
+    padding: 2%;
+    border-collapse: collapse;
+    height: 250px;
+    line-height: 40px;
+}
+.col-lg-4{
+    
+}
+.btn-info{
+    float:right;
+    margin-right:5%;
+    padding: 0.5% 4% 0.5% 4%;
+}
+h4{
+    font-weight: bold;
+
+}

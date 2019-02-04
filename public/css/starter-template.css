@@ -23,7 +23,7 @@ body {
  /* Couleur utilisée lors du passage de la souris sur un titre de la barre */
  .navbar-default .navbar-brand:hover,
  .navbar-default .navbar-brand:focus {
-  color: rgb(97, 8, 8);
+  color: rgb(149, 235, 11);
  }
  /* Couleur utilisée pour les liens */
  .navbar-default .navbar-nav > li > a {
@@ -32,14 +32,14 @@ body {
  /* Couleur utilisée pour les liens lorsque la souris passe dessus */
  .navbar-default .navbar-nav > li > a:hover,
  .navbar-default .navbar-nav > li > a:focus {
-  color: #333;
+  color:  rgb(149, 235, 11);
  }
  /* Couleur utilisée pour le lien actif (celui qui est affiché sur la page) */
  .navbar-default .navbar-nav > .active > a, 
  .navbar-default .navbar-nav > .active > a:hover, 
  .navbar-default .navbar-nav > .active > a:focus {
-  color: #555;
-  background-color: #E7E7E7;
+  color: rgb(149, 235, 11);
+  background-color: rgb(167, 158, 168);
  }
  /* Couleur utilisée pour un menu dépliant lorsqu'il est ouvert */
  .navbar-default .navbar-nav > .open > a, 
@@ -84,3 +84,14 @@ body {
   color: #333;
   }
  }
+ .texte{
+   position: absolute;
+   top: 100px;
+   z-index: 5;
+   left: 25%;
+   
+ }
+  .imp{
+    z-index: 0;
+  }
+  
