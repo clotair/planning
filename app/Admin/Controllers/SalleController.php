@@ -106,7 +106,7 @@ class SalleController extends Controller
         $show->id('ID');
         $show->nom('NOM');
         $show->code('CODE');
-        $show->type('CATHEGORIE')->display(function($type){
+        $show->type('CATHEGORIE')->as(function($type){
             return TypeEmplacement::find($type)->nom;
         });
         $show->places('PLACES');

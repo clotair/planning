@@ -16,6 +16,7 @@ class CreateJoursTable extends Migration
         Schema::create('jours', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nom')->index();
+            $table->integer('valeur');
         });
     }
 

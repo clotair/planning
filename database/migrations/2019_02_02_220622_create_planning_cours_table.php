@@ -22,6 +22,9 @@ class CreatePlanningCoursTable extends Migration
             $table->integer('type_cour')->index();
             $table->date('date_debut');
             $table->date('date_fin');
+            $table->integer('jour')->index();
+            $table->time('heure_debut');
+            $table->time('heure_fin');
         });
     }
 

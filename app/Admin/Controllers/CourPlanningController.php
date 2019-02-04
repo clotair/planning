@@ -89,8 +89,26 @@ class CourPlanningController extends Controller
         $grid = new Grid(new CourPlanning);
 
         $grid->id('ID');
-        $grid->created_at('Created at');
-        $grid->updated_at('Updated at');
+        $grid->salle('SALLE')->display(function($id){
+            return Salle::find($id)->code;
+        });
+        $grid->enseignant('ENSEIGNANT')->display(function($id){
+            return Enseignant::find($id)->nom;
+        });       
+        $grid->classe('CLASSE')->display(function($id){
+            return Classe::find($id)->code;
+        });
+        $grid->matiere('MATHIERE')->display(function($id){
+            return Ue::find($id)->code;
+        });
+        $grid->type_cour('TYPE COUR')->display(function($id){
+            return EnseignementType::find($id)->nom;
+        });
+        $grid->date_debut('DATE DE DEBUT');
+        $grid->date_fin('DATE DE FIN');
+        $grid->jour('JOUR')->display(function($id){
+            return Jour::find($id)->nom;
+        });
 
         return $grid;
     }
@@ -106,9 +124,29 @@ class CourPlanningController extends Controller
         $show = new Show(CourPlanning::findOrFail($id));
 
         $show->id('ID');
-        $show->created_at('Created at');
-        $show->updated_at('Updated at');
-
+        $show->salle('SALLE')->as(function($id){
+            return Salle::find($id)->code;
+        });
+        $show->enseignant('ENSEIGNANT')->as(function($id){
+            return Enseignant::find($id)->nom;
+        });       
+        $show->classe('CLASSE')->as(function($id){
+            return Classe::find($id)->code;
+        });
+        
+        $show->matiere('MATHIERE')->as(function($id){
+            return Ue::find($id)->code;
+        });
+        $show->type_cour('TYPE COUR')->as(function($id){
+            return EnseignementType::find($id)->nom;
+        });
+        $show->date_debut('DATE DE DEBUT');
+        $show->date_fin('DATE DE FIN');
+        $show->jour('JOUR')->as(function($id){
+            return Jour::find($id)->nom;
+        });
+        $show->heure_debut('HEURE DE DEBUT');
+        $show->heure_fin('HEURE DE FIN');
         return $show;
     }
 
@@ -123,15 +161,15 @@ class CourPlanningController extends Controller
 
         $form->display('id','ID');
         $form->select('salle','SALLE')->options(Salle::all()->pluck('nom', 'id'))->default(1)->rules('required');
-        $form->select('enseigant','Enseignant')->options(Enseignant::all()->pluck('nom', 'id'))->default(1)->rules('required');
+        $form->select('enseignant','Enseignant')->options(Enseignant::all()->pluck('nom', 'id'))->default(1)->rules('required');
         $form->select('classe','CLASSE')->options(Classe::all()->pluck('nom', 'id'))->default(1)->rules('required');
-        $form->select('matiere','MATIERE')->options(Ue::all()->pluck('nom', 'id'))->default(1)->rules('required');
+        $form->select('matiere','MATIERE')->options(Ue::all()->pluck('code', 'id'))->default(1)->rules('required');
         $form->select('type_cour','CATHEGORIE')->options(EnseignementType::all()->pluck('nom', 'id'))->default(1)->rules('required');
         $form->date('date_debut','DATE DE DEBUT');
         $form->date('date_fin','DATE DE FIN');
         $form->hasMany('frequence', function (Form\NestedForm $form) {
-            $form->time('heure_debut');
-            $form->time('heure_fin');
+            $form->time('heure_debut')->rules('required')->default(12);
+            $form->time('heure_fin')->rules('required')->default(15);
             $form->select('jour','JOUR')->options(Jour::all()->pluck('nom', 'id'))->default(1)->rules('required');
         });
         $form->setAction('/admin/api/etallage');

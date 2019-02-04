@@ -11,6 +11,6 @@ class CourPlanning extends Model
     public $timestamps = false;
     public function frequence()
     {
-        return $this->hasMany(Frequence::class,'cour');
+        return $this->hasMany('App\Models\Frequence','cour');
     }
 }

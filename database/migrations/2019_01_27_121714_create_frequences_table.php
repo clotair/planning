@@ -19,7 +19,7 @@ class CreateFrequencesTable extends Migration
             $table->time('heure_debut')->unique()->index();
             $table->time('heure_fin')->unique()->index();
             $table->integer('cour')->index();
-            
+
         });
     }
 
