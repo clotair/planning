@@ -158,7 +158,8 @@ class CourPlanningController extends Controller
     protected function form()
     {
         $form = new Form(new CourPlanning);
-
+        $form->ignore('info');
+        $form->display('info');
         $form->display('id','ID');
         $form->select('salle','SALLE')->options(Salle::all()->pluck('nom', 'id'))->default(1)->rules('required');
         $form->select('enseignant','Enseignant')->options(Enseignant::all()->pluck('nom', 'id'))->default(1)->rules('required');

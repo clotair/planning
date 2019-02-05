@@ -33,17 +33,15 @@ Route::group([
     Route::resource('/evenement', 'EvenementController');
     Route::resource('/evenementtype', 'EvenementTypeController');
     Route::prefix('planning')->group(function(){
-        //Route::resource('/salle', 'SalleController');
+ 
         Route::resource('/cour', 'CourPlanningController');
-        Route::resource('/salle', 'SallePlanningController');
-        Route::resource('/classe', 'ClassePlanningController');
-        Route::resource('/enseignant', 'EnseignantPlanningController');
         Route::resource('/evenement', 'EvenementPlanningController');
         
     });
     Route::prefix('api')->group(function(){
         //Route::resource('/salle', 'SalleController');
-        Route::post('/cour/add','EtalleController@add');
+        Route::post('/cour/add','EtalleController@add_cour');
+        Route::post('/evenement/add','EtalleController@add_event');
     });
     Route::get('/api/jour',function(){   
         return Jour::find();

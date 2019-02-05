@@ -6,6 +6,7 @@ use App\Models\EvenementPlanning;
 use App\Models\Salle;
 use App\Models\Jour;
 use App\Models\Frequence;
+use App\Models\Evenement;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\HasResourceActions;
 use Encore\Admin\Form;
@@ -117,15 +118,16 @@ class EvenementPlanningController extends Controller
     {
         $form = new Form(new EvenementPlanning);
         $form->display('id','ID');
+        $form->select('evenement','Evenement')->options(Evenement::all()->pluck('description' ,'id'))->default(1)->rules('required');
         $form->select('salle','SALLE')->options(Salle::all()->pluck('nom', 'id'))->default(1)->rules('required');
         $form->date('date_debut','DATE DE DEBUT');
         $form->date('date_fin','DATE DE FIN');
-        $form->hasMany('evenement', function (Form\NestedForm $form) {
+        $form->hasMany('frequence', function (Form\NestedForm $form) {
             $form->time('heure_debut')->rules('required')->default(12);
             $form->time('heure_fin')->rules('required')->default(15);
             $form->select('jour','JOUR')->options(Jour::all()->pluck('nom', 'id'))->default(1)->rules('required');
         });
-        $form->setAction('/admin/api/event');
+        $form->setAction('/admin/api/evenement/add');
 
         return $form;
     }

@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\Models\Frequence;
 class CourPlanning extends Model
 {
     protected $table = 'planning_cours';
@@ -11,6 +11,6 @@ class CourPlanning extends Model
     public $timestamps = false;
     public function frequence()
     {
-        return $this->hasMany('App\Models\Frequence','cour');
+        return $this->hasMany(Frequence::class,'cour');
     }
 }

@@ -14,9 +14,11 @@ use Encore\Admin\Grid;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Show;
 use Illuminate\Http\Request;
+use App\Rules\Jour;
 use Validator;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
 
 class EtalleController extends Controller
 {
@@ -128,58 +130,123 @@ class EtalleController extends Controller
 
         return $form;
     }
-    protected function add (Request $request)
+    protected function add_cour (Request $request)
     {
-        
-        Validator::make($request->all(), [
+        $body =  $request->all();
+        $validator = Validator::make($request->all(), [
             'salle' => 'required',
             'enseignant' => 'required',
             'classe' => 'required',
             'matiere' => 'required',
             'type_cour'=> 'required',
-            'date_debut'=> 'required',
-            'date_fin'=>'required',
-            'frequence'=>'required'
-        ])->validate();
-        $body =  $request->all();
+            'date_debut'=> ['required',new Jour],
+            'date_fin'=>['required',new Jour] 
+        ]);
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        if(!array_key_exists('frequence',  $body)){
+            var_dump('les frequences doivent etre definies');
+            $validator->errors()->add('info', 'les frequences doivent etre definies');
+            return redirect()->back()->withErrors('dsdss')->withInput();
+        }
+ 
         if($request->date_debut>$request->date_fin){
-            return redirect('admin/planning/cour/create')
-            ->withError('la date de debut doit etre plus petite que la date de fin');
+           
+            $validator->errors()->add('date_fin', 'la date de fin doit etre superieur a la date de debut!');
+            
+            return redirect()->back()->withErrors($validator)->withInput();
            
         }
         foreach($body['frequence'] as $key=>$value){
             if($value['heure_debut']>$value['heure_fin']){
-                return die("l'heure de debut doit etre plus petite que la date de fin");
+                 $validator->errors()->add('frequence.'.$key.'.heure_fin', "l'heure de fin doit etre superieur a la heure de but!");
+                 return redirect()->back()->withErrors($validator)->withInput();
             }
             $event = DB::select('select * from planning_evenements where salle=? AND(((date_debut <=? OR date_fin >=?) AND (heure_debut >=? AND heure_debut<=?) OR (heure_fin <=? AND heure_fin >=?) AND jour=?)OR((date_debut <=? OR date_debut >=?) AND (heure_debut >=? AND heure_fin<=?) AND (heure_fin <=? AND heure_fin >=?) AND jour=?))', [$request->salle,$request->date_debut,$request->date_debut,$value['heure_debut'],$value['heure_debut'],$value['heure_fin'],$value['heure_fin'],$value['jour'],$request->date_fin,$request->date_fin,$value['heure_debut'],$value['heure_debut'],$value['heure_fin'],$value['heure_fin'],$value['jour']]);
-            $classeoccuper = DB::select('select * from planning_classes where classe=? AND(((date_debut <=? OR date_fin >=?) AND (heure_debut >=? AND heure_debut<=?) OR (heure_fin <=? AND heure_fin >=?) AND jour=?)OR((date_debut <=? OR date_debut >=?) AND (heure_debut >=? AND heure_fin<=?) AND (heure_fin <=? AND heure_fin >=?) AND jour=?))', [$request->classe,$request->date_debut,$request->date_debut,$value['heure_debut'],$value['heure_debut'],$value['heure_fin'],$value['heure_fin'],$value['jour'],$request->date_fin,$request->date_fin,$value['heure_debut'],$value['heure_debut'],$value['heure_fin'],$value['heure_fin'],$value['jour']]);
-            $salleoccuper = DB::select('select * from planning_salles where salle=? AND(((date_debut <=? OR date_fin >=?) AND (heure_debut >=? AND heure_debut<=?) OR (heure_fin <=? AND heure_fin >=?) AND jour=?)OR((date_debut <=? OR date_debut >=?) AND (heure_debut >=? AND heure_fin<=?) AND (heure_fin <=? AND heure_fin >=?) AND jour=?))', [$request->salle,$request->date_debut,$request->date_debut,$value['heure_debut'],$value['heure_debut'],$value['heure_fin'],$value['heure_fin'],$value['jour'],$request->date_fin,$request->date_fin,$value['heure_debut'],$value['heure_debut'],$value['heure_fin'],$value['heure_fin'],$value['jour']]);
-            $enseignantoccuper = DB::select('select * from planning_enseignants where enseignant=? AND(((date_debut <=? OR date_fin >=?) AND heure_debut =? AND heure_fin =? AND jour=?)OR((date_debut <=? OR date_fin >=?) AND (heure_debut >=? AND heure_fin<=?) AND (heure_fin <=? AND heure_fin >=?) AND jour=?))', [$request->enseignant,$request->date_debut,$request->date_debut,$value['heure_debut'],$value['heure_debut'],$value['heure_fin'],$value['heure_fin'],$value['jour'],$request->date_fin,$request->date_fin,$value['heure_debut'],$value['heure_fin'],$value['jour']]);
+            $classeoccuper = DB::select('select * from planning_cours where classe=? AND(((date_debut <=? OR date_fin >=?) AND (heure_debut >=? AND heure_debut<=?) OR (heure_fin <=? AND heure_fin >=?) AND jour=?)OR((date_debut <=? OR date_debut >=?) AND (heure_debut >=? AND heure_fin<=?) AND (heure_fin <=? AND heure_fin >=?) AND jour=?))', [$request->classe,$request->date_debut,$request->date_debut,$value['heure_debut'],$value['heure_debut'],$value['heure_fin'],$value['heure_fin'],$value['jour'],$request->date_fin,$request->date_fin,$value['heure_debut'],$value['heure_debut'],$value['heure_fin'],$value['heure_fin'],$value['jour']]);
+            $salleoccuper = DB::select('select * from planning_cours where salle=? AND(((date_debut <=? OR date_fin >=?) AND (heure_debut >=? AND heure_debut<=?) OR (heure_fin <=? AND heure_fin >=?) AND jour=?)OR((date_debut <=? OR date_debut >=?) AND (heure_debut >=? AND heure_fin<=?) AND (heure_fin <=? AND heure_fin >=?) AND jour=?))', [$request->salle,$request->date_debut,$request->date_debut,$value['heure_debut'],$value['heure_debut'],$value['heure_fin'],$value['heure_fin'],$value['jour'],$request->date_fin,$request->date_fin,$value['heure_debut'],$value['heure_debut'],$value['heure_fin'],$value['heure_fin'],$value['jour']]);
+            $enseignantoccuper = DB::select('select * from planning_cours where enseignant=? AND(((date_debut <=? OR date_fin >=?) AND heure_debut =? AND heure_fin =? AND jour=?)OR((date_debut <=? OR date_fin >=?) AND (heure_debut >=? AND heure_fin<=?) AND (heure_fin <=? AND heure_fin >=?) AND jour=?))', [$request->enseignant,$request->date_debut,$request->date_debut,$value['heure_debut'],$value['heure_debut'],$value['heure_fin'],$value['heure_fin'],$value['jour'],$request->date_fin,$request->date_fin,$value['heure_debut'],$value['heure_fin'],$value['jour']]);
 
             if( $classeoccuper){
                 return redirect('admin/planning/cour/create')
-                        ->withError('Classe occuper');
+                        ->withErrors('Classe occuper')->withInput();
             }
             if($salleoccuper){
-               return die('salle occuper');
+                return redirect('admin/planning/cour/create')
+                ->withErrors('Salle occuper')->withInput();
             }
             if($enseignantoccuper){
-               return die('ensseigant occuper');
+                return redirect('admin/planning/cour/create')
+                ->withErrors('enseignant occuper')->withInput();
             }
             if($event){
-                return die('occuper par un evenement');
+                return redirect('admin/planning/cour/create')
+                ->withErrors('Occuper par un evenement')->withInput();
             }
 
         }
         foreach($body['frequence'] as $key=>$value){  
             if($value['_remove_']==0){
-                DB::insert('insert into planning_classes (classe,jour,heure_debut,heure_fin,date_debut,date_fin) values (?, ?, ?, ?, ?, ?)', [$request->classe, $value['jour'],$value['heure_debut'],$value['heure_fin'],$request->date_debut,$request->date_fin]);
-                DB::insert('insert into planning_salles (salle,jour,heure_debut,heure_fin,date_debut,date_fin) values (?, ?, ?, ?, ?, ?)', [$request->salle, $value['jour'],$value['heure_debut'],$value['heure_fin'],$request->date_debut,$request->date_fin]);
-                DB::insert('insert into planning_enseignants (enseignant,jour,heure_debut,heure_fin,date_debut,date_fin) values (?, ?, ?, ?, ?, ?)', [ $request->enseignant, $value['jour'],$value['heure_debut'],$value['heure_fin'],$request->date_debut,$request->date_fin]);
+
                 DB::insert('insert into planning_cours (salle, enseignant, classe, matiere, type_cour, date_debut, date_fin, heure_debut, heure_fin, jour) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [$request->salle,$request->enseignant,$request->classe,$request->matiere,$request->type_cour,$request->date_debut,$request->date_fin,$value['heure_debut'],$value['heure_fin'],$value['jour']]);
             }
         }
         return redirect('admin/planning/cour');
+    }
+    protected function add_event (Request $request)
+    {
+        $body =  $request->all();
+        $validator = Validator::make($request->all(), [
+            'evenement' => 'required',
+            'salle' => 'required',
+            'date_debut'=> ['required',new Jour],
+            'date_fin'=>['required',new Jour] 
+        ]);
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        if(!array_key_exists('frequence',  $body)){
+            var_dump('les frequences doivent etre definies');
+            $validator->errors()->add('info', 'les frequences doivent etre definies');
+            return redirect()->back()->withErrors('dsdss')->withInput();
+        }
+ 
+        if($request->date_debut>$request->date_fin){
+           
+            $validator->errors()->add('date_fin', 'la date de fin doit etre superieur a la date de debut!');
+            
+            return redirect()->back()->withErrors($validator)->withInput();
+           
+        }
+        foreach($body['frequence'] as $key=>$value){
+            if($value['heure_debut']>$value['heure_fin']){
+                 $validator->errors()->add('frequence.'.$key.'.heure_fin', "l'heure de fin doit etre superieur a la heure de but!");
+                 return redirect()->back()->withErrors($validator)->withInput();
+            }
+            $event = DB::select('select * from planning_evenements where salle=? AND(((date_debut <=? OR date_fin >=?) AND (heure_debut >=? AND heure_debut<=?) OR (heure_fin <=? AND heure_fin >=?) AND jour=?)OR((date_debut <=? OR date_debut >=?) AND (heure_debut >=? AND heure_fin<=?) AND (heure_fin <=? AND heure_fin >=?) AND jour=?))', [$request->salle,$request->date_debut,$request->date_debut,$value['heure_debut'],$value['heure_debut'],$value['heure_fin'],$value['heure_fin'],$value['jour'],$request->date_fin,$request->date_fin,$value['heure_debut'],$value['heure_debut'],$value['heure_fin'],$value['heure_fin'],$value['jour']]);
+            $salleoccuper = DB::select('select * from planning_cours where salle=? AND(((date_debut <=? OR date_fin >=?) AND (heure_debut >=? AND heure_debut<=?) OR (heure_fin <=? AND heure_fin >=?) AND jour=?)OR((date_debut <=? OR date_debut >=?) AND (heure_debut >=? AND heure_fin<=?) AND (heure_fin <=? AND heure_fin >=?) AND jour=?))', [$request->salle,$request->date_debut,$request->date_debut,$value['heure_debut'],$value['heure_debut'],$value['heure_fin'],$value['heure_fin'],$value['jour'],$request->date_fin,$request->date_fin,$value['heure_debut'],$value['heure_debut'],$value['heure_fin'],$value['heure_fin'],$value['jour']]);
+            
+
+   
+            if($salleoccuper){
+                return redirect('admin/planning/evenement/create')
+                ->withErrors('Salle occuper')->withInput();
+            }
+
+            if($event){
+                return redirect('admin/planning/evenement/create')
+                ->withErrors('Occuper par un evenement')->withInput();
+            }
+
+        }
+        foreach($body['frequence'] as $key=>$value){  
+            if($value['_remove_']==0){
+
+                DB::insert('insert into planning_evenements (evenement, salle, date_debut, date_fin, heure_debut, heure_fin, jour) values (?, ?, ?, ?, ?, ?, ?)', [$request->evenement,$request->salle,$request->date_debut,$request->date_fin,$value['heure_debut'],$value['heure_fin'],$value['jour']]);
+            }
+        }
+        return redirect('admin/planning/evenement');
     }
    
 }

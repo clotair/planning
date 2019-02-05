@@ -8,7 +8,7 @@ class EvenementPlanning extends Model
 {
     protected $table = 'planning_evenements';
     public $timestamps = false;
-    public function evenement()
+    public function frequence()
     {
         return $this->hasMany('App\Models\EvenementPlanning','evenement');
     }
