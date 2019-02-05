@@ -39,8 +39,12 @@ Route::group([
         Route::resource('/classe', 'ClassePlanningController');
         Route::resource('/enseignant', 'EnseignantPlanningController');
         Route::resource('/evenement', 'EvenementPlanningController');
+        
     });
-    Route::post('/api/etallage','EtalleController@add');
+    Route::prefix('api')->group(function(){
+        //Route::resource('/salle', 'SalleController');
+        Route::post('/cour/add','EtalleController@add');
+    });
     Route::get('/api/jour',function(){   
         return Jour::find();
     });

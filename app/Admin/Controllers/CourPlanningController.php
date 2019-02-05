@@ -172,7 +172,8 @@ class CourPlanningController extends Controller
             $form->time('heure_fin')->rules('required')->default(15);
             $form->select('jour','JOUR')->options(Jour::all()->pluck('nom', 'id'))->default(1)->rules('required');
         });
-        $form->setAction('/admin/api/etallage');
+        $form->setAction('/admin/api/cour/add');
         return $form;
     }
+    
 }
