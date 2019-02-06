@@ -1,6 +1,7 @@
 
 
 
+
   
 
 
@@ -38,29 +39,43 @@
 @endsection
 
 @section('content')
-<div class="container">
 
-<div class="starter-template ">
-  <h1>Bienvennue dans GooD PlanninG</h1>
-  <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-</div>
-
-<div class="row">
-  <div class="col-md-3">
-  
-    <ul>
-      @foreach($salles as $salle )
-        <li onClick="salle({{$salle->id}})">
-          {{$salle->nom}}
-        </li>
-      @endforeach
-    </ul>
-  <div>
-  <div class="col-md-9">
-    <div>
-
+<div class = "container-fluid">
+      <div class="row">
+          <div class="col-lg-4">
+            <div class="col-lg-12">
+              <input type="submit" class="btn-info" value="salle de travaux pratiques">
+            </div>
+          </div>
+          <div class="col-lg-8">bienvenue</div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="col-lg-12">
+              <input type="submit" class="btn-info" value="salle de travaux dirigés">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="col-lg-12">
+              <input type="submit" class="btn-info" value="salle de cours">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="col-lg-12">
+              <input type="submit" class="btn-info" value="amphitheatres">
+            </div>
+          </div>
+        </div>
     </div>
-  <div>
-</div>
-</div><!-- /.container -->
 @endsection
+
+    
+
+    
+
+
+
