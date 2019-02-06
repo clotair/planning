@@ -59,7 +59,7 @@
             @yield('content')
    
     
-      <div class="navbar navbar-inverse">
+      <div class="navbar navbar-inverse container-fluid">
         <div class="container">
           <p class="navbar-text">&copy; Random</p>
         </div>
@@ -73,3 +73,4 @@
     </script>
     @yield('js')
 </html>
+

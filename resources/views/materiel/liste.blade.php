@@ -25,7 +25,7 @@
 
 @section('content')
      
-
+<div class="container">
   <div class="row">
     <div class="col-md-3">
         {{ $materiels }}
@@ -38,16 +38,12 @@
       </ul>
     <div>
     <div class="col-md-9">
-      <div>
-
-      </div>
+   
     <div>
   </div>
-   
-  <div class="starter-template">
-          <h1>Bienvennue dans GooD PlanninG</h1>
-          <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
- </div>
+</div>
+<div class="container">
+
         <table class="table table-striped">
               <div class="panel-heading"><h3 class=""> Emploi de temps</h3></div>
               <thead>
@@ -110,7 +106,7 @@
               </tbody>
           </table>
     
-
+</div>
 @endsection
 
 
