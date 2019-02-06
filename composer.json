@@ -13,6 +13,7 @@
         "fideloper/proxy": "^4.0",
         "jxlwqq/json-editor": "^1.0",
         "jxlwqq/material-ui": "^1.0",
+        "laracasts/flash": "^3.0",
         "laravel-admin-ext/api-tester": "^1.0",
         "laravel-admin-ext/css-editor": "^1.0",
         "laravel-admin-ext/helpers": "^1.1",

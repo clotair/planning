@@ -17,7 +17,9 @@
     </style>
   </head>
 @section('title', 'Salles')
-
+@section('css')
+  <!-- liens css -->
+@endsection
 @section('sidebar')
     @parent
 
@@ -147,4 +149,7 @@
        </div>
            <br><br><br>
      
+@endsection
+@section('js')
+  <!-- liens js -->
 @endsection

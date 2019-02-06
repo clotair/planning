@@ -3,7 +3,9 @@
 @extends('layouts.app')
 
 @section('title', 'Accueil')
-
+@section('css')
+  <!-- liens css -->
+@endsection
 @section('sidebar')
     @parent
 
@@ -79,17 +81,11 @@
           </div>
           <div class="col-lg-4">
             <div class="col-lg-12">
-<<<<<<< HEAD
-              <h4>Matériels</h4>
-              <p>Consultez l'emploi de temps en fonction du matériel.</p>
-              <input type="submit" class="btn-info" value="materiels">
-=======
               <h4>Nos matériels</h4>
               <p>Consultez l'emploi de temps en fonction des matériels.</p>
               <a class = "orientation" href="/materiel"><button class="btn btn-primary"><span class="glyphicon
                 glyphicon-ok-sign"></span> cliquer ici</button></a>
               
->>>>>>> 779788af13f0637c9b2afb96dd1d44c01fa1ac52
             </div>
           </div> 
           <div class="col-lg-4">
@@ -108,3 +104,6 @@
 
 @endsection
 
+@section('js')
+  <!-- liens js -->
+@endsection

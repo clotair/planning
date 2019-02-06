@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('title', 'Page Title')
-
+@section('css')
+  <!-- liens css -->
+@endsection
 @section('sidebar')
     @parent
 
@@ -85,7 +87,9 @@
 
 
 @endsection
-
+@section('js')
+  <!-- liens js -->
+@endsection
 
  
 

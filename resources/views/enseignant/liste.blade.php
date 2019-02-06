@@ -2,7 +2,9 @@
 @extends('layouts.app')
 
 @section('title', 'Enseignants')
-
+@section('css')
+  <!-- liens css -->
+@endsection
 @section('sidebar')
     @parent
 
@@ -45,7 +47,9 @@
 </div>
 </div><!-- /.container -->
 @endsection
-
+@section('js')
+  <!-- liens js -->
+@endsection
 
 
 
