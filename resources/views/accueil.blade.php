@@ -14,6 +14,7 @@
             <li><a class = "orientation" href="/salle"><span class ="glyphicon glyphicon-inbox"></span> &nbsp;Nos Salles</a></li>
             <li><a class = "orientation" href="/materiel"><span class ="glyphicon glyphicon-scissors"></span> &nbsp;Materiels</a></li>
             <li><a class = "orientation" href="/enseignant"><span class ="glyphicon glyphicon-briefcase"></span> &nbsp;Enseignant</a></li>
+            <li><a class = "orientation" href="/temps"><span class ="glyphicon glyphicon-briefcase"></span> &nbsp;Emplois de temps</a></li>
           </ul>
         </div><!--/.nav-collapse -->
      
@@ -78,11 +79,17 @@
           </div>
           <div class="col-lg-4">
             <div class="col-lg-12">
+<<<<<<< HEAD
+              <h4>Matériels</h4>
+              <p>Consultez l'emploi de temps en fonction du matériel.</p>
+              <input type="submit" class="btn-info" value="materiels">
+=======
               <h4>Nos matériels</h4>
               <p>Consultez l'emploi de temps en fonction des matériels.</p>
               <a class = "orientation" href="/materiel"><button class="btn btn-primary"><span class="glyphicon
                 glyphicon-ok-sign"></span> cliquer ici</button></a>
               
+>>>>>>> 779788af13f0637c9b2afb96dd1d44c01fa1ac52
             </div>
           </div> 
           <div class="col-lg-4">
