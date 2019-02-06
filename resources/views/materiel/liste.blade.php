@@ -14,6 +14,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="css/style2.css" rel="stylesheet">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
@@ -62,7 +63,67 @@
         <h1>Bienvennue dans GooD PlanninG</h1>
         <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
       </div>
-
+      <table class="table table-striped">
+            <div class="panel-heading"><h3 class=""> Emploi de temps</h3></div>
+            <thead>
+                <tr>
+                    <td class="hour"></td>
+                    <td>Lundi</td>
+                    <td>Mardi</td>
+                    <td>Mercredi</td>
+                    <td>Jeudi</td>
+                    <td>Vendredi</td>
+                    <td>Samedi</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>    
+                    <td class="hour">07h - 9h55</td>
+                    <td>info</td>
+                    <td>info</td>
+                    <td>info</td>
+                    <td>info</td>
+                    <td>info</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="hour">10h05 - 12h55</td>
+                    <td>info</td>
+                    <td>info</td>
+                    <td>info</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="hour">13h05 - 15h55</td>
+                    <td>info</td>
+                    <td>info</td>
+                    <td>info</td>
+                    <td>info</td>
+                    <td>info</td>
+                    <td>info</td>
+                </tr>
+                <tr>
+                    <td class="hour">16h05 - 18h55</td>
+                    <td>info</td>
+                    <td>info</td>
+                    <td>info</td>
+                    <td>info</td>
+                    <td>info</td>
+                    <td>info</td>
+                </tr>
+                <tr>
+                    <td class="hour">19h05 - 21h55</td>
+                    <td>info</td>
+                    <td>info</td>
+                    <td>info</td>
+                    <td>info</td>
+                    <td>info</td>
+                    <td>info</td>
+                </tr>
+            </tbody>
+        </table>
     </div><!-- /.container -->
 
   
