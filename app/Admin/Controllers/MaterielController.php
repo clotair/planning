@@ -128,9 +128,10 @@ class MaterielController extends Controller
         $form = new Form(new Materiel);
 
         $form->display('id','ID');
-        $form->text('nom','NOM')->rules('required|unique:materiels');
-        $form->number('quantite','QUANTITE')->rules('required')->min(1);
+        $form->text('nom','NOM')->rules('required');
+        $form->number('quantite','QUANTITE')->rules('required')->min(1)->default(1);
 
         return $form;
     }
+
 }

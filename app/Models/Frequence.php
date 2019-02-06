@@ -14,4 +14,8 @@ class Frequence extends Model
     {
         return $this->belongsTo('App\Models\CourPlanning','cour');
     }
+    public function eventplanning()
+    {
+        return $this->belongsTo('App\Models\EventPlanning','evenement');
+    }
 }

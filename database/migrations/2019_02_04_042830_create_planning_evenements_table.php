@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePlanningSallesTable extends Migration
+class CreatePlanningEvenementsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,16 @@ class CreatePlanningSallesTable extends Migration
      */
     public function up()
     {
-        Schema::create('planning_salles', function (Blueprint $table) {
+        Schema::create('planning_evenements', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('salle')->index();
+            $table->integer('evenement')->index();
             $table->date('date_debut');
             $table->date('date_fin');
             $table->time('heure_debut');
-            $table->string('heure_fin');
+            $table->time('heure_fin');
             $table->integer('jour')->index();
+            $table->timestamps();
         });
     }
 
@@ -31,6 +33,6 @@ class CreatePlanningSallesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('planning_salles');
+        Schema::dropIfExists('planning_evenements');
     }
 }

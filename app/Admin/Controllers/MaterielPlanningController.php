@@ -2,15 +2,18 @@
 
 namespace App\Admin\Controllers;
 
-use App\Models\SallePlanning;
+use App\Models\MaterielPlanning;
+use App\Models\Materiel;
+use App\Models\Jour;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\HasResourceActions;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Show;
+use Illuminate\Support\MessageBag;
 
-class SallePlanningController extends Controller
+class MaterielPlanningController extends Controller
 {
     use HasResourceActions;
 
@@ -79,7 +82,7 @@ class SallePlanningController extends Controller
      */
     protected function grid()
     {
-        $grid = new Grid(new SallePlanning);
+        $grid = new Grid(new MaterielPlanning);
 
         $grid->id('ID');
         $grid->created_at('Created at');
@@ -96,7 +99,7 @@ class SallePlanningController extends Controller
      */
     protected function detail($id)
     {
-        $show = new Show(SallePlanning::findOrFail($id));
+        $show = new Show(MaterielPlanning::findOrFail($id));
 
         $show->id('ID');
         $show->created_at('Created at');
@@ -112,11 +115,17 @@ class SallePlanningController extends Controller
      */
     protected function form()
     {
-        $form = new Form(new SallePlanning);
-
-        $form->display('ID');
-        $form->display('Created at');
-        $form->display('Updated at');
+        $form = new Form(new MaterielPlanning);
+        $form->display('id','ID');
+        $form->select('materiel','Materiel')->options(Materiel::all()->pluck('nom' ,'id'))->default(1)->rules('required');
+        $form->date('date_debut','DATE DE DEBUT');
+        $form->date('date_fin','DATE DE FIN');
+        $form->hasMany('frequence', function (Form\NestedForm $form) {
+            $form->time('heure_debut')->rules('required')->default(12);
+            $form->time('heure_fin')->rules('required')->default(15);
+            $form->select('jour','JOUR')->options(Jour::all()->pluck('nom', 'id'))->default(1)->rules('required');
+        });
+        $form->setAction('/admin/api/materiel/add');
 
         return $form;
     }

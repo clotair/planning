@@ -4,6 +4,7 @@ namespace App\Admin\Extensions\Nav;
 
 class Links
 {
+    
     public function __toString()
     {
         return <<<HTML

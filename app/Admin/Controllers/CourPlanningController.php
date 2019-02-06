@@ -158,7 +158,8 @@ class CourPlanningController extends Controller
     protected function form()
     {
         $form = new Form(new CourPlanning);
-
+        $form->ignore('info');
+        $form->display('info');
         $form->display('id','ID');
         $form->select('salle','SALLE')->options(Salle::all()->pluck('nom', 'id'))->default(1)->rules('required');
         $form->select('enseignant','Enseignant')->options(Enseignant::all()->pluck('nom', 'id'))->default(1)->rules('required');
@@ -172,7 +173,8 @@ class CourPlanningController extends Controller
             $form->time('heure_fin')->rules('required')->default(15);
             $form->select('jour','JOUR')->options(Jour::all()->pluck('nom', 'id'))->default(1)->rules('required');
         });
-        $form->setAction('/admin/api/etallage');
+        $form->setAction('/admin/api/cour/add');
         return $form;
     }
+    
 }

@@ -2,9 +2,11 @@
 
 namespace App\Admin\Controllers;
 
-use App\Models\EvenemntPlanning;
+use App\Models\EvenementPlanning;
 use App\Models\Salle;
 use App\Models\Jour;
+use App\Models\Frequence;
+use App\Models\Evenement;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\HasResourceActions;
 use Encore\Admin\Form;
@@ -12,7 +14,7 @@ use Encore\Admin\Grid;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Show;
 
-class EvenemntPlanningController extends Controller
+class EvenementPlanningController extends Controller
 {
     use HasResourceActions;
 
@@ -25,8 +27,8 @@ class EvenemntPlanningController extends Controller
     public function index(Content $content)
     {
         return $content
-            ->header('Index')
-            ->description('description')
+            ->header('Evenement')
+            ->description('Liste des evenements')
             ->body($this->grid());
     }
 
@@ -70,7 +72,7 @@ class EvenemntPlanningController extends Controller
     {
         return $content
             ->header('Create')
-            ->description('description')
+            ->description('un evenement')
             ->body($this->form());
     }
 
@@ -81,11 +83,22 @@ class EvenemntPlanningController extends Controller
      */
     protected function grid()
     {
-        $grid = new Grid(new EvenemntPlanning);
+        $grid = new Grid(new EvenementPlanning);
 
         $grid->id('ID');
-        $grid->created_at('Created at');
-        $grid->updated_at('Updated at');
+        $grid->evenement('EVENEMENT')->display(function($id){
+            return Evenement::find($id)->description;
+        });
+        $grid->salle('SALLE')->display(function($id){
+            return Salle::find($id)->code;
+        });
+        $grid->date_debut('DATE DE DEBUT');
+        $grid->date_fin('DATE DE FIN');
+        $grid->heure_debut('HEURE DEBUT');
+        $grid->heure_fin('HEURE FIN');
+        $grid->jour('JOUR')->display(function($id){
+            return Jour::find($id)->nom;
+        });
 
         return $grid;
     }
@@ -98,12 +111,23 @@ class EvenemntPlanningController extends Controller
      */
     protected function detail($id)
     {
-        $show = new Show(EvenemntPlanning::findOrFail($id));
-
+        $show = new Show(EvenementPlanning::findOrFail($id));
+        $show->evenement('EVENEMENT')->as(function($id){
+            return Evenement::find($id)->description;
+        });
+        $show->salle('SALLE')->as(function($id){
+            return Salle::find($id)->code;
+        });
         $show->id('ID');
-        $show->created_at('Created at');
-        $show->updated_at('Updated at');
-
+        $show->date_debut('DATE DE DEBUT');
+        $show->date_fin('DATE DE FIN');
+        $show->jour('JOUR')->as(function($id){
+            return Jour::find($id)->nom;
+        });
+        $show->heure_debut('HEURE DE DEBUT');
+        $show->heure_fin('HEURE DE FIN');
+        $show->heure_debut('HEURE DEBUT');
+        $show->heure_fin('HEURE FIN');
         return $show;
     }
 
@@ -114,9 +138,9 @@ class EvenemntPlanningController extends Controller
      */
     protected function form()
     {
-        $form = new Form(new EvenemntPlanning);
-
+        $form = new Form(new EvenementPlanning);
         $form->display('id','ID');
+        $form->select('evenement','Evenement')->options(Evenement::all()->pluck('description' ,'id'))->default(1)->rules('required');
         $form->select('salle','SALLE')->options(Salle::all()->pluck('nom', 'id'))->default(1)->rules('required');
         $form->date('date_debut','DATE DE DEBUT');
         $form->date('date_fin','DATE DE FIN');
@@ -125,7 +149,7 @@ class EvenemntPlanningController extends Controller
             $form->time('heure_fin')->rules('required')->default(15);
             $form->select('jour','JOUR')->options(Jour::all()->pluck('nom', 'id'))->default(1)->rules('required');
         });
-        $form->setAction('/admin/api/event');
+        $form->setAction('/admin/api/evenement/add');
 
         return $form;
     }
