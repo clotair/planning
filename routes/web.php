@@ -25,6 +25,12 @@ Route::prefix('salle')->group(function () {
         return view('salle.liste')->with(['salles'=>DB::table('salles')->get()]);
     });
 });
+Route::prefix('temps')->group(function () {
+    Route::get('', function () {
+       
+        return view('temps.liste');
+    });
+});
 Route::prefix('materiel')->group(function () {
     Route::get('', function () {
         

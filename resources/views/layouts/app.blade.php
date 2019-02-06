@@ -51,18 +51,20 @@
       </div>
     </nav>
     @show
-    <div class="container">
-      @include('flash::message')
-    </div>
     
-    <div>
+      @include('flash::message')
+    
+    
+  
             @yield('content')
-    </div>
-    <div class="navbar navbar-inverse">
-      <div class="container">
-        <p class="navbar-text">&copy; Random</p>
+   
+    
+      <div class="navbar navbar-inverse">
+        <div class="container">
+          <p class="navbar-text">&copy; Random</p>
+        </div>
       </div>
-    </div>
+  
     <script src="bootstrap/js/jquery.min.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
     <script>
