@@ -38,7 +38,7 @@
       
     @show
 
-    <div class="container">
+    <div>
             @yield('content')
     </div>
     <script src="bootstrap/js/jquery.min.js"></script>

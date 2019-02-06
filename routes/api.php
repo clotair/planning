@@ -24,20 +24,20 @@ Route::get('salle/{id}',function(Request $request){
     foreach($cours as $cour){
         if($cour->date_fin > $max_date ){
             $max_date = $cour->date_fin;
-        }else{
-            if($cour->date_fin<$min_date){
-                $min_date = $cour->date_fin;
-            }
         }
+        if($cour->date_fin<$min_date){
+            $min_date = $cour->date_fin;
+        }
+        
     }
     foreach($events as $event){
         if($event->date_debut > $max_date ){
             $max_date = $event->date_debut;
-        }else{
-            if($event->date_debut<$min_date){
-                $min_date = $event->date_debut;
-            }
         }
+        if($event->date_debut<$min_date){
+            $min_date = $event->date_debut;
+        }
+        
     }
     $date = $min_date;
     $i = 0;
@@ -46,8 +46,8 @@ Route::get('salle/{id}',function(Request $request){
         $pro[$date] = [];
         $date=strftime("%Y-%m-%d", strtotime("$date +1 day"));
     }
-    
-    return [$min_date,$max_date];
+  
+    return $pro;
 });
 Route::get('classe/{id}',function(Request $request){
     $salle = DB::table('planning_cours')->where('classe','=',$request->id)->get();
