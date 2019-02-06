@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateJoursTable extends Migration
+class CreateEvenementTypeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateJoursTable extends Migration
      */
     public function up()
     {
-        Schema::create('jours', function (Blueprint $table) {
+        Schema::create('evenement_type', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nom')->index();
-            $table->integer('valeur');
+            $table->string('nom');
         });
     }
 
@@ -27,6 +26,6 @@ class CreateJoursTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jours');
+        Schema::dropIfExists('evenement_type');
     }
 }

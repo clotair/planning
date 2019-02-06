@@ -2,16 +2,18 @@
 
 namespace App\Admin\Controllers;
 
-use App\Models\Salle;
-use App\Models\TypeEmplacement;
+use App\Models\MaterielPlanning;
+use App\Models\Materiel;
+use App\Models\Jour;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\HasResourceActions;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Show;
+use Illuminate\Support\MessageBag;
 
-class SalleController extends Controller
+class MaterielPlanningController extends Controller
 {
     use HasResourceActions;
 
@@ -80,15 +82,11 @@ class SalleController extends Controller
      */
     protected function grid()
     {
-        $grid = new Grid(new Salle);
+        $grid = new Grid(new MaterielPlanning);
 
         $grid->id('ID');
-        $grid->nom('NOM');
-        $grid->code('CODE');
-        $grid->type('CATHEGORIE')->display(function($type){
-            return TypeEmplacement::find($type)->nom;
-        });
-        $grid->places('PLACES');
+        $grid->created_at('Created at');
+        $grid->updated_at('Updated at');
 
         return $grid;
     }
@@ -101,15 +99,12 @@ class SalleController extends Controller
      */
     protected function detail($id)
     {
-        $show = new Show(Salle::findOrFail($id));
+        $show = new Show(MaterielPlanning::findOrFail($id));
 
         $show->id('ID');
-        $show->nom('NOM');
-        $show->code('CODE');
-        $show->type('CATHEGORIE')->as(function($type){
-            return TypeEmplacement::find($type)->nom;
-        });
-        $show->places('PLACES');
+        $show->created_at('Created at');
+        $show->updated_at('Updated at');
+
         return $show;
     }
 
@@ -120,13 +115,18 @@ class SalleController extends Controller
      */
     protected function form()
     {
-        $form = new Form(new Salle);
-
+        $form = new Form(new MaterielPlanning);
         $form->display('id','ID');
-        $form->text('nom');
-        $form->text('code')->rules('required');
-        $form->select('type','CATHEGORIE')->options(TypeEmplacement::all()->pluck('nom', 'id'))->default(1)->rules('required');
-        $form->number('places','PLACES')->min(1);
+        $form->select('materiel','Materiel')->options(Materiel::all()->pluck('nom' ,'id'))->default(1)->rules('required');
+        $form->date('date_debut','DATE DE DEBUT');
+        $form->date('date_fin','DATE DE FIN');
+        $form->hasMany('frequence', function (Form\NestedForm $form) {
+            $form->time('heure_debut')->rules('required')->default(12);
+            $form->time('heure_fin')->rules('required')->default(15);
+            $form->select('jour','JOUR')->options(Jour::all()->pluck('nom', 'id'))->default(1)->rules('required');
+        });
+        $form->setAction('/admin/api/materiel/add');
+
         return $form;
     }
 }

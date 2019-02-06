@@ -1,39 +1,11 @@
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
 
-    <title>Accueil</title>
+@extends('layouts.app')
 
-    <!-- Bootstrap core CSS -->
-    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+@section('title', 'Accueil')
 
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="css/starter-template.css" rel="stylesheet">
-    <link href="css/style1.css" rel="stylesheet">
-
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-
-  <body>
+@section('sidebar')
+    @parent
 
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
@@ -57,8 +29,10 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-    <!-- mon aside -->
-    <div id="myCarousel" class="carousel slide imp" data-ride="carousel ">
+  @endsection
+
+  @section('content')
+  <div id="myCarousel" class="carousel slide imp" data-ride="carousel ">
       <!-- Indicators -->
       <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -94,38 +68,56 @@
 
     <div class="container texte" style="width:50%;">
 
-      <div class="starter-template">
+      <div class="starter-template couleur">
         <h1>Bienvenue sur GooD PlanninG</h1>
         <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
       </div>
 
     </div><!-- /.container -->
+  <br><br><br><br><br><br>
     <div class = "container-fluid">
       <div class="row">
           <div class="col-lg-4">
             <div class="col-lg-12">
               <h4>Nos salles</h4>
               <p>Consultez l'emploi de temps en fonction des salles.</p>
-              <input type="submit" class="btn-info" value="salles">
+              <a class = "orientation" href="/salle"><button class="btn btn-primary"><span class="glyphicon
+                glyphicon-ok-sign"></span> cliquer ici</button></a>
             </div>
           </div>
           <div class="col-lg-4">
             <div class="col-lg-12">
+<<<<<<< HEAD
               <h4>Matériels</h4>
               <p>Consultez l'emploi de temps en fonction du matériel.</p>
               <input type="submit" class="btn-info" value="materiels">
+=======
+              <h4>Nos matériels</h4>
+              <p>Consultez l'emploi de temps en fonction des matériels.</p>
+              <a class = "orientation" href="/materiel"><button class="btn btn-primary"><span class="glyphicon
+                glyphicon-ok-sign"></span> cliquer ici</button></a>
+              
+>>>>>>> 779788af13f0637c9b2afb96dd1d44c01fa1ac52
             </div>
           </div> 
           <div class="col-lg-4">
             <div class="col-lg-12">
               <h4>Nos enseignants</h4>
               <p>Consultez l'emploi de temps en fonction des enseignants.</p>
-              <input type="submit" class="btn-info" value="enseignants">
+              <a class = "orientation" href="/enseignant"><button class="btn btn-primary"><span class="glyphicon
+                glyphicon-ok-sign"></span> cliquer ici</button></a>
             </div>
           </div> 
        </div>
     </div>
+    <br><br> <br><br> <br><br>
+  <div class="navbar navbar-inverse">
+      <div class="container">
+        <p class="navbar-text">&copy; Random</p>
+      </div>
+    </div>
     <script src="bootstrap/js/jquery.min.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
 
-</html>
+@endsection
+

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePlanningCoursTable extends Migration
+class CreatePlanningMaterielTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,16 @@ class CreatePlanningCoursTable extends Migration
      */
     public function up()
     {
-        Schema::create('planning_cours', function (Blueprint $table) {
+        Schema::create('planning_materiel', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('classe')->index();
-            $table->integer('matiere')->index();
-            $table->integer('enseignant')->index();
-            $table->integer('salle')->index();
-            $table->integer('type_cour')->index();
+            $table->integer('materiel')->index();
             $table->date('date_debut');
             $table->date('date_fin');
-            $table->integer('jour')->index();
             $table->time('heure_debut');
             $table->time('heure_fin');
+            $table->integer('jour')->index();
+            $table->integer('user')->index();
+            $table->integer('quantite')->default('1');
         });
     }
 
@@ -35,6 +33,6 @@ class CreatePlanningCoursTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('planning_cours');
+        Schema::dropIfExists('planning_materiel');
     }
 }

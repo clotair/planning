@@ -2,14 +2,11 @@
 
 namespace App\Admin\Controllers;
 
-use App\Models\CourPlanning;
+use App\Models\EvenementPlanning;
 use App\Models\Salle;
-use App\Models\Frequence;
-use App\Models\Enseignant;
 use App\Models\Jour;
-use App\Models\Ue;
-use App\Models\Classe;
-use App\Models\EnseignementType;
+use App\Models\Frequence;
+use App\Models\Evenement;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\HasResourceActions;
 use Encore\Admin\Form;
@@ -17,7 +14,7 @@ use Encore\Admin\Grid;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Show;
 
-class CourPlanningController extends Controller
+class EvenementPlanningController extends Controller
 {
     use HasResourceActions;
 
@@ -30,8 +27,8 @@ class CourPlanningController extends Controller
     public function index(Content $content)
     {
         return $content
-            ->header('Index')
-            ->description('description')
+            ->header('Evenement')
+            ->description('Liste des evenements')
             ->body($this->grid());
     }
 
@@ -75,7 +72,7 @@ class CourPlanningController extends Controller
     {
         return $content
             ->header('Create')
-            ->description('description')
+            ->description('un evenement')
             ->body($this->form());
     }
 
@@ -86,26 +83,19 @@ class CourPlanningController extends Controller
      */
     protected function grid()
     {
-        $grid = new Grid(new CourPlanning);
+        $grid = new Grid(new EvenementPlanning);
 
         $grid->id('ID');
+        $grid->evenement('EVENEMENT')->display(function($id){
+            return Evenement::find($id)->description;
+        });
         $grid->salle('SALLE')->display(function($id){
             return Salle::find($id)->code;
         });
-        $grid->enseignant('ENSEIGNANT')->display(function($id){
-            return Enseignant::find($id)->nom;
-        });       
-        $grid->classe('CLASSE')->display(function($id){
-            return Classe::find($id)->code;
-        });
-        $grid->matiere('MATHIERE')->display(function($id){
-            return Ue::find($id)->code;
-        });
-        $grid->type_cour('TYPE COUR')->display(function($id){
-            return EnseignementType::find($id)->nom;
-        });
         $grid->date_debut('DATE DE DEBUT');
         $grid->date_fin('DATE DE FIN');
+        $grid->heure_debut('HEURE DEBUT');
+        $grid->heure_fin('HEURE FIN');
         $grid->jour('JOUR')->display(function($id){
             return Jour::find($id)->nom;
         });
@@ -121,25 +111,14 @@ class CourPlanningController extends Controller
      */
     protected function detail($id)
     {
-        $show = new Show(CourPlanning::findOrFail($id));
-
-        $show->id('ID');
+        $show = new Show(EvenementPlanning::findOrFail($id));
+        $show->evenement('EVENEMENT')->as(function($id){
+            return Evenement::find($id)->description;
+        });
         $show->salle('SALLE')->as(function($id){
             return Salle::find($id)->code;
         });
-        $show->enseignant('ENSEIGNANT')->as(function($id){
-            return Enseignant::find($id)->nom;
-        });       
-        $show->classe('CLASSE')->as(function($id){
-            return Classe::find($id)->code;
-        });
-        
-        $show->matiere('MATHIERE')->as(function($id){
-            return Ue::find($id)->code;
-        });
-        $show->type_cour('TYPE COUR')->as(function($id){
-            return EnseignementType::find($id)->nom;
-        });
+        $show->id('ID');
         $show->date_debut('DATE DE DEBUT');
         $show->date_fin('DATE DE FIN');
         $show->jour('JOUR')->as(function($id){
@@ -147,6 +126,8 @@ class CourPlanningController extends Controller
         });
         $show->heure_debut('HEURE DE DEBUT');
         $show->heure_fin('HEURE DE FIN');
+        $show->heure_debut('HEURE DEBUT');
+        $show->heure_fin('HEURE FIN');
         return $show;
     }
 
@@ -157,15 +138,10 @@ class CourPlanningController extends Controller
      */
     protected function form()
     {
-        $form = new Form(new CourPlanning);
-        $form->ignore('info');
-        $form->display('info');
+        $form = new Form(new EvenementPlanning);
         $form->display('id','ID');
+        $form->select('evenement','Evenement')->options(Evenement::all()->pluck('description' ,'id'))->default(1)->rules('required');
         $form->select('salle','SALLE')->options(Salle::all()->pluck('nom', 'id'))->default(1)->rules('required');
-        $form->select('enseignant','Enseignant')->options(Enseignant::all()->pluck('nom', 'id'))->default(1)->rules('required');
-        $form->select('classe','CLASSE')->options(Classe::all()->pluck('nom', 'id'))->default(1)->rules('required');
-        $form->select('matiere','MATIERE')->options(Ue::all()->pluck('code', 'id'))->default(1)->rules('required');
-        $form->select('type_cour','CATHEGORIE')->options(EnseignementType::all()->pluck('nom', 'id'))->default(1)->rules('required');
         $form->date('date_debut','DATE DE DEBUT');
         $form->date('date_fin','DATE DE FIN');
         $form->hasMany('frequence', function (Form\NestedForm $form) {
@@ -173,8 +149,8 @@ class CourPlanningController extends Controller
             $form->time('heure_fin')->rules('required')->default(15);
             $form->select('jour','JOUR')->options(Jour::all()->pluck('nom', 'id'))->default(1)->rules('required');
         });
-        $form->setAction('/admin/api/cour/add');
+        $form->setAction('/admin/api/evenement/add');
+
         return $form;
     }
-    
 }

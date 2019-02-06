@@ -109,10 +109,10 @@ class UeController extends Controller
         $show->id('ID');
         $show->intituler('INTITULER');
         $show->code('CODE');
-        $show->matiere('MATIERE')->display(function($matiere){
+        $show->matiere('MATIERE')->as(function($matiere){
             return Matiere::find($matiere)->nom;
         });
-        $show->niveau('NIVEAU')->display(function($niveau){
+        $show->niveau('NIVEAU')->as(function($niveau){
             return Niveau::find($niveau)->nom;
         });
 

@@ -21,18 +21,28 @@ Route::get('/accueil', function () {
 Route::prefix('salle')->group(function () {
     Route::get('', function () {
        
-        return view('salle.liste');
+        return view('salle.liste')->with(['salles'=>DB::table('salles')->get()]);
     });
 });
 Route::prefix('materiel')->group(function () {
     Route::get('', function () {
         
-        return view('materiel.liste');
+        return view('materiel.liste')->with(['materiels'=>DB::table('materiels')->get()]);
+    });
+});
+Route::prefix('classe')->group(function () {
+    Route::get('', function () {
+        
+        return view('classe.liste')->with(['classes'=>DB::table('classes')->get()]);
     });
 });
 Route::prefix('enseignant')->group(function () {
     Route::get('', function () {
         
-        return view('enseignant.liste');
+        return view('enseignant.liste')->with(['enseignants'=>$enseignant = DB::table('enseignants')
+      
+        ->select('enseignants.nom', 'enseignants.id', 'grades.nom')
+        ->join('grades', 'grades.id', '=', 'enseignants.grade')
+        ->get()]);;
     });
 });

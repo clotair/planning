@@ -1,14 +1,6 @@
+@extends('layouts.app')
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+@section('title', 'Materiels')
 
     <title>Accueil</title>
 
@@ -56,8 +48,39 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
+@endsection
 
-    <div class="container">
+@section('content')
+<div class="container">
+
+<div class="starter-template">
+  <h1>Bienvennue dans GooD PlanninG</h1>
+  <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+  {{ $materiels }}
+    <ul>
+      @foreach($materiels as $materiel )
+        <li onClick="materiel({{$materiel->id}})">
+          {{$materiel->nom}}
+        </li>
+      @endforeach
+    </ul>
+  <div>
+  <div class="col-md-9">
+    <div>
+
+    </div>
+  <div>
+</div>
+</div><!-- /.container -->
+@endsection
+
+
+ 
+
 
       <div class="starter-template">
         <h1>Bienvennue dans GooD PlanninG</h1>
@@ -126,7 +149,4 @@
         </table>
     </div><!-- /.container -->
 
-  
-    <script src="bootstrap/js/bootstrap.js"></script>
 
-</html>

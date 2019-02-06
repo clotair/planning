@@ -2,8 +2,8 @@
 
 namespace App\Admin\Controllers;
 
-use App\Models\Salle;
-use App\Models\TypeEmplacement;
+use App\Models\Evenement;
+use App\Models\EvenementType;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\HasResourceActions;
 use Encore\Admin\Form;
@@ -11,7 +11,7 @@ use Encore\Admin\Grid;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Show;
 
-class SalleController extends Controller
+class EvenementController extends Controller
 {
     use HasResourceActions;
 
@@ -80,15 +80,13 @@ class SalleController extends Controller
      */
     protected function grid()
     {
-        $grid = new Grid(new Salle);
+        $grid = new Grid(new Evenement);
 
         $grid->id('ID');
-        $grid->nom('NOM');
-        $grid->code('CODE');
-        $grid->type('CATHEGORIE')->display(function($type){
-            return TypeEmplacement::find($type)->nom;
+        $grid->type('TYPE')->display(function($ev){
+            return EvenementType::find($ev)->nom;
         });
-        $grid->places('PLACES');
+        $grid->description('DESCRIPTION');
 
         return $grid;
     }
@@ -101,15 +99,14 @@ class SalleController extends Controller
      */
     protected function detail($id)
     {
-        $show = new Show(Salle::findOrFail($id));
+        $show = new Show(Evenement::findOrFail($id));
 
         $show->id('ID');
-        $show->nom('NOM');
-        $show->code('CODE');
-        $show->type('CATHEGORIE')->as(function($type){
-            return TypeEmplacement::find($type)->nom;
+        $show->type('TYPE')->as(function($ev){
+            return EvenementType::find($ev)->nom;
         });
-        $show->places('PLACES');
+        $show->description('DESCRIPTION');
+
         return $show;
     }
 
@@ -120,13 +117,11 @@ class SalleController extends Controller
      */
     protected function form()
     {
-        $form = new Form(new Salle);
+        $form = new Form(new Evenement);
 
         $form->display('id','ID');
-        $form->text('nom');
-        $form->text('code')->rules('required');
-        $form->select('type','CATHEGORIE')->options(TypeEmplacement::all()->pluck('nom', 'id'))->default(1)->rules('required');
-        $form->number('places','PLACES')->min(1);
+        $form->select('type','TYPE')->options(EvenementType::all()->pluck('nom', 'id'))->default(1)->rules('required');
+        $form->textarea('description','DESCRIPTION');
         return $form;
     }
 }
