@@ -4,7 +4,7 @@
 
 @section('title', 'Accueil')
 @section('css')
-  <!-- liens css -->
+<link rel="stylesheet" href="../css/starter-template">
 @endsection
 @section('sidebar')
     @parent
@@ -81,11 +81,10 @@
           </div>
           <div class="col-lg-4">
             <div class="col-lg-12">
-              <h4>Nos matériels</h4>
-              <p>Consultez l'emploi de temps en fonction des matériels.</p>
+              <h4>Matériel</h4>
+              <p>Consultez l'emploi de temps en fonction du matériel.</p>
               <a class = "orientation" href="/materiel"><button class="btn btn-primary"><span class="glyphicon
                 glyphicon-ok-sign"></span> cliquer ici</button></a>
-              
             </div>
           </div> 
           <div class="col-lg-4">
