@@ -90,7 +90,7 @@ class JourController extends Controller
         });
         $grid->id('ID');
         $grid->nom('NOM');
-
+        $grid->jour('JOUR');
         return $grid;
     }
 
@@ -106,7 +106,7 @@ class JourController extends Controller
 
         $show->id('ID');
         $show->nom('NOM');
-
+        $show->jour('JOUR');
         return $show;
     }
 
@@ -121,7 +121,7 @@ class JourController extends Controller
 
         $form->display('id','ID');
         $form->text('nom','NOM')->rules('required');
-      
+        $form->number('jour','NOM')->rules('required');
 
         return $form;
     }
