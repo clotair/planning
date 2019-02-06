@@ -67,37 +67,50 @@
 
     <div class="container texte" style="width:50%;">
 
-      <div class="starter-template">
+      <div class="starter-template couleur">
         <h1>Bienvenue sur GooD PlanninG</h1>
         <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
       </div>
 
     </div><!-- /.container -->
+  <br><br><br><br><br><br>
     <div class = "container-fluid">
       <div class="row">
           <div class="col-lg-4">
             <div class="col-lg-12">
               <h4>Nos salles</h4>
               <p>Consultez l'emploi de temps en fonction des salles.</p>
-              <input type="submit" class="btn-info" value="salles">
+              <a class = "orientation" href="/salle"><button class="btn btn-primary"><span class="glyphicon
+                glyphicon-ok-sign"></span> cliquer ici</button></a>
             </div>
           </div>
           <div class="col-lg-4">
             <div class="col-lg-12">
               <h4>Nos matériels</h4>
               <p>Consultez l'emploi de temps en fonction des matériels.</p>
-              <input type="submit" class="btn-info" value="materiels">
+              <a class = "orientation" href="/materiel"><button class="btn btn-primary"><span class="glyphicon
+                glyphicon-ok-sign"></span> cliquer ici</button></a>
+              
             </div>
           </div> 
           <div class="col-lg-4">
             <div class="col-lg-12">
               <h4>Nos enseignants</h4>
               <p>Consultez l'emploi de temps en fonction des enseignants.</p>
-              <input type="submit" class="btn-info" value="enseignants">
+              <a class = "orientation" href="/enseignant"><button class="btn btn-primary"><span class="glyphicon
+                glyphicon-ok-sign"></span> cliquer ici</button></a>
             </div>
           </div> 
        </div>
     </div>
+    <br><br> <br><br> <br><br>
+  <div class="navbar navbar-inverse">
+      <div class="container">
+        <p class="navbar-text">&copy; Random</p>
+      </div>
+    </div>
+    <script src="bootstrap/js/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
 
 @endsection
 

@@ -1,14 +1,21 @@
 
-
-
-
-  
-
-
-
-
 @extends('layouts.app')
+    <style>
+      table, th, td{
+        border: 1px solid blueviolet;
+        border-collapse: collapse;
+        opacity: 0.95;
+      }
+      table{
+        width: 50px;
+      }
+      th, td{
+        padding: 10px;
+        text-align: center;
+      }
 
+    </style>
+  </head>
 @section('title', 'Salles')
 
 @section('sidebar')
@@ -71,11 +78,81 @@
           </div>
         </div>
     </div>
+    <div class ="row">  
+      <div class = "col-md-7 col-offset-md-7">
+         <table class="table table-striped ">
+           <tr>
+             <td colspan ="7"><h1>EMPLOIS DU TEMPS <br> Du... AU ...</h1></td>
+           </tr>
+               <tr>
+                   <th>  </th>
+                   <th>LUNDI</th>
+                   <th>MARDI</th>
+                   <th>MERCREDI</th>
+                   <th>JEUDI</th>
+                   <th>VENDREDI</th>
+                   <th>SAMEDI</th>
+               </tr>
+               <tr>
+                   <th>7h - 9h55</th>
+                   <td></td>
+                   <td></td>
+                   <td></td>
+                   <td></td>
+                   <td></td>
+                   <td></td>
+               </tr>
+               <tr>
+                 <th colspan ="7">pause 10 min</th>
+               </tr>
+               <tr>
+                 <th>10h05 - 12h45</th>
+                 <td></td>
+                 <td></td>
+                 <td></td>
+                 <td></td>
+                 <td></td>
+                 <td></td>
+               </tr>
+               <tr>
+                 <th colspan ="7">PAUSE 20 min</th>
+               </tr>
+               <tr>
+                 <th>13h05 - 15h55</th>
+                 <td></td>
+                 <td></td>
+                 <td></td>
+                 <td></td>
+                 <td></td>
+                 <td></td>
+               </tr>
+               <tr>
+                 <th colspan ="7">PAUSE 10min</th>
+               </tr>
+               <tr>
+                 <th>16h05 - 18h45</th>
+                 <td></td>
+                 <td></td>
+                 <td></td>
+                 <td></td>
+                 <td></td>
+                 <td></td>
+               </tr>
+               <tr>
+                 <th colspan ="7">PAUSE 20min</th>
+               </tr>
+               <tr>
+                 <th>19h05 - 22h05</th>
+                 <td></td>
+                 <td></td>
+                 <td></td>
+                 <td></td>
+                 <td></td>
+                 <td></td>
+               </tr>
+           </table>
+      </div>
+       </div>
+           <br><br><br>
+     
 @endsection
-
-    
-
-    
-
-
-
