@@ -51,7 +51,10 @@
       </div>
     </nav>
     @show
-
+    <div class="container">
+      @include('flash::message')
+    </div>
+    
     <div>
             @yield('content')
     </div>
@@ -62,5 +65,9 @@
     </div>
     <script src="bootstrap/js/jquery.min.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
+    <script>
+      $('div.alert').not('.alert-important').delay(30000).fadeOut(350);
+      $('#flash-overlay-modal').modal();
+    </script>
     @yield('js')
 </html>

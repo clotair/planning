@@ -12,6 +12,7 @@
 */
 
 Route::get('/', function () {
+    flash('dsdsdsds')->warning();
     return view('accueil');
 });
 Route::get('/accueil', function () {
