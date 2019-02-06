@@ -2,15 +2,18 @@
 
 namespace App\Admin\Controllers;
 
+use App\Models\MaterielPlanning;
 use App\Models\Materiel;
+use App\Models\Jour;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\HasResourceActions;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Show;
+use Illuminate\Support\MessageBag;
 
-class MaterielController extends Controller
+class MaterielPlanningController extends Controller
 {
     use HasResourceActions;
 
@@ -79,22 +82,11 @@ class MaterielController extends Controller
      */
     protected function grid()
     {
-        $grid = new Grid(new Materiel);
-        $grid->filter(function($filter){
+        $grid = new Grid(new MaterielPlanning);
 
-            // Remove the default id filter
-            $filter->disableIdFilter();
-        
-            // Add a column filter
-            $filter->like('nom', 'NOM');
-            $filter->like('quantite', 'QUANTITE');
-
-        });
         $grid->id('ID');
-        $grid->nom('NOM');
-        $grid->quantite_disponible('DISPONIBLE');
-        $grid->quantite('TOTALE');
- 
+        $grid->created_at('Created at');
+        $grid->updated_at('Updated at');
 
         return $grid;
     }
@@ -107,13 +99,11 @@ class MaterielController extends Controller
      */
     protected function detail($id)
     {
-        $show = new Show(Materiel::findOrFail($id));
+        $show = new Show(MaterielPlanning::findOrFail($id));
 
         $show->id('ID');
-        $show->nom('NOM');
-        $show->quantite_disponible('DISPONIBLE');
-        $show->quantite('TOTALE');
- 
+        $show->created_at('Created at');
+        $show->updated_at('Updated at');
 
         return $show;
     }
@@ -125,13 +115,18 @@ class MaterielController extends Controller
      */
     protected function form()
     {
-        $form = new Form(new Materiel);
-
+        $form = new Form(new MaterielPlanning);
         $form->display('id','ID');
-        $form->text('nom','NOM')->rules('required');
-        $form->number('quantite','QUANTITE')->rules('required')->min(1)->default(1);
+        $form->select('materiel','Materiel')->options(Materiel::all()->pluck('nom' ,'id'))->default(1)->rules('required');
+        $form->date('date_debut','DATE DE DEBUT');
+        $form->date('date_fin','DATE DE FIN');
+        $form->hasMany('frequence', function (Form\NestedForm $form) {
+            $form->time('heure_debut')->rules('required')->default(12);
+            $form->time('heure_fin')->rules('required')->default(15);
+            $form->select('jour','JOUR')->options(Jour::all()->pluck('nom', 'id'))->default(1)->rules('required');
+        });
+        $form->setAction('/admin/api/materiel/add');
 
         return $form;
     }
-
 }

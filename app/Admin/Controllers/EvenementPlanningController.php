@@ -27,8 +27,8 @@ class EvenementPlanningController extends Controller
     public function index(Content $content)
     {
         return $content
-            ->header('Index')
-            ->description('description')
+            ->header('Evenement')
+            ->description('Liste des evenements')
             ->body($this->grid());
     }
 
@@ -72,7 +72,7 @@ class EvenementPlanningController extends Controller
     {
         return $content
             ->header('Create')
-            ->description('description')
+            ->description('un evenement')
             ->body($this->form());
     }
 
@@ -86,8 +86,19 @@ class EvenementPlanningController extends Controller
         $grid = new Grid(new EvenementPlanning);
 
         $grid->id('ID');
-        $grid->created_at('Created at');
-        $grid->updated_at('Updated at');
+        $grid->evenement('EVENEMENT')->display(function($id){
+            return Evenement::find($id)->description;
+        });
+        $grid->salle('SALLE')->display(function($id){
+            return Salle::find($id)->code;
+        });
+        $grid->date_debut('DATE DE DEBUT');
+        $grid->date_fin('DATE DE FIN');
+        $grid->heure_debut('HEURE DEBUT');
+        $grid->heure_fin('HEURE FIN');
+        $grid->jour('JOUR')->display(function($id){
+            return Jour::find($id)->nom;
+        });
 
         return $grid;
     }
@@ -101,11 +112,22 @@ class EvenementPlanningController extends Controller
     protected function detail($id)
     {
         $show = new Show(EvenementPlanning::findOrFail($id));
-
+        $show->evenement('EVENEMENT')->as(function($id){
+            return Evenement::find($id)->description;
+        });
+        $show->salle('SALLE')->as(function($id){
+            return Salle::find($id)->code;
+        });
         $show->id('ID');
-        $show->created_at('Created at');
-        $show->updated_at('Updated at');
-
+        $show->date_debut('DATE DE DEBUT');
+        $show->date_fin('DATE DE FIN');
+        $show->jour('JOUR')->as(function($id){
+            return Jour::find($id)->nom;
+        });
+        $show->heure_debut('HEURE DE DEBUT');
+        $show->heure_fin('HEURE DE FIN');
+        $show->heure_debut('HEURE DEBUT');
+        $show->heure_fin('HEURE FIN');
         return $show;
     }
 

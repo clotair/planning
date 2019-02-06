@@ -36,12 +36,14 @@ Route::group([
  
         Route::resource('/cour', 'CourPlanningController');
         Route::resource('/evenement', 'EvenementPlanningController');
+        Route::resource('/materiel', 'MaterielPlanningController');
         
     });
     Route::prefix('api')->group(function(){
         //Route::resource('/salle', 'SalleController');
         Route::post('/cour/add','EtalleController@add_cour');
         Route::post('/evenement/add','EtalleController@add_event');
+        Route::post('/materiel/add','EtalleController@add_materiel');
     });
     Route::get('/api/jour',function(){   
         return Jour::find();

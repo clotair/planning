@@ -5,9 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Frequence;
 
-class EvenementPlanning extends Model
+class MaterielPlanning extends Model
 {
-    protected $table = 'planning_evenements';
+    protected $table = 'planning_materiel';
+
     public $timestamps = false;
     public function frequence()
     {
