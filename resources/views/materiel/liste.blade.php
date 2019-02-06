@@ -1,31 +1,9 @@
 @extends('layouts.app')
 
-@section('title', 'Materiels')
+@section('title', 'Page Title')
 
-    <title>Accueil</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="css/style2.css" rel="stylesheet">
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="css/starter-template.css" rel="stylesheet">
-
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-
-  <body>
+@section('sidebar')
+    @parent
 
     @section('menu')
     <div id="navbar" class="collapse navbar-collapse">
@@ -38,42 +16,11 @@
         </div><!--/.nav-collapse -->
      
     @endsection
-        
-     
+
 @endsection
 
 @section('content')
-
-
-<div class="row">
-  <div class="col-md-3">
-    {{ $materiels }}
-    <ul>
-      @foreach($materiels as $materiel )
-        <li onClick="materiel({{$materiel->id}})">
-          {{$materiel->nom}}
-        </li>
-      @endforeach
-    </ul>
-  </div>
-  <div class="col-md-9">
-   
-  </div>
-</div>
-
-
-
-@endsection
-
-
- 
-
-
-      <div class="starter-template">
-        <h1>Bienvennue dans GooD PlanninG</h1>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-      </div>
-      <table class="table table-striped">
+<table class="table table-striped">
             <div class="panel-heading"><h3 class=""> Emploi de temps</h3></div>
             <thead>
                 <tr>
@@ -134,6 +81,11 @@
                 </tr>
             </tbody>
         </table>
-    </div><!-- /.container -->
 
+
+
+@endsection
+
+
+ 
 
