@@ -44,7 +44,7 @@
     </div>
     <div class="col-md-9">
     <div class="table-responsive">
-      <table class="table" id="listePE">
+      <table class="table" id="listePC">
     
       </table>
     </div>
