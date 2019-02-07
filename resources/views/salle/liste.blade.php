@@ -41,11 +41,36 @@
 
 @section('content')
 
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+    <div class="list-group">
+          <button type="button" class="list-group-item list-group-item-action active salle" onClick="search_salle({{$salles}})">
+            Rechercher
+          </button>
+         @foreach($salles as $salle)
+ 
+            <button type="button"  id="{{'s'.$salle->id}}" class="list-group-item list-group-item-action salle" onClick="planning_salle({{$salle->id}})" data-toggle="popover"  data-content="{{$salle->nom}}" title="{{$salle->type}}"> 
+              {{$salle->code}}
+            </button>
+        @endforeach
+      </div>
+    </div>
+    <div class="col-md-9">
+    <div class="table-responsive">
+      <table class="table" id="listePS">
+    
+      </table>
+    </div>
+    </div>
+    </div>
+</div>
+
 <div class = "container-fluid">
       <div class="row">
           <div class="col-lg-4">
             <div class="col-lg-12">
-              <input type="submit" class="btn-info" value="salle de travaux pratiques">
+              <input type="bouton" class="btn-info" value="salle de travaux pratiques">
             </div>
           </div>
           <div class="col-lg-8">bienvenue</div>
@@ -53,21 +78,21 @@
         <div class="row">
           <div class="col-lg-4">
             <div class="col-lg-12">
-              <input type="submit" class="btn-info" value="salle de travaux dirigés">
+              <input type="bouton" class="btn-info" value="salle de travaux dirigés">
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-lg-4">
             <div class="col-lg-12">
-              <input type="submit" class="btn-info" value="salle de cours">
+              <input type="bouton" class="btn-info" value="salle de cours">
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-lg-4">
             <div class="col-lg-12">
-              <input type="submit" class="btn-info" value="amphitheatres">
+              <input type="bouton" class="btn-info" value="amphitheatres">
             </div>
           </div>
         </div>
@@ -152,4 +177,5 @@
 @endsection
 @section('js')
   <!-- liens js -->
+  <script src="js/salles.js"></script>
 @endsection
