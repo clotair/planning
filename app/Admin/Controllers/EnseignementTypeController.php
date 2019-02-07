@@ -23,8 +23,8 @@ class EnseignementTypeController extends Controller
     public function index(Content $content)
     {
         return $content
-            ->header('Index')
-            ->description('description')
+            ->header('TYPES ENSEIGNEMENTS')
+            ->description("liste des differents type d'enseigment")
             ->body($this->grid());
     }
 

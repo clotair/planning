@@ -71,6 +71,10 @@
       $('div.alert').not('.alert-important').delay(30000).fadeOut(350);
       $('#flash-overlay-modal').modal();
     </script>
+        <script src="js/sweetalert.min.js"></script>
+
+<!-- Include this after the sweet alert js file -->
+    @include('sweet::alert')
     @yield('js')
 </html>
 

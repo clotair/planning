@@ -25,8 +25,8 @@ class ClasseController extends Controller
     public function index(Content $content)
     {
         return $content
-            ->header('Index')
-            ->description('description')
+            ->header('CLASSES')
+            ->description('Liste des classes')
             ->body($this->grid());
     }
 
@@ -40,8 +40,8 @@ class ClasseController extends Controller
     public function show($id, Content $content)
     {
         return $content
-            ->header('Detail')
-            ->description('description')
+            ->header('DETAILS')
+            ->description('Details sur une classe')
             ->body($this->detail($id));
     }
 
@@ -55,8 +55,8 @@ class ClasseController extends Controller
     public function edit($id, Content $content)
     {
         return $content
-            ->header('Edit')
-            ->description('description')
+            ->header('EDITION')
+            ->description("Modification des informations d'une classe")
             ->body($this->form()->edit($id));
     }
 
@@ -69,8 +69,8 @@ class ClasseController extends Controller
     public function create(Content $content)
     {
         return $content
-            ->header('Create')
-            ->description('description')
+            ->header('CREATION')
+            ->description("Ajout d'une nouvelle classe")
             ->body($this->form());
     }
 

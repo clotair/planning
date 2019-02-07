@@ -30,8 +30,8 @@ class CourPlanningController extends Controller
     public function index(Content $content)
     {
         return $content
-            ->header('Index')
-            ->description('description')
+            ->header('COURS')
+            ->description('Liste des cours du programme')
             ->body($this->grid());
     }
 
@@ -45,8 +45,8 @@ class CourPlanningController extends Controller
     public function show($id, Content $content)
     {
         return $content
-            ->header('Detail')
-            ->description('description')
+            ->header('DETAILS')
+            ->description('Details sur un cour')
             ->body($this->detail($id));
     }
 
@@ -60,8 +60,8 @@ class CourPlanningController extends Controller
     public function edit($id, Content $content)
     {
         return $content
-            ->header('Edit')
-            ->description('description')
+            ->header('EDITION')
+            ->description('Modifier un cour')
             ->body($this->form()->edit($id));
     }
 
@@ -74,8 +74,8 @@ class CourPlanningController extends Controller
     public function create(Content $content)
     {
         return $content
-            ->header('Create')
-            ->description('description')
+            ->header('CREATION')
+            ->description("Creation d'un cour")
             ->body($this->form());
     }
 

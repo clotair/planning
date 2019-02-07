@@ -24,8 +24,8 @@ class EvenementController extends Controller
     public function index(Content $content)
     {
         return $content
-            ->header('Index')
-            ->description('description')
+            ->header('EVENEMENTS')
+            ->description('Liste des evenements ')
             ->body($this->grid());
     }
 

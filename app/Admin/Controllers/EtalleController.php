@@ -19,6 +19,7 @@ use Validator;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
+use Alert;
 
 class EtalleController extends Controller
 {
@@ -146,9 +147,9 @@ class EtalleController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
         if(!array_key_exists('frequence',  $body)){
-            var_dump('les frequences doivent etre definies');
-            $validator->errors()->add('info', 'les frequences doivent etre definies');
-            return redirect()->back()->withErrors('dsdss')->withInput();
+            
+            Alert::error('les frequences doivent etre definies')->persistent("Close");
+            return redirect('/admin/planning/cour/create')->withInput();
         }
  
         if($request->date_debut>$request->date_fin){
@@ -207,8 +208,7 @@ class EtalleController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
         if(!array_key_exists('frequence',  $body)){
-            var_dump('les frequences doivent etre definies');
-            $validator->errors()->add('info', 'les frequences doivent etre definies');
+            Alert::error('les frequences doivent etre definies')->persistent("Close");
             return redirect()->back()->withErrors('dsdss')->withInput();
         }
  
