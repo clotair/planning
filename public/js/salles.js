@@ -13,14 +13,17 @@ function planning_salle(e){
         let tab = [];
         tab.push($('<tr/>').append(
             $('<td/>').css({
-            height:'100px'
-        })
+                
+                height:'100px',
+                
+            })
         ))
         for(let i = 1;i<=14;i++){
             
             tab.push($('<tr/>').append(
                 $('<td/>').css({
-                height:'100px'
+                                height:'100px',
+                
             }).html((i+5)+'h')
             ))
 
@@ -38,6 +41,7 @@ function planning_salle(e){
                         if(y['type']=='cour'){
                             $(tab[j]).append(
                                 $('<td/>').css({
+                                    
                                     height:'100px',
                                     width:'300px',
                                     'background-color':'orange',
@@ -45,22 +49,29 @@ function planning_salle(e){
                                 }).attr('title',y['heure_debut']+'/'+y['heure_fin']).html(
                                    'Matiere:<br/> <b>'+ y['description']['matiere'][0]['code']+'</b>'+'<br/>'
                                    + 'Enseignant: ' + y['description']['enseignant'][0]['grade'] +'<br/>'+ '<b>'+y['description']['enseignant'][0]['prof']+'</b>'
-                                   +'<br/>'+'Classe: <br/>'+'<b>' +y['description']['classe'][0]['code']+'</b>'
+                                   +'<br/>'+'Classe: <br/>'+'<b>' +y['description']['classe'][0]['code']+'</b>'+
+                                   '<br/>'+'Cour de'+ '<b>'+y['description']['type'][0]['nom']+'</b>'
                                 )
                             )
                         }else{
                             $(tab[j]).append(
                                 $('<td/>').css({
+                                    
                                     height:'100px',
-                                    width:'300px',
-                                }).html(y['heure_debut']+' '+y['heure_fin'])
+                                    
+                                    'background-color':'#00ff11',
+                                    'opacity':'0.8'
+                                }).attr('title',y['heure_debut']+'/'+y['heure_fin']).html('<b>'+y['description']['evenement'][0]['type']+'</b>'+
+                                '<br/>'+y['description']['evenement'][0]['description']
+                                )
                             )    
                         }
                            
                     }else{
                         $(tab[j]).append($('<td/>').css({
+                            
                             height:'100px',
-                            width:'300px',
+                            
                         }));
                     }
                  
