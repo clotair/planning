@@ -236,7 +236,7 @@ Route::get('enseignant/planning/{id}',function(Request $request){
                                             'matiere'=>DB::table('ues')->join('matieres','ues.matiere','=','matieres.id')->select('ues.id','ues.code','ues.intituler','matieres.nom as matiere')->where('ues.id','=',$cour->matiere)->get(),
                                             'classe'=>DB::table('classes')->join('filieres','classes.filiere','=', 'filieres.id')->join('niveaux','classes.niveau','=', 'niveaux.id')->select('classes.id','classes.code','classes.nom','niveaux.nom as niveau','filieres.nom as filiere')->where('classes.id','=',$cour->classe)->get(),
                                             'salle'=>DB::table('salles')->join('types_emplacements','salles.type','=','types_emplacements.id')->select('salles.id','salles.code','salles.nom','types_emplacements.nom as type')->where('salles.id','=',$cour->salle)->get(),
-                                            'type'=>DB::table('types_enseignements')->select('types_enseignements.nom ')->where('types_enseignements.id','=',$cour->type_cour)->get()
+                                            'type'=>DB::table('types_enseignements')->where('id','=',$cour->type_cour)->get()
                                             ]
                                     ]
                             );

@@ -1,7 +1,7 @@
 
 @extends('layouts.app')
 
-@section('title', 'Enseignants')
+@section('title', 'Classe')
 @section('css')
   <!-- liens css -->
 @endsection
@@ -24,8 +24,35 @@
   @endsection
 @section('content')
 
-<p> body </p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+    <div class="list-group">
+          <button type="button" class="list-group-item list-group-item-action active salle" onClick="search_classe({{$classes}})">
+            Rechercher
+          </button>
+      
+
+
+         @foreach($classes as $classe)
+ 
+            <button type="button"  id="{{'c'.$classe->id}}" class="list-group-item list-group-item-action salle" onClick="planning_classe({{$classe->id}})" data-toggle="popover"  data-content="{{$classe->filiere}}" title="{{$classe->nom}}"> 
+              {{$classe->code}}
+            </button>
+        @endforeach
+      </div>
+    </div>
+    <div class="col-md-9">
+    <div class="table-responsive">
+      <table class="table" id="listePE">
+    
+      </table>
+    </div>
+    </div>
+    </div>
+</div>
 @endsection
 @section('js')
   <!-- liens js -->
+  <script src="js/classe.js"></script>
 @endsection
