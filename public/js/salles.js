@@ -26,7 +26,7 @@ function planning_salle(e){
                         $(tab[j]).append(
                             $('<td/>').css({
                                 height:'100px'
-                            }).html(y['heure_debut'])
+                            }).html(y['heure_debut']+' '+y['heure_fin'])
                         )       
                     }else{
                         $(tab[j]).append($('<td/>').css({
