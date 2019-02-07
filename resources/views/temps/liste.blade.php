@@ -1,13 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Emploi de temps</title>
-    <link rel="stylesheet" href="boostrap/css/booctrap.css">
-</head>
-<body>
+
+@extends('layouts.app')
+
+@section('title', 'Enseignants')
+@section('css')
+  <!-- liens css -->
+@endsection
+@section('sidebar')
+    @parent
+
+    @section('menu')
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a class = "orientation" href="/"><span class="glyphicon glyphicon-home"></span>&nbsp;Home</a></li>
+            <li><a class = "orientation" href="/salle"><span class ="glyphicon glyphicon-inbox"></span> &nbsp;Nos Salles</a></li>
+            <li ><a class = "orientation" href="/materiel"><span class ="glyphicon glyphicon-scissors"></span> &nbsp;Materiels</a></li>
+            <li ><a class = "orientation" href="/enseignant"><span class ="glyphicon glyphicon-briefcase"></span> &nbsp;Enseignant</a></li>
+            <li><a class = "orientation" href="/classe"><span class ="glyphicon glyphicon-briefcase"></span> &nbsp;Classe</a></li>
+            <li class="active"><a class = "orientation" href="/temps"><span class ="glyphicon glyphicon-briefcase"></span> &nbsp;Emplois de temps</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+     
+    @endsection
+  @endsection
+@section('content')
     <div class="container-fluid">
         <table>
             <caption><h3 class="panel-title"> Emploi de temps</h3></caption>
@@ -44,5 +59,7 @@
             </tbody>
         </table>
     </div>
-</body>
-</html>
+    @endsection
+    @section('js')
+      <!-- liens js -->
+    @endsection
