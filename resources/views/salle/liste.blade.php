@@ -45,7 +45,7 @@
       <div class="row">
           <div class="col-lg-4">
             <div class="col-lg-12">
-              <input type="submit" class="btn-info" value="salle de travaux pratiques">
+              <input type="bouton" class="btn-info" value="salle de travaux pratiques">
             </div>
           </div>
           <div class="col-lg-8">bienvenue</div>
@@ -53,21 +53,21 @@
         <div class="row">
           <div class="col-lg-4">
             <div class="col-lg-12">
-              <input type="submit" class="btn-info" value="salle de travaux dirigés">
+              <input type="bouton" class="btn-info" value="salle de travaux dirigés">
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-lg-4">
             <div class="col-lg-12">
-              <input type="submit" class="btn-info" value="salle de cours">
+              <input type="bouton" class="btn-info" value="salle de cours">
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-lg-4">
             <div class="col-lg-12">
-              <input type="submit" class="btn-info" value="amphitheatres">
+              <input type="bouton" class="btn-info" value="amphitheatres">
             </div>
           </div>
         </div>
