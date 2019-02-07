@@ -20,8 +20,8 @@ Route::get('/accueil', function () {
 
 Route::prefix('salle')->group(function () {
     Route::get('', function () {
-       
-        return view('salle.liste')->with(['salles'=>DB::table('salles')->join('types_emplacements','salles.type','=','types_emplacements.id')->select('salles.id','salles.code','salles.nom','types_emplacements.nom as type')->get()]);
+
+        return view('salle.liste')->with(['salles'=> DB::table('salles')->join('types_emplacements','salles.type','=','types_emplacements.id')->select('salles.id','salles.code','salles.nom','types_emplacements.nom as type')->orderBy('salles.nom', 'asc')->get()]);
     });
 });
 Route::prefix('temps')->group(function () {
@@ -39,7 +39,7 @@ Route::prefix('materiel')->group(function () {
 Route::prefix('classe')->group(function () {
     Route::get('', function () {
         
-        return view('classe.liste')->with(['classes'=>DB::table('classes')->join('filieres','classes.filiere','=', 'filieres.id')->join('niveaux','classes.niveau','=', 'niveaux.id')->select('classes.id','classes.code','classes.nom','niveaux.nom as niveau','filieres.nom as filiere')->get()]);
+        return view('classe.liste')->with(['classes'=>DB::table('classes')->join('filieres','classes.filiere','=', 'filieres.id')->join('niveaux','classes.niveau','=', 'niveaux.id')->select('classes.id','classes.code','classes.nom','niveaux.nom as niveau','filieres.nom as filiere')->orderBy('filiere', 'asc')->get()]);
     });
 });
 Route::prefix('enseignant')->group(function () {

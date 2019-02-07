@@ -41,6 +41,29 @@
 
 @section('content')
 
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+        
+        <div class="list-group">
+        <button type="button" class="list-group-item list-group-item-action active" onClick="search_salle({{$salles}})">
+            Rechercher
+        </button>
+        @foreach($salles as $salle)
+ 
+          <button type="button" id="{{'s'.$salle->id}}" class="list-group-item list-group-item-action" onClick="planning_salle($salle->id)" data-toggle="popover"  data-content="{{$salle->nom}}" title="{{$salle->type}}"> 
+            {{$salle->code}}
+          </button>
+      @endforeach
+  </div>
+  
+    <div>
+    <div class="col-md-9">
+      <div class="">
+      </div>
+    <div>
+  </div>
+</div>
 <div class = "container-fluid">
       <div class="row">
           <div class="col-lg-4">
@@ -152,4 +175,5 @@
 @endsection
 @section('js')
   <!-- liens js -->
+  <script src="js/salles.js"></script>
 @endsection
