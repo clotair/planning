@@ -3,32 +3,27 @@
 @extends('layouts.app')
 
 @section('title', 'Accueil')
-
+@section('css')
+<link rel="stylesheet" href="../css/starter-template">
+@endsection
 @section('sidebar')
     @parent
 
-    <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">GooD PlanninG</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
+    @section('menu')
+    <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a class = "orientation" href="/"><span class="glyphicon glyphicon-home"></span>&nbsp;Home</a></li>
             <li><a class = "orientation" href="/salle"><span class ="glyphicon glyphicon-inbox"></span> &nbsp;Nos Salles</a></li>
             <li><a class = "orientation" href="/materiel"><span class ="glyphicon glyphicon-scissors"></span> &nbsp;Materiels</a></li>
             <li><a class = "orientation" href="/enseignant"><span class ="glyphicon glyphicon-briefcase"></span> &nbsp;Enseignant</a></li>
             <li><a class = "orientation" href="/classe"><span class ="glyphicon glyphicon-briefcase"></span> &nbsp;Classe</a></li>
+            <li><a class = "orientation" href="/temps"><span class ="glyphicon glyphicon-briefcase"></span> &nbsp;Emplois de temps</a></li>
           </ul>
         </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+     
+    @endsection
+
+ 
   @endsection
 
   @section('content')
@@ -87,11 +82,10 @@
           </div>
           <div class="col-lg-4">
             <div class="col-lg-12">
-              <h4>Nos matériels</h4>
-              <p>Consultez l'emploi de temps en fonction des matériels.</p>
+              <h4>Matériel</h4>
+              <p>Consultez l'emploi de temps en fonction du matériel.</p>
               <a class = "orientation" href="/materiel"><button class="btn btn-primary"><span class="glyphicon
                 glyphicon-ok-sign"></span> cliquer ici</button></a>
-              
             </div>
           </div> 
           <div class="col-lg-4">
@@ -105,13 +99,11 @@
        </div>
     </div>
     <br><br> <br><br> <br><br>
-  <div class="navbar navbar-inverse">
-      <div class="container">
-        <p class="navbar-text">&copy; Random</p>
-      </div>
-    </div>
-    <script src="bootstrap/js/jquery.min.js"></script>
-    <script src="bootstrap/js/bootstrap.js"></script>
+
+ 
 
 @endsection
 
+@section('js')
+  <!-- liens js -->
+@endsection

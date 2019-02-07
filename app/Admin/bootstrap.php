@@ -23,6 +23,8 @@ use Encore\Admin\Facades\Admin;
 
 
 Admin::js('vendor/chartjs/dist/Chart.min.js');
+Admin::headerJs('js/sweetalert.min.js');
+Admin::script(@include('sweet::alert'));
 Admin::navbar(function (\Encore\Admin\Widgets\Navbar $navbar) {
 
     $navbar->left(view('search-bar'));

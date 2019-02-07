@@ -165,10 +165,11 @@ return [
         /*
          * Package Service Providers...
          */
-
+        UxWeb\SweetAlert\SweetAlertServiceProvider::class,
         /*
          * Application Service Providers...
          */
+        
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
@@ -189,7 +190,7 @@ return [
     */
 
     'aliases' => [
-
+        'Alert' => UxWeb\SweetAlert\SweetAlert::class,
         'App' => Illuminate\Support\Facades\App::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
         'Auth' => Illuminate\Support\Facades\Auth::class,

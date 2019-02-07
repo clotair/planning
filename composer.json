@@ -13,13 +13,15 @@
         "fideloper/proxy": "^4.0",
         "jxlwqq/json-editor": "^1.0",
         "jxlwqq/material-ui": "^1.0",
+        "laracasts/flash": "^3.0",
         "laravel-admin-ext/api-tester": "^1.0",
         "laravel-admin-ext/css-editor": "^1.0",
         "laravel-admin-ext/helpers": "^1.1",
         "laravel-admin-ext/js-editor": "^1.0",
         "laravel-admin-ext/php-editor": "^1.0",
         "laravel/framework": "5.7.*",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "uxweb/sweet-alert": "^2.0"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

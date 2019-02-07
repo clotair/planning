@@ -17,23 +17,14 @@
     </style>
   </head>
 @section('title', 'Salles')
-
+@section('css')
+  <!-- liens css -->
+@endsection
 @section('sidebar')
     @parent
 
-   
-    <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">GooD PlanninG</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
+    @section('menu')
+    <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li><a class = "orientation" href="/"><span class="glyphicon glyphicon-home"></span>&nbsp;Home</a></li>
             <li class="active"><a class = "orientation" href="/salle"><span class ="glyphicon glyphicon-inbox"></span> &nbsp;Nos Salles</a></li>
@@ -41,17 +32,43 @@
             <li><a class = "orientation" href="/enseignant"><span class ="glyphicon glyphicon-briefcase"></span> &nbsp;Enseignant</a></li>
           </ul>
         </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+     
+    @endsection
+  
+
+ 
 @endsection
 
 @section('content')
 
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+        
+        <div class="list-group">
+        <button type="button" class="list-group-item list-group-item-action active" onClick="search_salle({{$salles}})">
+            Rechercher
+        </button>
+        @foreach($salles as $salle)
+ 
+          <button type="button" id="{{'s'.$salle->id}}" class="list-group-item list-group-item-action" onClick="planning_salle($salle->id)" data-toggle="popover"  data-content="{{$salle->nom}}" title="{{$salle->type}}"> 
+            {{$salle->code}}
+          </button>
+      @endforeach
+  </div>
+  
+    <div>
+    <div class="col-md-9">
+      <div class="">
+      </div>
+    <div>
+  </div>
+</div>
 <div class = "container-fluid">
       <div class="row">
           <div class="col-lg-4">
             <div class="col-lg-12">
-              <input type="submit" class="btn-info" value="salle de travaux pratiques">
+              <input type="bouton" class="btn-info" value="salle de travaux pratiques">
             </div>
           </div>
           <div class="col-lg-8">bienvenue</div>
@@ -59,21 +76,21 @@
         <div class="row">
           <div class="col-lg-4">
             <div class="col-lg-12">
-              <input type="submit" class="btn-info" value="salle de travaux dirigés">
+              <input type="bouton" class="btn-info" value="salle de travaux dirigés">
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-lg-4">
             <div class="col-lg-12">
-              <input type="submit" class="btn-info" value="salle de cours">
+              <input type="bouton" class="btn-info" value="salle de cours">
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-lg-4">
             <div class="col-lg-12">
-              <input type="submit" class="btn-info" value="amphitheatres">
+              <input type="bouton" class="btn-info" value="amphitheatres">
             </div>
           </div>
         </div>
@@ -155,4 +172,8 @@
        </div>
            <br><br><br>
      
+@endsection
+@section('js')
+  <!-- liens js -->
+  <script src="js/salles.js"></script>
 @endsection
