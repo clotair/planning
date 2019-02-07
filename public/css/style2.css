@@ -23,3 +23,95 @@ tr > td{
 .hour{
     width: 20%;
 }
+.row{
+    padding:5% 3% 5% 3%;
+}
+.col-lg-2{
+    border: 1px solid rgb(12, 12, 12);
+    box-shadow: 2px 2px 2px rgb(72, 221, 97);
+    font-size: 20px;
+    height:auto;
+    text-align: center;
+    padding:1% 0% 3% 0%;
+    margin-top:10%;
+}
+.col-lg-10{
+    padding-left:2%;
+}
+.col-lg-2 h3{
+    padding-bottom: 3%;
+    color: rgb(52, 49, 245);
+}
+
+ ul{
+    margin: 0%;
+    padding: 0%;
+}
+
+.col-lg-2 ul > li{
+    position: relative;
+    /*width:130px;*/
+    text-align: center;
+    margin-bottom: 3%;
+    border-bottom: 1.5px solid rgb(10, 10, 10);
+    color:black;
+}
+ul li li {
+    border-bottom: 1.5px solid rgb(179, 175, 175);
+}
+ ul > li:hover{
+    background-color: rgba(52, 53, 52, 0.15);
+    border: none;
+}
+
+
+/*On enleve les puces sur les li*/
+li{
+    list-style-type: none;
+}
+
+ ul::after{
+    content: "";
+    display: block;
+    clear:both;
+}
+
+.sous_lien{
+    display:none;
+    background-color: #aeaeb1e5;
+    width:180px;
+}
+
+.sous_lien li:hover {
+    background-color: rgb(122, 121, 121);
+    box-shadow: 2px 2px rgb(248, 240, 240);
+    border: none;
+}
+
+
+.sous_lien li a{
+    /*padding: 10px 10px;*/
+    font-size: 15px;
+    color:black;
+    width:150%;
+    text-align: start;
+    text-decoration:none;
+}
+
+li:hover a{
+    text-decoration:none;
+    
+}
+
+a{
+    color:black;
+}
+
+li:hover .sous_lien{
+    display: inline-block;
+    position: absolute;
+    top:100%;
+    left:0%;
+    padding:0%;
+    z-index:100000;
+}
