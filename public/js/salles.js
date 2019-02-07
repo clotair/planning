@@ -32,16 +32,35 @@ function planning_salle(e){
             $(tab[0]).append($('<td/>').append(i['date']))
             for(let j=1;j<=14;j++){
                 for(let y of i['heures']){
-                    console.log(y['heure_debut'][0]+y['heure_debut'][1],j)
+                    
                     if(y['heure_debut'][0]+y['heure_debut'][1]<=j+5&&y['heure_fin'][0]+y['heure_fin'][1]>=j+5){
-                        $(tab[j]).append(
-                            $('<td/>').css({
-                                height:'100px'
-                            }).html(y['heure_debut']+' '+y['heure_fin'])
-                        )       
+                        console.log()
+                        if(y['type']=='cour'){
+                            $(tab[j]).append(
+                                $('<td/>').css({
+                                    height:'100px',
+                                    width:'300px',
+                                    'background-color':'orange',
+                                    'opacity':'0.8'
+                                }).attr('title',y['heure_debut']+'/'+y['heure_fin']).html(
+                                   'Matiere:<br/> <b>'+ y['description']['matiere'][0]['code']+'</b>'+'<br/>'
+                                   + 'Enseignant: ' + y['description']['enseignant'][0]['grade'] +'<br/>'+ '<b>'+y['description']['enseignant'][0]['prof']+'</b>'
+                                   +'<br/>'+'Classe: <br/>'+'<b>' +y['description']['classe'][0]['code']+'</b>'
+                                )
+                            )
+                        }else{
+                            $(tab[j]).append(
+                                $('<td/>').css({
+                                    height:'100px',
+                                    width:'300px',
+                                }).html(y['heure_debut']+' '+y['heure_fin'])
+                            )    
+                        }
+                           
                     }else{
                         $(tab[j]).append($('<td/>').css({
-                            height:'100px'
+                            height:'100px',
+                            width:'300px',
                         }));
                     }
                  
