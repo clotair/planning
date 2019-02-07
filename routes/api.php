@@ -101,9 +101,39 @@ Route::get('salle/planning/{id}',function(Request $request){
                             );
             }
         }
+
     }
-    return $pro;
+    $r = [];
+    foreach($pro as $key => $value){
+        $heure = -1;
+        $v = [];
+        $i = 0;
+        foreach($value as $val){
+            if(!$v ){
+                $v[$i]=$val;
+
+            }else{
+                $d = 0;
+                $v[$i] = $val;
+                while($d<count($v)){
+                    if($v[$d]>=$val){
+                        $v[$i] = $v[$d];
+                        $v[$d] = $val;
+                        $val = $v[$i];
+                    }
+                    $d = $d + 1;
+                }
+            }
+            $i = $i + 1;
+        }
+        array_push($r,[
+            'heures'=>$v,
+            'date'=>$key
+        ]);
+    }
+    return $r;
 });
+ 
 Route::get('classe/planning/{id}',function(Request $request){
     $cours = DB::table('planning_cours')->where('classe','=',$request->id)->get();
     $min_date = date('Y-m-d');
@@ -142,7 +172,35 @@ Route::get('classe/planning/{id}',function(Request $request){
             }
         }
     }
-    return $pro;
+    $r = [];
+    foreach($pro as $key => $value){
+        $heure = -1;
+        $v = [];
+        $i = 0;
+        foreach($value as $val){
+            if(!$v ){
+                $v[$i]=$val;
+
+            }else{
+                $d = 0;
+                $v[$i] = $val;
+                while($d<count($v)){
+                    if($v[$d]>=$val){
+                        $v[$i] = $v[$d];
+                        $v[$d] = $val;
+                        $val = $v[$i];
+                    }
+                    $d = $d + 1;
+                }
+            }
+            $i = $i + 1;
+        }
+        array_push($r,[
+            'heures'=>$v,
+            'date'=>$key
+        ]);
+    }
+    return $r;
 });
 Route::get('enseignant/planning/{id}',function(Request $request){
     $cours = DB::table('planning_cours')->where('enseignant','=',$request->id)->get();
@@ -182,7 +240,35 @@ Route::get('enseignant/planning/{id}',function(Request $request){
             }
         }
     }
-    return $pro;
+    $r = [];
+    foreach($pro as $key => $value){
+        $heure = -1;
+        $v = [];
+        $i = 0;
+        foreach($value as $val){
+            if(!$v ){
+                $v[$i]=$val;
+
+            }else{
+                $d = 0;
+                $v[$i] = $val;
+                while($d<count($v)){
+                    if($v[$d]>=$val){
+                        $v[$i] = $v[$d];
+                        $v[$d] = $val;
+                        $val = $v[$i];
+                    }
+                    $d = $d + 1;
+                }
+            }
+            $i = $i + 1;
+        }
+        array_push($r,[
+            'heures'=>$v,
+            'date'=>$key
+        ]);
+    }
+    return $r;
 });
 Route::get('evenement/planning/{id}',function(Request $request){
 
@@ -221,7 +307,35 @@ Route::get('evenement/planning/{id}',function(Request $request){
             }
         }
     }
-    return $pro;
+    $r = [];
+    foreach($pro as $key => $value){
+        $heure = -1;
+        $v = [];
+        $i = 0;
+        foreach($value as $val){
+            if(!$v ){
+                $v[$i]=$val;
+
+            }else{
+                $d = 0;
+                $v[$i] = $val;
+                while($d<count($v)){
+                    if($v[$d]>=$val){
+                        $v[$i] = $v[$d];
+                        $v[$d] = $val;
+                        $val = $v[$i];
+                    }
+                    $d = $d + 1;
+                }
+            }
+            $i = $i + 1;
+        }
+        array_push($r,[
+            'heures'=>$v,
+            'date'=>$key
+        ]);
+    }
+    return $r;
 });
 Route::get('materiel/planning/{id}',function(Request $request){
     $salle = DB::table('planning_materiels')->where('materiel','=',$request->id)->get();

@@ -46,12 +46,12 @@
     <div class="col-md-3">
         
         <div class="list-group">
-        <button type="button" class="list-group-item list-group-item-action active" onClick="search_salle({{$salles}})">
+        <button type="button" class="list-group-item list-group-item-action active salle" onClick="search_salle({{$salles}})">
             Rechercher
         </button>
         @foreach($salles as $salle)
  
-          <button type="button" id="{{'s'.$salle->id}}" class="list-group-item list-group-item-action" onClick="planning_salle($salle->id)" data-toggle="popover"  data-content="{{$salle->nom}}" title="{{$salle->type}}"> 
+          <button type="button"  id="{{'s'.$salle->id}}" class="list-group-item list-group-item-action salle" onClick="planning_salle({{$salle->id}})" data-toggle="popover"  data-content="{{$salle->nom}}" title="{{$salle->type}}"> 
             {{$salle->code}}
           </button>
       @endforeach
@@ -59,8 +59,11 @@
   
     <div>
     <div class="col-md-9">
-      <div class="">
-      </div>
+    <div class="table-responsive">
+  <table class="table" id="listePS">
+    
+  </table>
+</div>
     <div>
   </div>
 </div>
