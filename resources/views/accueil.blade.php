@@ -4,7 +4,8 @@
 
 @section('title', 'Accueil')
 @section('css')
-<link rel="stylesheet" href="../css/starter-template">
+<link rel="stylesheet" href="../css/starter-template.css">
+<link rel="stylesheet" href="../css/style1.css">
 @endsection
 @section('sidebar')
     @parent
