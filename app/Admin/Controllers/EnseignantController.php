@@ -25,8 +25,8 @@ class EnseignantController extends Controller
     public function index(Content $content)
     {
         return $content
-            ->header('Index')
-            ->description('description')
+            ->header('ENSEIGNANTS')
+            ->description('Liste des enseignants')
             ->body($this->grid());
     }
 
@@ -40,8 +40,8 @@ class EnseignantController extends Controller
     public function show($id, Content $content)
     {
         return $content
-            ->header('Detail')
-            ->description('description')
+            ->header('DETAILS')
+            ->description('Details sur un enseignant')
             ->body($this->detail($id));
     }
 
@@ -55,8 +55,8 @@ class EnseignantController extends Controller
     public function edit($id, Content $content)
     {
         return $content
-            ->header('Edit')
-            ->description('description')
+            ->header('EDITION')
+            ->description("Edition d'un enseignant")
             ->body($this->form()->edit($id));
     }
 
@@ -69,8 +69,8 @@ class EnseignantController extends Controller
     public function create(Content $content)
     {
         return $content
-            ->header('Create')
-            ->description('description')
+            ->header('CREATION')
+            ->description("Ajout d'un nouvel enseignant")
             ->body($this->form());
     }
 

@@ -26,3 +26,5 @@
           </span>
     </div>
 </form>
+<script src="http://localhost/js/sweetalert.min.js" ></script>
+@include('sweet::alert')

@@ -21,7 +21,7 @@ Route::get('/accueil', function () {
 Route::prefix('salle')->group(function () {
     Route::get('', function () {
        
-        return view('salle.liste')->with(['salles'=>DB::table('salles')->get()]);
+        return view('salle.liste')->with(['salles'=>DB::table('salles')->join('types_emplacements','salles.type','=','types_emplacements.id')->select('salles.id','salles.code','salles.nom','types_emplacements.nom as type')->get()]);
     });
 });
 Route::prefix('temps')->group(function () {
@@ -39,16 +39,12 @@ Route::prefix('materiel')->group(function () {
 Route::prefix('classe')->group(function () {
     Route::get('', function () {
         
-        return view('classe.liste')->with(['classes'=>DB::table('classes')->get()]);
+        return view('classe.liste')->with(['classes'=>DB::table('classes')->join('filieres','classes.filiere','=', 'filieres.id')->join('niveaux','classes.niveau','=', 'niveaux.id')->select('classes.id','classes.code','classes.nom','niveaux.nom as niveau','filieres.nom as filiere')->get()]);
     });
 });
 Route::prefix('enseignant')->group(function () {
     Route::get('', function () {
         
-        return view('enseignant.liste')->with(['enseignants'=>$enseignant = DB::table('enseignants')
-      
-        ->select('enseignants.nom', 'enseignants.id', 'grades.nom')
-        ->join('grades', 'grades.id', '=', 'enseignants.grade')
-        ->get()]);;
+        return view('enseignant.liste')->with(['enseignants'=>DB::table('enseignants')->join('grades','enseignants.grade','=','grades.id')->select('enseignants.id','enseignants.nom as prof','grades.nom as grade')->get()]);;
     });
 });

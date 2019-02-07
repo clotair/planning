@@ -27,7 +27,7 @@ class EvenementPlanningController extends Controller
     public function index(Content $content)
     {
         return $content
-            ->header('Evenement')
+            ->header('PLANNING Evenement')
             ->description('Liste des evenements')
             ->body($this->grid());
     }
@@ -71,8 +71,8 @@ class EvenementPlanningController extends Controller
     public function create(Content $content)
     {
         return $content
-            ->header('Create')
-            ->description('un evenement')
+            ->header('CREATION')
+            ->description("Ajout d'un evenement au planning")
             ->body($this->form());
     }
 

@@ -7,15 +7,19 @@ use Encore\Admin\Controllers\Dashboard;
 use Encore\Admin\Layout\Column;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Layout\Row;
+use Encore\Admin\Layout\Grid;
+use Auth;
 
 class HomeController extends Controller
 {
     public function index(Content $content)
     {
+       
         return $content
             ->header('Planning')
-            ->description('Une Gestion efficace pour une grande rentabilite');
+            ->description('Une Gestion efficace pour une grande rentabilite')
             
+            ->body(view('admin.index'));
             
     }
     public function reunion(Content $content)
