@@ -44,29 +44,28 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-        
-        <div class="list-group">
-        <button type="button" class="list-group-item list-group-item-action active salle" onClick="search_salle({{$salles}})">
+    <div class="list-group">
+          <button type="button" class="list-group-item list-group-item-action active salle" onClick="search_salle({{$salles}})">
             Rechercher
-        </button>
-        @foreach($salles as $salle)
- 
-          <button type="button"  id="{{'s'.$salle->id}}" class="list-group-item list-group-item-action salle" onClick="planning_salle({{$salle->id}})" data-toggle="popover"  data-content="{{$salle->nom}}" title="{{$salle->type}}"> 
-            {{$salle->code}}
           </button>
-      @endforeach
-  </div>
-  
-    <div>
+         @foreach($salles as $salle)
+ 
+            <button type="button"  id="{{'s'.$salle->id}}" class="list-group-item list-group-item-action salle" onClick="planning_salle({{$salle->id}})" data-toggle="popover"  data-content="{{$salle->nom}}" title="{{$salle->type}}"> 
+              {{$salle->code}}
+            </button>
+        @endforeach
+      </div>
+    </div>
     <div class="col-md-9">
     <div class="table-responsive">
-  <table class="table" id="listePS">
+      <table class="table" id="listePS">
     
-  </table>
+      </table>
+    </div>
+    </div>
+    </div>
 </div>
-    <div>
-  </div>
-</div>
+
 <div class = "container-fluid">
       <div class="row">
           <div class="col-lg-4">
