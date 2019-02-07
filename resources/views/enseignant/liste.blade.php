@@ -34,7 +34,7 @@
     <ul>
       @foreach($enseignants as $enseignant )
         <li onClick="enseignant({{$enseignant->id}})">
-          {{$enseignant->nom}}
+          {{$enseignant->prof}}
         </li>
       @endforeach
     </ul>
