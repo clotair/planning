@@ -36,13 +36,14 @@
 
          @foreach($classes as $classe)
  
-            <button type="button"  id="{{'c'.$classe->id}}" class="list-group-item list-group-item-action salle" onClick="planning_classe({{$classe->id}})"    title="{{$classe->nom}}"> 
+            <button type="button"  id="{{'c'.$classe->id}}" class="list-group-item list-group-item-action salle" onClick="planning_classe({{$classe->id}},'{{$classe->nom}}')"    title="{{$classe->nom}}"> 
               {{$classe->code}}
             </button>
         @endforeach
       </div>
     </div>
-    <div class="col-md-9">
+    <div class="col-md-9 calendrier">
+      <center><h1 id="titreC"></h1></center>
     <div class="table-responsive">
       <table class="table table-bordered" id="listePC">
     
