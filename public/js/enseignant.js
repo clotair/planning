@@ -51,15 +51,17 @@ function planning_enseignant(e){
                             )
 
                            
-                    }else{
-                        $(tab[j]).append($('<td/>').css({
-                            
-                            height:'100px',
-                            
-                        }));
                     }
                  
                 }    
+                if(i['heures'].length==0){
+                    $(tab[j]).append($('<td/>').css({
+                            
+                        height:'100px',
+                        
+                    }).html('')
+                    );
+                } 
             }
             
            

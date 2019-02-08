@@ -66,11 +66,17 @@ function planning_salle(e){
                             )    
                         }
                            
-                    }else{
-                        $(tab[j]).append($('<td/>'));
                     }
                  
-                }    
+                }  
+                if(i['heures'].length==0){
+                    $(tab[j]).append($('<td/>').css({
+                            
+                        height:'100px',
+                        
+                    }).html('')
+                    );
+                }   
             }
             
            

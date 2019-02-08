@@ -45,7 +45,7 @@ function planning_classe(e){
                                     'opacity':'0.8'
                                 }).attr('title',y['heure_debut']+'/'+y['heure_fin']).html(
                                     '<b>'+y['description']['type'][0]['nom']+'</b>'+'<br/> <b>'+ y['description']['matiere'][0]['code']+'</b>'+'<br/>'
-                                   + y['description']['enseignant'][0]['grade'] +'<br/>'+ '<b>'+y['description']['enseignant'][0]['prof']+'</b>'
+                                   + 'Mr. <b>'+y['description']['enseignant'][0]['prof']+'</b>'
                                    +'</b>'
                                 )
                             )
@@ -60,6 +60,15 @@ function planning_classe(e){
                         );
                     }
                  
+                }
+         
+                if(i['heures'].length==0){
+                    $(tab[j]).append($('<td/>').css({
+                            
+                        height:'100px',
+                        
+                    }).html('')
+                    );
                 }    
             }
             
