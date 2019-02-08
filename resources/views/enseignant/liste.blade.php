@@ -24,35 +24,37 @@
   @endsection
 @section('content')
 <div class="container">
+  <div class="row">
+    <div class="col-md-3">
+    <div class="list-group">
+          <button type="button" class="list-group-item list-group-item-action active salle" onClick="search_enseignant({{$enseignants}})">
+            Rechercher
+          </button>
+      
 
-<div class="starter-template">
-  <h1>Bienvennue dans GooD PlanninG</h1>
-  <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-</div>
 
-<div class="row">
-  <div class="col-md-3">
-  {{ $enseignants }}
-    <ul>
-      @foreach($enseignants as $enseignant )
-        <li onClick="enseignant({{$enseignant->id}})">
-          {{$enseignant->prof}}
-        </li>
-      @endforeach
-    </ul>
-  </div>
-  <div class="col-md-9">
-    <div>
-
+         @foreach($enseignants as $enseignant)
+ 
+            <button type="button"  id="{{'e'.$enseignant->id}}" class="list-group-item list-group-item-action salle" onClick="planning_enseignant({{$enseignant->id}})" data-toggle="popover"  data-content="{{$enseignant->prof}}" title="{{$enseignant->grade}}"> 
+              {{$enseignant->prof}}
+            </button>
+        @endforeach
+      </div>
     </div>
-  </div>
+    <div class="col-md-9">
+    <div class="table-responsive">
+      <table class="table" id="listePE">
+    
+      </table>
+    </div>
+    </div>
+    </div>
 </div>
-</div><!-- /.container -->
-
 
 @endsection
 @section('js')
   <!-- liens js -->
+  <script src="js/enseignant.js"></script>
 @endsection
 
 

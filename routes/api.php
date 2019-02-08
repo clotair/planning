@@ -72,7 +72,8 @@ Route::get('salle/planning/{id}',function(Request $request){
     }
     foreach($pro as $key=>$val){
         foreach($cours as $cour){
-            if($cour->date_debut<=$key && $cour->date_fin>=$key){
+            $jr = DB::table('jours')->where('id','=',$cour->jour)->get();
+            if($cour->date_debut<=$key && $cour->date_fin>=$key && strftime("%w",strtotime($key ))==$jr[0]->valeur){
                 array_push($pro[$key],[
                                         'heure_debut'=>$cour->heure_debut,
                                         'heure_fin'=>$cour->heure_fin,
@@ -89,7 +90,8 @@ Route::get('salle/planning/{id}',function(Request $request){
             }
         }
         foreach($events as $event){
-            if($event->date_debut<=$key && $event->date_fin>=$key){
+            $jr = DB::table('jours')->select('valeur')->where('id','=',$event->jour)->get();
+            if($event->date_debut<=$key && $event->date_fin>=$key && strftime("%w",strtotime($key ))==$jr[0]->valeur){
                 array_push($pro[$key],[
                                         'heure_debut'=>$event->heure_debut,
                                         'heure_fin'=>$event->heure_fin,
@@ -157,7 +159,8 @@ Route::get('classe/planning/{id}',function(Request $request){
     }
     foreach($pro as $key=>$val){
         foreach($cours as $cour){
-            if($cour->date_debut<=$key && $cour->date_fin>=$key){
+            $jr = DB::table('jours')->select('valeur')->where('id','=',$cour->jour)->get();
+            if($cour->date_debut<=$key && $cour->date_fin>=$key && strftime("%w",strtotime($key ))==$jr[0]->valeur){
                 array_push($pro[$key],[
                                         'heure_debut'=>$cour->heure_debut,
                                         'heure_fin'=>$cour->heure_fin,
@@ -226,7 +229,8 @@ Route::get('enseignant/planning/{id}',function(Request $request){
     }
     foreach($pro as $key=>$val){
         foreach($cours as $cour){
-            if($cour->date_debut<=$key && $cour->date_fin>=$key){
+            $jr = DB::table('jours')->select('valeur')->where('id','=',$cour->jour)->get();
+            if($cour->date_debut<=$key && $cour->date_fin>=$key && strftime("%w",strtotime($key ))==$jr[0]->valeur){
                 array_push($pro[$key],[
                                         'heure_debut'=>$cour->heure_debut,
                                         'heure_fin'=>$cour->heure_fin,
@@ -236,7 +240,7 @@ Route::get('enseignant/planning/{id}',function(Request $request){
                                             'matiere'=>DB::table('ues')->join('matieres','ues.matiere','=','matieres.id')->select('ues.id','ues.code','ues.intituler','matieres.nom as matiere')->where('ues.id','=',$cour->matiere)->get(),
                                             'classe'=>DB::table('classes')->join('filieres','classes.filiere','=', 'filieres.id')->join('niveaux','classes.niveau','=', 'niveaux.id')->select('classes.id','classes.code','classes.nom','niveaux.nom as niveau','filieres.nom as filiere')->where('classes.id','=',$cour->classe)->get(),
                                             'salle'=>DB::table('salles')->join('types_emplacements','salles.type','=','types_emplacements.id')->select('salles.id','salles.code','salles.nom','types_emplacements.nom as type')->where('salles.id','=',$cour->salle)->get(),
-                                            'type'=>DB::table('types_enseignements')->select('types_enseignements.nom ')->where('types_enseignements.id','=',$cour->type_cour)->get()
+                                            'type'=>DB::table('types_enseignements')->where('id','=',$cour->type_cour)->get()
                                             ]
                                     ]
                             );
@@ -296,7 +300,8 @@ Route::get('evenement/planning/{id}',function(Request $request){
     }
     foreach($pro as $key=>$val){
         foreach($events as $event){
-            if($event->date_debut<=$key && $event->date_fin>=$key){
+            $jr = DB::table('jours')->select('valeur')->where('id','=',$event->jour)->get();
+            if($event->date_debut<=$key && $event->date_fin>=$key && strftime("%w",strtotime($key ))==$jr[0]->valeur){
                 array_push($pro[$key],[
                                         'heure_debut'=>$event->heure_debut,
                                         'heure_fin'=>$event->heure_fin,
@@ -343,4 +348,7 @@ Route::get('evenement/planning/{id}',function(Request $request){
 Route::get('materiel/planning/{id}',function(Request $request){
     $salle = DB::table('planning_materiels')->where('materiel','=',$request->id)->get();
     return DB::table('planning_materiels')->where('materiel','=',$request->id)->get();
+});
+Route::get('jour',function(){
+    return DB::table('jours')->get();
 });

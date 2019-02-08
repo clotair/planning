@@ -23,7 +23,7 @@ use Alert;
 
 class EtalleController extends Controller
 {
-    use HasResourceActions;
+   
 
     /**
      * Index interface.
@@ -134,6 +134,8 @@ class EtalleController extends Controller
     protected function add_cour (Request $request)
     {
         $body =  $request->all();
+        $request->session()->flash('fdfdfdf');
+        Alert::error('Something went wrong', 'Oops!');
         $validator = Validator::make($request->all(), [
             'salle' => 'required',
             'enseignant' => 'required',
