@@ -10,13 +10,16 @@ function jour(n){
     return jours[n]
 }
 function search_classe(data){
-    $('.calendrier').fadeOut(500);
+    
+}
+function search_classe_active(){
+    $('.calendrier').hide(400);
     $('.recherche').fadeIn(500); 
     $('.classe.active').removeClass('active');
     $('.br').addClass('active')
 }
 function planning_classe(e,titre){
- $('.recherche').fadeOut(500);
+ $('.recherche').hide(400);
  $('.calendrier').fadeIn(500);
  $('.classe.active').removeClass('active');
  $('#c'+e).addClass('active');

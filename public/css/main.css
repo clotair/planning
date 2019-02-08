@@ -1,0 +1,12 @@
+.jolieliste{
+    height: 400px;
+    margin-top:20%;
+    overflow: auto;
+}
+@media all and ( max-width:780px){
+    .jolieliste{
+        height: 228px;
+        margin-top: 0;
+        overflow: auto;
+    }
+}

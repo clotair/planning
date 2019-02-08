@@ -27,29 +27,34 @@
 <div class="container" style="margin-top:70px;">
   <div class="row">
     <div class="col-md-3">
-    <div class="list-group">
-          <button type="button" class="list-group-item list-group-item-action active classe br" onClick="search_classe({{$classes}})">
+      <div class="jolieliste">
+        <div class="list-group" style="text-align:center;">
+            <button type="button" class="list-group-item list-group-item-action active classe br" onClick="search_classe_active()">
             Rechercher
-          </button>
+            </button>
       
 
 
-         @foreach($classes as $classe)
+            @foreach($classes as $classe)
  
-            <button type="button"  id="{{'c'.$classe->id}}" class="list-group-item list-group-item-action classe" onClick="planning_classe({{$classe->id}},'{{$classe->nom}}')"    title="{{$classe->nom}}"> 
-              {{$classe->code}}
-            </button>
-        @endforeach
+              <button type="button"  id="{{'c'.$classe->id}}" class="list-group-item list-group-item-action classe" onClick="planning_classe({{$classe->id}},'{{$classe->nom}}')"    title="{{$classe->nom}}"> 
+                {{$classe->code}}
+              </button>
+            @endforeach
+        </div>
       </div>
     </div>
     <div class="col-md-9 recherche">
       <form>
-      <center><h1 id="titreC">RECHERCHE</h1></center><br/>
-        <input type="search" class="form-control col-md-12 col-xs-8" placeholder="entrez le nom ou le code d'une classe"/>
+        <center><h4 >RECHERCHE</h4></center><br/>
+        <div class="col-md-2"></div>
+        <div class="col-md-9 ">
+          <input type="search" class="form-control"  placeholder="Entrez le nom ou le code d'une classe" onInput="search_classe({{$classes}})"/>
+        </div>
       </form>
     </div>
     <div class="col-md-9 calendrier">
-      <center><h1 id="titreC"></h1></center><br/>
+      <center><h4 id="titreC"></h4></center><br/>
     <div class="table-responsive">
       <table class="table table-bordered" id="listePC">
     
