@@ -32,6 +32,7 @@ class CourPlanningController extends Controller
         return $content
             ->header('COURS')
             ->description('Liste des cours du programme')
+            ->row(view('error'))
             ->body($this->grid());
     }
 
@@ -76,6 +77,7 @@ class CourPlanningController extends Controller
         return $content
             ->header('CREATION')
             ->description("Creation d'un cour")
+            ->row(view('error'))
             ->body($this->form());
     }
 

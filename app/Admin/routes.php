@@ -41,7 +41,7 @@ Route::group([
     });
     Route::prefix('api')->group(function(){
         //Route::resource('/salle', 'SalleController');
-        Route::post('/cour/add','EtalleController@add_cour');
+        Route::post('/cour/add','HomeController@add_cour');
         Route::post('/evenement/add','EtalleController@add_event');
         Route::post('/materiel/add','EtalleController@add_materiel');
     });
