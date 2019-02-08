@@ -11,7 +11,7 @@ return [
     | login page.
     |
     */
-    'name' => 'Planning-admin',
+    'name' => 'GooD PlanninG',
 
     /*
     |--------------------------------------------------------------------------
@@ -22,7 +22,7 @@ return [
     | `img` tag, eg '<img src="http://logo-url" alt="Admin logo">'.
     |
     */
-    'logo' => '<b>Plannig</b> admin',
+    'logo' => '<b>GooD-PlanninG</b> Admin',
 
     /*
     |--------------------------------------------------------------------------
@@ -34,7 +34,7 @@ return [
     | '<img src="http://logo-url" alt="Admin logo">'.
     |
     */
-    'logo-mini' => '<b>Plannig</b>',
+    'logo-mini' => '<b>PlanninG</b>',
 
     /*
     |--------------------------------------------------------------------------
@@ -353,7 +353,7 @@ return [
         ],
         'material-ui' => [
             // If the value is set to false, this extension will be disabled
-            'enable' => false
+            'enable' => False
         ]
     ],
 ];

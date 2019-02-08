@@ -23,8 +23,8 @@ class JourController extends Controller
     public function index(Content $content)
     {
         return $content
-            ->header('Index')
-            ->description('description')
+            ->header('JOURS')
+            ->description('Jours de la semaine')
             ->body($this->grid());
     }
 
@@ -90,7 +90,7 @@ class JourController extends Controller
         });
         $grid->id('ID');
         $grid->nom('NOM');
-        $grid->jour('JOUR');
+        $grid->valeur('JOUR');
         return $grid;
     }
 
@@ -106,7 +106,7 @@ class JourController extends Controller
 
         $show->id('ID');
         $show->nom('NOM');
-        $show->jour('JOUR');
+        $show->valeur('JOUR');
         return $show;
     }
 
@@ -121,7 +121,7 @@ class JourController extends Controller
 
         $form->display('id','ID');
         $form->text('nom','NOM')->rules('required');
-        $form->number('jour','NOM')->rules('required');
+        $form->number('valeur','JOUR')->rules('required|unique:jours')->max(7)->min(1);
 
         return $form;
     }
