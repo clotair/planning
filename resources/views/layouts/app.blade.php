@@ -37,9 +37,9 @@
     @yield('css')
     <style>
         #footer{
-            background: #000;
+            background:#1283f5;
             padding: 0 0 30px 0;
-            color: #eee;
+            color: #ffffff;
             font-size: 14px;
         }
         #footer .footer-top{
@@ -71,7 +71,7 @@
         }
 
         #footer .footer-top .footer-newsletter input[type="submit"]{
-            background: #981295;
+            background: #1283f5;
             border: 0;
             padding: 6px 0;
             text-align: center;
@@ -93,7 +93,7 @@
         #footer .credits{
             text-align: center;
             font-size: 13px;
-            color: #ddd;
+            color: #ffffff;
         }
     </style>
   </head>

@@ -13,7 +13,7 @@ body {
 
   .navbar-default {
     /* Couleur de fond de la barre de navigation */
-    background-color: rgb(122, 7, 117);
+    background-color: #1283f5;
     border-color: rgb(247, 242, 242);
   }
    /* Couleur des titres affichés dans la barre */
@@ -44,7 +44,7 @@ body {
  }
  /*couler du texte de la page d'accueil*/
  .couleur{
-   color: rgb(122, 7, 117);; }
+   color: #1283f5; }
  /* Couleur utilisée pour un menu dépliant lorsqu'il est ouvert */
  .navbar-default .navbar-nav > .open > a, 
  .navbar-default .navbar-nav > .open > a:hover, 
