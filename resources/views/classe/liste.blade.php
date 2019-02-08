@@ -24,25 +24,37 @@
   @endsection
 @section('content')
 
-<div class="container">
+<div class="container" style="margin-top:70px;">
   <div class="row">
     <div class="col-md-3">
-    <div class="list-group">
-          <button type="button" class="list-group-item list-group-item-action active salle" onClick="search_classe({{$classes}})">
+      <div class="jolieliste">
+        <div class="list-group" style="text-align:center;">
+            <button type="button" class="list-group-item list-group-item-action active classe br" onClick="search_classe_active()">
             Rechercher
-          </button>
+            </button>
       
 
 
-         @foreach($classes as $classe)
+            @foreach($classes as $classe)
  
-            <button type="button"  id="{{'c'.$classe->id}}" class="list-group-item list-group-item-action salle" onClick="planning_classe({{$classe->id}})"    title="{{$classe->nom}}"> 
-              {{$classe->code}}
-            </button>
-        @endforeach
+              <button type="button"  id="{{'c'.$classe->id}}" class="list-group-item list-group-item-action classe" onClick="planning_classe({{$classe->id}},'{{$classe->nom}}')"    title="{{$classe->nom}}"> 
+                {{$classe->code}}
+              </button>
+            @endforeach
+        </div>
       </div>
     </div>
-    <div class="col-md-9">
+    <div class="col-md-9 recherche">
+      <form>
+        <center><h4 >RECHERCHE</h4></center><br/>
+        <div class="col-md-2"></div>
+        <div class="col-md-9 ">
+          <input type="search" class="form-control"  placeholder="Entrez le nom ou le code d'une classe" onInput="search_classe({{$classes}})"/>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-9 calendrier">
+      <center><h4 id="titreC"></h4></center><br/>
     <div class="table-responsive">
       <table class="table table-bordered" id="listePC">
     
