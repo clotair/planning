@@ -17,7 +17,7 @@ function planning_classe(e){
                 
             })
         ))
-        for(let i = 1;i<=14;i++){
+        for(let i = 1;i<=18;i++){
             
             tab.push($('<tr/>').append(
                 $('<td/>').css({
@@ -32,7 +32,7 @@ function planning_classe(e){
         for(let i of data){
             let date = new Date( i['date'] );
             $(tab[0]).append($('<td/>').append(i['date']))
-            for(let j=1;j<=14;j++){
+            for(let j=1;j<=18;j++){
                 for(let y of i['heures']){
                     
                     if(y['heure_debut'][0]+y['heure_debut'][1]<=j+5&&y['heure_fin'][0]+y['heure_fin'][1]>=j+5){
@@ -41,14 +41,13 @@ function planning_classe(e){
                                 $('<td/>').css({
                                     
                                     height:'100px',
-                                    width:'300px',
                                     'background-color':'orange',
                                     'opacity':'0.8'
                                 }).attr('title',y['heure_debut']+'/'+y['heure_fin']).html(
                                    ' <b>'+ y['description']['matiere'][0]['code']+'</b>'+'<br/>'
                                    + y['description']['enseignant'][0]['grade'] +'<br/>'+ '<b>'+y['description']['enseignant'][0]['prof']+'</b>'
-                                   +'<br/>'+'Classe: <br/>'+'<b>' +y['description']['classe'][0]['code']+'</b>'+
-                                   '<br/>'+'Cour de'+ '<b>'+y['description']['type'][0]['nom']+'</b>'
+                                   +'<br/>'+'</b>'+
+                                   '<br/>'+'<b>'+y['description']['type'][0]['nom']+'</b>'
                                 )
                             )
 
@@ -58,7 +57,8 @@ function planning_classe(e){
                             
                             height:'100px',
                             
-                        }));
+                        }).html('')
+                        );
                     }
                  
                 }    
@@ -66,7 +66,7 @@ function planning_classe(e){
             
            
         }
-        for(let i = 0;i<=14;i++){
+        for(let i = 0;i<=18;i++){
            
             $(t).append(tab[i])
         }

@@ -43,14 +43,13 @@ function planning_salle(e){
                                 $('<td/>').css({
                                     
                                     height:'100px',
-                                    width:'300px',
                                     'background-color':'orange',
                                     'opacity':'0.8'
                                 }).attr('title',y['heure_debut']+'/'+y['heure_fin']).html(
-                                   'Matiere:<br/> <b>'+ y['description']['matiere'][0]['code']+'</b>'+'<br/>'
-                                   + 'Enseignant: ' + y['description']['enseignant'][0]['grade'] +'<br/>'+ '<b>'+y['description']['enseignant'][0]['prof']+'</b>'
-                                   +'<br/>'+'Classe: <br/>'+'<b>' +y['description']['classe'][0]['code']+'</b>'+
-                                   '<br/>'+'Cour de'+ '<b>'+y['description']['type'][0]['nom']+'</b>'
+                                   ' <b>'+ y['description']['matiere'][0]['code']+'</b>'+'<br/>'
+                                    + 'Mr ' + '<b>'+y['description']['enseignant'][0]['prof']+'</b>'
+                                   +'<br/>'+'<b>' +y['description']['classe'][0]['code']+'</b>'+
+                                   '<br/>'+ '<b>'+y['description']['type'][0]['nom']+'</b>'
                                 )
                             )
                         }else{
@@ -68,11 +67,7 @@ function planning_salle(e){
                         }
                            
                     }else{
-                        $(tab[j]).append($('<td/>').css({
-                            
-                            height:'100px',
-                            
-                        }));
+                        $(tab[j]).append($('<td/>'));
                     }
                  
                 }    

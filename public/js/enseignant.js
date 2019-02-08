@@ -41,14 +41,11 @@ function planning_enseignant(e){
                                 $('<td/>').css({
                                     
                                     height:'100px',
-                                    width:'300px',
                                     'background-color':'orange',
                                     'opacity':'0.8'
                                 }).attr('title',y['heure_debut']+'/'+y['heure_fin']).html(
-                                   'Matiere:<br/> <b>'+ y['description']['matiere'][0]['code']+'</b>'+'<br/>'
-                                   + 'Salle: ' + y['description']['enseignant'][0]['grade'] +'<br/>'+ '<b>'+y['description']['enseignant'][0]['prof']+'</b>'
-                                   +'<br/>'+'Classe: <br/>'+'<b>' +y['description']['classe'][0]['code']+'</b>'+
-                                   '<br/>'+'Cour de'+ '<b>'+y['description']['type'][0]['nom']+'</b>'
+                                   '<br/> <b>'+ y['description']['matiere'][0]['code']+'</b>'+ +'<br/>'+ 'Mr <b>'+y['description']['enseignant'][0]['prof']+'</b>'
+                                   +'<br/>'+'<b>' +y['description']['classe'][0]['code']+'</b>'
                                 )
                             )
 
