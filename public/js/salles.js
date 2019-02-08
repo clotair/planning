@@ -36,7 +36,7 @@ function planning_salle(e){
                 for(let y of i['heures']){
                     
                     if(y['heure_debut'][0]+y['heure_debut'][1]<=j+5&&y['heure_fin'][0]+y['heure_fin'][1]>=j+5){
-                        console.log()
+                        
                         if(y['type']=='cour'){
                             $(tab[j]).append(
                                 $('<td/>').css({
@@ -47,7 +47,7 @@ function planning_salle(e){
                                 }).attr('title',y['heure_debut']+'/'+y['heure_fin']).html(
                                      '<b>'+y['description']['type'][0]['nom']+'</b>'+'<br/>'+' <b>'+ y['description']['matiere'][0]['code']+'</b>'
                                      +'<br/>'+'<b>' +y['description']['classe'][0]['code']+'</b>'
-                                    + 'Mr. ' + '<b>'+y['description']['enseignant'][0]['prof']+'</b>'
+                                    + '<br/>Mr. ' + '<b>'+y['description']['enseignant'][0]['prof']+'</b>'
                                    
                                    
                                 )

@@ -67,12 +67,7 @@ class HomeController extends Controller
         if($validator->fails()){
             return redirect()->back()->withErrors($validator)->withInput();
         }
-        if(!array_key_exists('frequence',  $body)){
-            
-            Alert::error('les frequences doivent etre definies')->persistent("Close");
-            $validator->errors()->add('info', 'Entrez les jours et heures');
-            return redirect('/admin/planning/cour/create')->withErrors($validator)->withInput();
-        }
+
  
         if($request->date_debut>$request->date_fin){
            
@@ -81,8 +76,12 @@ class HomeController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
            
         }
-        $validator->errors()->add('date_fin', 'la date de fin doit etre superieur a la date de debut!');
-        session()->flash('error', $validator);
+        if(!array_key_exists('frequence',  $body)){
+            
+            $validator->errors()->add('infos', 'Entrez les jours et heures');
+            return redirect('/admin/planning/cour/create')->withErrors($validator)->withInput();
+        }
+     
         foreach($body['frequence'] as $key=>$value){
             if($value['heure_debut']>$value['heure_fin']){
                  $validator->errors()->add('frequence.'.$key.'.heure_fin', "l'heure de fin doit etre superieur a la heure de but!");
@@ -94,22 +93,22 @@ class HomeController extends Controller
             $enseignantoccuper = DB::select('select * from planning_cours where enseignant=? AND(((date_debut <=? OR date_fin >=?) AND heure_debut =? AND heure_fin =? AND jour=?)OR((date_debut <=? OR date_fin >=?) AND (heure_debut >=? AND heure_fin<=?) AND (heure_fin <=? AND heure_fin >=?) AND jour=?))', [$request->enseignant,$request->date_debut,$request->date_debut,$value['heure_debut'],$value['heure_debut'],$value['heure_fin'],$value['heure_fin'],$value['jour'],$request->date_fin,$request->date_fin,$value['heure_debut'],$value['heure_fin'],$value['jour']]);
 
             if( $classeoccuper){
-                $validator->errors()->add('info', 'Classe occuper!');
+                $validator->errors()->add('infos', 'Classe occuper!');
                 return redirect('admin/planning/cour/create')
                         ->withErrors($validator)->withInput();
             }
             if($salleoccuper){
-                $validator->errors()->add('info', 'Salle occuper!');
+                $validator->errors()->add('infos', 'Salle occuper!');
                 return redirect('admin/planning/cour/create')
                 ->withErrors($validator)->withInput();
             }
             if($enseignantoccuper){
-                $validator->errors()->add('info', 'Enseignant occuper!');
+                $validator->errors()->add('infos', 'Enseignant occuper!');
                 return redirect('admin/planning/cour/create')
                 ->withErrors($validator)->withInput();
             }
             if($event){
-                $validator->errors()->add('info', 'Occuper par un evenement!');
+                $validator->errors()->add('infos', 'Occuper par un evenement!');
                 return redirect('admin/planning/cour/create')
                 ->withErrors($validator)->withInput();
             }
