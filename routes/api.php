@@ -19,6 +19,18 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('enseignant',function(Request $request){
     return DB::table('enseignants')->join('grades','enseignants.grade','=','grades.id')->select('enseignants.id','enseignants.nom as prof','grades.nom as grade')->get();
 });
+Route::get('evenement',function(Request $request){
+    return DB::table('evenements')->join('evenement_type','evenements.type','=','evenement_type.id')->select('evenements.id','evenements.description','evenement_type.nom as type')->get();
+});
+Route::get('evenement/{id}',function(Request $request){
+    return DB::table('evenements')->join('evenement_type','evenements.type','=','evenement_type.id')->select('evenements.id','evenements.description','evenement_type.nom as type')->where('evenements.id','=',$request->id)->get();
+});
+Route::get('typeevenement',function(Request $request){
+    return DB::table('evenement_type')->get();
+});
+Route::get('typeevenement/{id}',function(Request $request){
+    return DB::table('evenement_type')->where('id','=',$request->id)->get();
+});
 Route::get('matiere',function(Request $request){
     return DB::table('ues')->join('matieres','ues.matiere','=','matieres.id')->select('ues.id','ues.code','ues.intituler','matieres.nom as matiere')->get();
 });
@@ -40,6 +52,7 @@ Route::get('classe/{id}',function(Request $request){
 Route::get('salle/{id}',function(Request $request){
     return DB::table('salles')->join('types_emplacements','salles.type','=','types_emplacements.id')->select('salles.id','salles.code','salles.nom','types_emplacements.nom as type')->where('salles.id','=',$request->id)->get();
 });
+
 Route::get('salle/planning/{id}',function(Request $request){
     $cours = DB::table('planning_cours')->where('salle','=',$request->id)->get();
     $events = DB::table('planning_evenements')->where('evenement','=',$request->id)->get();

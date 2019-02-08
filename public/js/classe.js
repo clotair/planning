@@ -1,6 +1,14 @@
 $(function () {
   $('[data-toggle="popover"]').popover()
 })
+function mois_n(n){
+    let mois = ['Janvier','Fevrier','Mars','Avril','Mai','Juin','Juillet','Aout','Septembre','Octobre','Decembre'];
+    return mois[n];
+}
+function jour(n){
+    let jours = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimache']
+    return jours[n]
+}
 function planning_classe(e){
  $('.classe.active').removeClass('active');
  $('#e'+e).addClass('active');
@@ -13,17 +21,17 @@ function planning_classe(e){
         tab.push($('<tr/>').append(
             $('<td/>').css({
                 
-                height:'50px',
-                width:'100px'
+                height:'50px'
+                
             })
         ))
         for(let i = 1;i<=17;i++){
             
             tab.push($('<tr/>').append(
                 $('<td/>').css({
-                                height:'100px',
+                                height:'50px',
                 
-                }).html((i+5)+'h')
+                }).attr('scope','row').html((i+5)+'h')
             ))
 
         }
@@ -31,7 +39,13 @@ function planning_classe(e){
 
         for(let i of data){
             let date = new Date( i['date'] );
-            $(tab[0]).append($('<td/>').append(i['date']))
+            $(tab[0]).append($('<th/>').attr('scope','col').css({
+                width: '200px',
+               
+                height: '50px',
+                'text-align': 'center',
+                'padding-top': '14px',
+            }).append(jours(date.getDay())+ mois_n(date.getMonth()) ))
             for(let j=1;j<=17;j++){
                 for(let y of i['heures']){
                     
@@ -39,8 +53,8 @@ function planning_classe(e){
                         
                             $(tab[j]).append(
                                 $('<td/>').css({
-                                    
-                                    height:'100px',
+                                    'font-size': '12px',
+                                    height:'50px',
                                     'background-color':'orange',
                                     'opacity':'0.8'
                                 }).attr('title',y['heure_debut']+'/'+y['heure_fin']).html(
@@ -54,7 +68,7 @@ function planning_classe(e){
                     }else{
                         $(tab[j]).append($('<td/>').css({
                             
-                            height:'100px',
+                            height:'50px',
                             
                         }).html('')
                         );
@@ -65,7 +79,7 @@ function planning_classe(e){
                 if(i['heures'].length==0){
                     $(tab[j]).append($('<td/>').css({
                             
-                        height:'100px',
+                        height:'50px',
                         
                     }).html('')
                     );
@@ -74,11 +88,13 @@ function planning_classe(e){
             
            
         }
-        for(let i = 0;i<=17;i++){
+        for(let i = 1;i<=17;i++){
            
             $(t).append(tab[i])
         }
-        $('#listePC').html(t)
+        let h = $('<thead/>').append(tab[0]);
+        $('#listePC').html(h)
+        $('#listePC').append(t)
      }
  })
 }

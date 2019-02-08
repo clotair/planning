@@ -36,7 +36,7 @@
 
          @foreach($classes as $classe)
  
-            <button type="button"  id="{{'c'.$classe->id}}" class="list-group-item list-group-item-action salle" onClick="planning_classe({{$classe->id}})" data-toggle="popover"  data-content="{{$classe->filiere}}" title="{{$classe->nom}}"> 
+            <button type="button"  id="{{'c'.$classe->id}}" class="list-group-item list-group-item-action salle" onClick="planning_classe({{$classe->id}})"    title="{{$classe->nom}}"> 
               {{$classe->code}}
             </button>
         @endforeach
@@ -44,13 +44,14 @@
     </div>
     <div class="col-md-9">
     <div class="table-responsive">
-      <table class="table" id="listePC">
+      <table class="table table-bordered" id="listePC">
     
       </table>
     </div>
     </div>
     </div>
 </div>
+
 @endsection
 @section('js')
   <!-- liens js -->
