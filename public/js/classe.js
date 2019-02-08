@@ -17,13 +17,13 @@ function planning_classe(e){
                 width:'100px'
             })
         ))
-        for(let i = 1;i<=18;i++){
+        for(let i = 1;i<=17;i++){
             
             tab.push($('<tr/>').append(
                 $('<td/>').css({
                                 height:'100px',
                 
-            }).html((i+5)+'h')
+                }).html((i+5)+'h')
             ))
 
         }
@@ -32,7 +32,7 @@ function planning_classe(e){
         for(let i of data){
             let date = new Date( i['date'] );
             $(tab[0]).append($('<td/>').append(i['date']))
-            for(let j=1;j<=18;j++){
+            for(let j=1;j<=17;j++){
                 for(let y of i['heures']){
                     
                     if(y['heure_debut'][0]+y['heure_debut'][1]<=j+5&&y['heure_fin'][0]+y['heure_fin'][1]>=j+5){
@@ -74,7 +74,7 @@ function planning_classe(e){
             
            
         }
-        for(let i = 0;i<=18;i++){
+        for(let i = 0;i<=17;i++){
            
             $(t).append(tab[i])
         }

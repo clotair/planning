@@ -66,6 +66,13 @@ function planning_salle(e){
                             )    
                         }
                            
+                    }else{
+                        $(tab[j]).append($('<td/>').css({
+                            
+                            height:'100px',
+                            
+                        }).html('')
+                        );
                     }
                  
                 }  
