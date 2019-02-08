@@ -24,11 +24,11 @@
   @endsection
 @section('content')
 
-<div class="container">
+<div class="container" style="margin-top:70px;">
   <div class="row">
     <div class="col-md-3">
     <div class="list-group">
-          <button type="button" class="list-group-item list-group-item-action active salle" onClick="search_classe({{$classes}})">
+          <button type="button" class="list-group-item list-group-item-action active classe br" onClick="search_classe({{$classes}})">
             Rechercher
           </button>
       
@@ -36,14 +36,20 @@
 
          @foreach($classes as $classe)
  
-            <button type="button"  id="{{'c'.$classe->id}}" class="list-group-item list-group-item-action salle" onClick="planning_classe({{$classe->id}},'{{$classe->nom}}')"    title="{{$classe->nom}}"> 
+            <button type="button"  id="{{'c'.$classe->id}}" class="list-group-item list-group-item-action classe" onClick="planning_classe({{$classe->id}},'{{$classe->nom}}')"    title="{{$classe->nom}}"> 
               {{$classe->code}}
             </button>
         @endforeach
       </div>
     </div>
+    <div class="col-md-9 recherche">
+      <form>
+      <center><h1 id="titreC">RECHERCHE</h1></center><br/>
+        <input type="search" class="form-control col-md-12 col-xs-8" placeholder="entrez le nom ou le code d'une classe"/>
+      </form>
+    </div>
     <div class="col-md-9 calendrier">
-      <center><h1 id="titreC"></h1></center>
+      <center><h1 id="titreC"></h1></center><br/>
     <div class="table-responsive">
       <table class="table table-bordered" id="listePC">
     

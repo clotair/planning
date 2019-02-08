@@ -9,9 +9,17 @@ function jour(n){
     let jours = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimache']
     return jours[n]
 }
+function search_classe(data){
+    $('.calendrier').fadeOut(500);
+    $('.recherche').fadeIn(500); 
+    $('.classe.active').removeClass('active');
+    $('.br').addClass('active')
+}
 function planning_classe(e,titre){
+ $('.recherche').fadeOut(500);
+ $('.calendrier').fadeIn(500);
  $('.classe.active').removeClass('active');
- $('#e'+e).addClass('active');
+ $('#c'+e).addClass('active');
  
  $.get({
      url:'/api/classe/planning/'+e,
