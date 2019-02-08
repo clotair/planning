@@ -23,14 +23,14 @@
 @endsection
 @section('content')
 
-	<div class="container" style="margin-top:70px;">
- 		 <div class="row">
-    		<div class="col-md-3">
-      			<div class="jolieliste">
-        			<div class="list-group" style="text-align:center;">
-            			<button type="button" class="list-group-item list-group-item-action active classe br" onClick="search_classe_active()">
-            				Rechercher
-            			</button>
+<div class="container" style="margin-top:70px;">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="jolieliste">
+        <div class="list-group" style="text-align:center;">
+            <button type="button" class="list-group-item list-group-item-action active classe br" onClick="search_classe_active()" style="text-align:center">
+            RECHERCHER
+            </button>
       
             			@foreach($classes as $classe)
  

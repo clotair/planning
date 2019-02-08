@@ -1,22 +1,81 @@
+
+
+let prev_mot = '';
+let prev_tab = [];
 $(function () {
-  $('[data-toggle="popover"]').popover()
+  $('[data-toggle="popover"]').popover();
 })
 function mois_n(n){
     let mois = ['Janvier','Fevrier','Mars','Avril','Mai','Juin','Juillet','Aout','Septembre','Octobre','Decembre'];
     return mois[n];
 }
 function jour(n){
-    let jours = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimache']
-    return jours[n]
+    let jours = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimache'];
+    return jours[n];
+}
+function sup(){
+    $('.rechercheresult').html('');
+}
+function rien(){
+    $('.rechercheresult').html("<div class=' col-xs-8'><center><h5 class='display-4'>Auqu'une classe trouver</h5><center></div>");
+}
+function result(data){
+    let ul = $('<ul/>').addClass('list-group list-group-flush col-xs-8');
+    for(let i of data){
+        $(ul).append(
+            $('<li/>').addClass('list-group-item').append(
+                $('<a/>').attr('href','#c'+i.id).on('click',()=>{
+                    $('#c'+i.id).trigger('click');
+                }).html(i.nom)
+                
+                )
+        )
+    }
+    $('.rechercheresult').html('');
+    $('.rechercheresult').append(ul)
 }
 function search_classe(data){
-    
+    let val = $('.terme').val();
+    console.log(data);
+    valupc = val.toUpperCase()
+    let tab = [];
+    if(val >= prev_mot && prev_mot){
+        for(let i of prev_tab){
+            if(i['code'].indexOf(val)!=-1 || i['code'].indexOf(valupc)!=-1){
+                tab.push(i)
+            }else if(i['nom'].indexOf(val)!=-1 || i['nom'].indexOf(valupc)!=-1){
+                tab.push(i)
+            }
+        }
+    }else{
+        for(let i of data){
+            if(i['code'].indexOf(val)!=-1 || i['code'].indexOf(valupc)!=-1){
+                tab.push(i)
+            }else if(i['nom'].indexOf(val)!=-1 || i['nom'].indexOf(valupc)!=-1){
+                tab.push(i)
+            }
+        }
+    }
+    if(tab.length!=0){
+        result(tab);
+    }else{
+        rien();
+    }
+    if(!val){
+        sup()
+    }
+    prev_mot = val;
+    rev_tab = tab;
+    if(!val){
+        prev_tab = data
+    }
 }
 function search_classe_active(){
+    sup()
     $('.calendrier').hide(400);
     $('.recherche').fadeIn(500); 
     $('.classe.active').removeClass('active');
-    $('.br').addClass('active')
+    $('.br').addClass('active');
 }
 function planning_classe(e,titre){
  $('.recherche').hide(400);
@@ -56,7 +115,7 @@ function planning_classe(e,titre){
                 height: '50px',
                 'text-align': 'center',
                 'padding-top': '2px',
-            }).append('<p style="width:200px">'+jour(date.getDay())+', le '+date.getDate()+' '+ mois_n(date.getMonth())+'</p>' ))
+            }).attr('title',jour(date.getDay())+', le '+date.getDate()+' '+ mois_n(date.getMonth())+date.getFullYear()).append('<p style="width:200px">'+jour(date.getDay())+', le '+date.getDate()+' '+ mois_n(date.getMonth())+'</p>' ))
             for(let j=1;j<=17;j++){
                 for(let y of i['heures']){
                     
