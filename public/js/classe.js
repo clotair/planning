@@ -13,8 +13,8 @@ function planning_classe(e){
         tab.push($('<tr/>').append(
             $('<td/>').css({
                 
-                height:'100px',
-                
+                height:'50px',
+                width:'100px'
             })
         ))
         for(let i = 1;i<=18;i++){
@@ -44,10 +44,9 @@ function planning_classe(e){
                                     'background-color':'orange',
                                     'opacity':'0.8'
                                 }).attr('title',y['heure_debut']+'/'+y['heure_fin']).html(
-                                   ' <b>'+ y['description']['matiere'][0]['code']+'</b>'+'<br/>'
+                                    '<b>'+y['description']['type'][0]['nom']+'</b>'+'<br/> <b>'+ y['description']['matiere'][0]['code']+'</b>'+'<br/>'
                                    + y['description']['enseignant'][0]['grade'] +'<br/>'+ '<b>'+y['description']['enseignant'][0]['prof']+'</b>'
-                                   +'<br/>'+'</b>'+
-                                   '<br/>'+'<b>'+y['description']['type'][0]['nom']+'</b>'
+                                   +'</b>'
                                 )
                             )
 

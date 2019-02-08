@@ -13,9 +13,8 @@ function planning_salle(e){
         let tab = [];
         tab.push($('<tr/>').append(
             $('<td/>').css({
-                
-                height:'100px',
-                
+                height:'50px',
+                width:'100px'
             })
         ))
         for(let i = 1;i<=14;i++){
@@ -46,10 +45,11 @@ function planning_salle(e){
                                     'background-color':'orange',
                                     'opacity':'0.8'
                                 }).attr('title',y['heure_debut']+'/'+y['heure_fin']).html(
-                                   ' <b>'+ y['description']['matiere'][0]['code']+'</b>'+'<br/>'
-                                    + 'Mr ' + '<b>'+y['description']['enseignant'][0]['prof']+'</b>'
-                                   +'<br/>'+'<b>' +y['description']['classe'][0]['code']+'</b>'+
-                                   '<br/>'+ '<b>'+y['description']['type'][0]['nom']+'</b>'
+                                     '<b>'+y['description']['type'][0]['nom']+'</b>'+'<br/>'+' <b>'+ y['description']['matiere'][0]['code']+'</b>'
+                                     +'<br/>'+'<b>' +y['description']['classe'][0]['code']+'</b>'
+                                    + 'Mr. ' + '<b>'+y['description']['enseignant'][0]['prof']+'</b>'
+                                   
+                                   
                                 )
                             )
                         }else{
