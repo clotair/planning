@@ -158,7 +158,7 @@ function planning_enseignant(e,titre){
                                 }).attr('title',y['heure_debut']+'/'+y['heure_fin']).html(
                                     '<center>'+'<b>'+y['description']['type'][0]['nom']+'</b>'+'<br/> <b>'+ y['description']['matiere'][0]['code']+'</b>'+'<br/>'
                                    + ' <b>'+y['description']['classe'][0]['code']+'</b>'
-                                   +'</b>'+'</center>'
+                                   +'<b>'+y['description']['salle'][0]['code']+'</b>'+'</center>'
                                 )
                             )
 
