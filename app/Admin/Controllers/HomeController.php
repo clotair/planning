@@ -19,7 +19,7 @@ class HomeController extends Controller
 {   
     public function index(Content $content)
     {
-        Alert::error('Something went wrong', 'Oops!');
+        
         return $content
             ->header('Planning')
             ->description('Une Gestion efficace pour une grande rentabilite')
