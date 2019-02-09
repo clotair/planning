@@ -51,9 +51,10 @@
        				<center><h4 >RECHERCHE</h4></center><br/>
         			<div class="col-md-2"></div>
         			<div class="col-md-9 ">
-          				<input type="search" class="form-control"  placeholder="Entrez le nom d'un enseignant" onInput="search_enseignant({{$enseignants}})"/>
+          				<input type="search" class="form-control terme"  placeholder="Entrez le nom d'un enseignant" onInput="search_enseignant({{$enseignants}})"/>
 					</div>
-				</form>
+                </form>
+                <div class="rechercheresult" style="magrin-top:40px;text-align:center"></div>
     		</div>
     		<div class="col-md-9 calendrier">
       			<center><a href="#enseignantModal" data-toggle="modal" data-target="#enseignantModal"><h4 id="titreE"></h4></a></center><br/>

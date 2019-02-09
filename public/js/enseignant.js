@@ -20,18 +20,19 @@ function rien(){
     $('.rechercheresult').html("<div class=' col-xs-8'><center><h5 class='display-4'>Auqu'un enseignant trouver</h5><center></div>");
 }
 function result(data){
-    let ul = $('<ul/>').addClass('list-group list-group-flush col-xs-8');
+ 
+    let ul = $('<ul/>').addClass('list-group list-group-flush col-xs-7');
     for(let i of data){
         $(ul).append(
             $('<li/>').addClass('list-group-item').append(
                 $('<a/>').attr('href','#e'+i.id).on('click',()=>{
                     $('#e'+i.id).trigger('click');
-                }).html(i.nom)
+                }).html(i.prof)
                 
                 )
         )
     }
-    $('.rechercheresult').html('');
+    $('.rechercheresult').html('').append($('<div/>').addClass('col-xs-3'));
     $('.rechercheresult').append(ul)
 }
 function search_enseignant(data){
@@ -41,17 +42,17 @@ function search_enseignant(data){
     let tab = [];
     if(val >= prev_mot && prev_mot){
         for(let i of prev_tab){
-            if(i['code'].indexOf(val)!=-1 || i['code'].indexOf(valupc)!=-1){
+            if(i['prof'].indexOf(val)!=-1 || i['prof'].indexOf(valupc)!=-1){
                 tab.push(i)
-            }else if(i['nom'].indexOf(val)!=-1 || i['nom'].indexOf(valupc)!=-1){
+            }else if(i['grade'].indexOf(val)!=-1 || i['grade'].indexOf(valupc)!=-1){
                 tab.push(i)
             }
         }
     }else{
         for(let i of data){
-            if(i['code'].indexOf(val)!=-1 || i['code'].indexOf(valupc)!=-1){
+            if(i['prof'].indexOf(val)!=-1 || i['prof'].indexOf(valupc)!=-1){
                 tab.push(i)
-            }else if(i['nom'].indexOf(val)!=-1 || i['nom'].indexOf(valupc)!=-1){
+            }else if(i['grade'].indexOf(val)!=-1 || i['grade'].indexOf(valupc)!=-1){
                 tab.push(i)
             }
         }

@@ -51,9 +51,10 @@
        				<center><h4 >RECHERCHE</h4></center><br/>
         			<div class="col-md-2"></div>
         			<div class="col-md-9 ">
-          				<input type="search" class="form-control"  placeholder="Entrez le nom ou le code d'une classe" onInput="search_classe({{$classes}})"/>
+          				<input type="search" class="form-control terme"    placeholder="Entrez le nom ou le code d'une classe" onInput="search_classe({{$classes}})"/>
 					</div>
-				</form>
+        </form>
+        <div class="rechercheresult" style="magrin-top:40px;text-align:center"></div>
     		</div>
     		<div class="col-md-9 calendrier">
       			<center><a href="#classeModal" data-toggle="modal" data-target="#classeModal"><h4 id="titreC"></h4></a></center><br/>
