@@ -1,7 +1,7 @@
 
 @extends('layouts.app')
 
-@section('title', 'Classe')
+@section('title', 'Classes')
 @section('css')
   	<!-- liens css -->
 @endsection
