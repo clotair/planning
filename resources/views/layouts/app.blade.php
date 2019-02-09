@@ -141,6 +141,7 @@
                             <li><i class = "ion-ios-arrow-right"></i><a href="/materiel"><span class ="glyphicon glyphicon-scissors"></span> &nbsp;Materiels</a></li>
                             <li><i class = "ion-ios-arrow-right"></i><a href="/enseignant"><span class ="glyphicon glyphicon-briefcase"></span> &nbsp;Enseignant</a></li>
                             <li><i class = "ion-ios-arrow-right"></i><a href="/classe"><span class ="glyphicon glyphicon-briefcase"></span> &nbsp;Classe</a></li>
+                            <li><i class = "ion-ios-arrow-right"></i><a href="#"><span class ="glyphicon glyphicon-bell"></span> &nbsp;Evènement</a></li>
                         </ul>
                     </div>
                     <div class =  "col-lg-3 col-md-6 footer-contact">
