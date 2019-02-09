@@ -39,7 +39,7 @@
       
             			@foreach($enseignants as $enseignant)
  
-              				<button type="button"  id="{{'e'.$enseignant->id}}" class="list-group-item list-group-item-action classe" onClick="planning_enseignant({{$enseignant->id}},'{{$enseignant->prof}}')"    title="{{$enseignant->prof}}"> 
+              				<button type="button"  id="{{'e'.$enseignant->id}}" class="list-group-item list-group-item-action enseignant" onClick="planning_enseignant({{$enseignant->id}},'{{$enseignant->prof}}')"    title="{{$enseignant->prof}}"> 
                				 	{{$enseignant->prof}}
               				</button>
             			@endforeach
