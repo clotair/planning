@@ -9,7 +9,7 @@ function planning_salle(e){
      url:'/api/salle/planning/'+e,
      success:(data)=>{
         console.log(data);
-        console.log(data[0]);
+  
         let tab = [];
         tab.push($('<tr/>').append(
             $('<td/>').css({
