@@ -77,12 +77,34 @@ function search_classe_active(){
     $('.classe.active').removeClass('active');
     $('.br').addClass('active');
 }
+function get_info(id){
+    $.get({
+        url:'/api/salle/'+id,
+        success:(data)=>{
+            if(data.length!=0){
+                let val = data[0];
+                $('#classeModal .modal-title').html(val.nom);
+                $('#classeModal .modal-body').html(
+                    $('<div/>').addClass('container').append($('<div/>').addClass('col-md-6').html('TYPE:').append(
+                        $('<div/>').addClass('col-md-6').html('<b>'+val.type+'</b>')
+    
+                    ).append(
+                        $('<div/>').addClass('col-md-6').html('CODE:')
+                    ).append(
+                        $('<div/>').addClass('col-md-6').html('<b>'+val.code+'</b>')
+                    )
+                )
+                )
+            }
+        }
+    })
+}
 function planning_classe(e,titre){
  $('.recherche').hide(400);
  $('.calendrier').fadeIn(500);
  $('.classe.active').removeClass('active');
  $('#c'+e).addClass('active');
- 
+ get_info(e);
  $.get({
      url:'/api/classe/planning/'+e,
      success:(data)=>{
@@ -166,7 +188,8 @@ function planning_classe(e,titre){
         let h = $('<thead/>').append(tab[0]);
         $('#listePC').html(h);
         $('#listePC').append(t);
-        $('#titreC').html(titre)
+        $('#titreC').html(titre);
+        
      }
  })
 }

@@ -56,7 +56,7 @@
 				</form>
     		</div>
     		<div class="col-md-9 calendrier">
-      			<center><h4 id="titreC"></h4></center><br/>
+      			<center><a href="#classeModal" data-toggle="modal" data-target="#classeModal"><h4 id="titreC"></h4></a></center><br/>
     			<div class="table-responsive">
       				<table class="table table-bordered" id="listePC">
     
@@ -65,7 +65,25 @@
     		</div>
     	</div>
 	</div>
-
+  <div class="modal fade bd-example-modal-xl" tabindex="-1" id="classeModal" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+    <div class="modal-header">
+        <center><h2 class="modal-title" ></h2></center>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+ 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+       
+      </div>
+    </div>
+  </div>
+</div>
 @endsection
 @section('js')
   	<!-- liens js -->
