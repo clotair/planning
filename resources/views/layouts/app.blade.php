@@ -128,7 +128,7 @@
             <div class = "container">
                 <div class = "row">
                     <div class = "col-lg-3 col-md-6 footer-info">
-                        <h3>GooG PlanninG</h3>
+                        <h3>GooD-PlanninG</h3>
                         <p>Notre site permet a tous etudiants de la faculte ainsi qu'aux Enseignant  de consulte
                             leur planning sans toute fois bouger de leurs chambres ou d'y regarder sur un papier
                         </p>
