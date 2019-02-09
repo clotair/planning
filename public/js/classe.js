@@ -43,17 +43,17 @@ function search_classe(data){
     let tab = [];
     if(val >= prev_mot && prev_mot){
         for(let i of prev_tab){
-            if(i['code'].indexOf(val)!=-1 || i['code'].indexOf(valupc)!=-1){
+            if(i['nom'].indexOf(val)!=-1 || i['nom'].indexOf(valupc)!=-1){
                 tab.push(i)
-            }else if(i['nom'].indexOf(val)!=-1 || i['nom'].indexOf(valupc)!=-1){
+            }else if(i['code'].indexOf(val)!=-1 || i['code'].indexOf(valupc)!=-1){
                 tab.push(i)
             }
         }
     }else{
         for(let i of data){
-            if(i['code'].indexOf(val)!=-1 || i['code'].indexOf(valupc)!=-1){
+            if(i['nom'].indexOf(val)!=-1 || i['nom'].indexOf(valupc)!=-1){
                 tab.push(i)
-            }else if(i['nom'].indexOf(val)!=-1 || i['nom'].indexOf(valupc)!=-1){
+            }else if(i['code'].indexOf(val)!=-1 || i['code'].indexOf(valupc)!=-1){
                 tab.push(i)
             }
         }

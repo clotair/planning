@@ -55,7 +55,7 @@ Route::get('salle/{id}',function(Request $request){
 
 Route::get('salle/planning/{id}',function(Request $request){
     $cours = DB::table('planning_cours')->where('salle','=',$request->id)->get();
-    $events = DB::table('planning_evenements')->where('evenement','=',$request->id)->get();
+    $events = DB::table('planning_evenements')->where('evenement.salle','=',$request->id)->get();
     $min_date = date('Y-m-d');
     $max_date = date('Y-m-d');
     foreach($cours as $cour){
