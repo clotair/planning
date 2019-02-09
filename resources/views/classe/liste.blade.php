@@ -68,8 +68,8 @@
   <div class="modal fade bd-example-modal-xl" tabindex="-1" id="classeModal" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
-    <div class="modal-header">
-        <center><h2 class="modal-title" ></h2></center>
+    <div class="modal-header" style="text-align:center">
+        <strong class="modal-title" ></strong>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
