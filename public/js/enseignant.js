@@ -8,7 +8,7 @@ function mois_n(n){
     return mois[n];
 }
 function jour(n){
-    let jours = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimache'];
+    let jours = ['Dimache','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];
     return jours[n];
 }
 function sup(){
