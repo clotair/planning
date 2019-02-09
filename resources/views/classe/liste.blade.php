@@ -29,15 +29,15 @@
     <div class="col-md-3">
       <div class="jolieliste">
         <div class="list-group" style="text-align:center;">
-            <button type="button" class="list-group-item list-group-item-action active classe br" onClick="search_classe_active()">
-            Rechercher
+            <button type="button" class="list-group-item list-group-item-action active classe br" onClick="search_classe_active()" style="text-align:center">
+            RECHERCHER
             </button>
       
 
 
             @foreach($classes as $classe)
  
-              <button type="button"  id="{{'c'.$classe->id}}" class="list-group-item list-group-item-action classe" onClick="planning_classe({{$classe->id}},'{{$classe->nom}}')"    title="{{$classe->nom}}"> 
+              <button type="button"  id="{{'c'.$classe->id}}" class="list-group-item list-group-item-action classe textig" onClick="planning_classe({{$classe->id}},'{{$classe->nom}}')"    title="{{$classe->nom}}" > 
                 {{$classe->code}}
               </button>
             @endforeach
@@ -49,9 +49,11 @@
         <center><h4 >RECHERCHE</h4></center><br/>
         <div class="col-md-2"></div>
         <div class="col-md-9 ">
-          <input type="search" class="form-control"  placeholder="Entrez le nom ou le code d'une classe" onInput="search_classe({{$classes}})"/>
+          <input type="search" class="form-control terme c"  placeholder="Entrez le nom ou le code d'une classe" onInput="search_classe({{$classes}})"/>
         </div>
+        <br/>
       </form>
+      <center><div class=" rechercheresult " style="margin-top:25px;diplay:block;padding-left:33%" ></div></center>
     </div>
     <div class="col-md-9 calendrier">
       <center><h4 id="titreC"></h4></center><br/>
