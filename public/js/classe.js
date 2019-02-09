@@ -41,17 +41,17 @@ function search_classe(data){
     let tab = [];
     if(val >= prev_mot && prev_mot){
         for(let i of prev_tab){
-            if(i['code'].indexOf(val)!=-1 || i['code'].indexOf(valupc)!=-1){
+            if(i['prof'].indexOf(val)!=-1 || i['prof'].indexOf(valupc)!=-1){
                 tab.push(i)
-            }else if(i['nom'].indexOf(val)!=-1 || i['nom'].indexOf(valupc)!=-1){
+            }else if(i['grade'].indexOf(val)!=-1 || i['grade'].indexOf(valupc)!=-1){
                 tab.push(i)
             }
         }
     }else{
         for(let i of data){
-            if(i['code'].indexOf(val)!=-1 || i['code'].indexOf(valupc)!=-1){
+            if(i['prof'].indexOf(val)!=-1 || i['prof'].indexOf(valupc)!=-1){
                 tab.push(i)
-            }else if(i['nom'].indexOf(val)!=-1 || i['nom'].indexOf(valupc)!=-1){
+            }else if(i['grade'].indexOf(val)!=-1 || i['grade'].indexOf(valupc)!=-1){
                 tab.push(i)
             }
         }
@@ -85,15 +85,17 @@ function get_info(id){
                 let val = data[0];
                 $('#classeModal .modal-title').html(val.nom);
                 $('#classeModal .modal-body').html(
-                    $('<div/>').addClass('container').append($('<div/>').addClass('col-md-6').html('TYPE:').append(
-                        $('<div/>').addClass('col-md-6').html('<b>'+val.type+'</b>')
+                    $('<div/>').addClass('container').append(
+                        $('<div/>').addClass('col-xs-4').html('TYPE:')
+                    ).append(
+                        $('<div/>').addClass('col-xs-6').html('<b>'+val.type+'</b>')
     
                     ).append(
-                        $('<div/>').addClass('col-md-6').html('CODE:')
+                        $('<div/>').addClass('col-xs-4').html('CODE:')
                     ).append(
-                        $('<div/>').addClass('col-md-6').html('<b>'+val.code+'</b>')
+                        $('<div/>').addClass('col-md-4').html('<b>'+val.code+'</b>')
                     )
-                )
+                
                 )
             }
         }
