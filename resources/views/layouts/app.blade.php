@@ -11,9 +11,12 @@
     <link rel="icon" href="favicon.ico">
 
     <title>@yield('title')</title>
-
+    
     <!-- Bootstrap core CSS -->
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap-social.css" rel="stylesheet">
+    
+
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
@@ -32,6 +35,67 @@
     <![endif]-->
     <link href="css/main.css" rel="stylesheet">
     @yield('css')
+    <style>
+        #footer{
+            background: #000;
+            padding: 0 0 30px 0;
+            color: #eee;
+            font-size: 14px;
+        }
+        #footer .footer-top{
+            background: #111;
+            padding: 60px 0 30px 0;
+        }
+        #footer .footer-top .footer-info{
+            margin: 30px;
+        }
+        #footer .footer-top .footer-info h3{
+            font-size: 34px;
+        }
+        #footer .footer-top .footer-links ul a:hover{
+            color: #06b00b;
+        }
+        #footer .footer-top .footer-contact{
+            margin-bottom: 30px;
+        }
+        #footer .footer-top .footer-contact p{
+            line-height: 25px;
+        }
+        #footer .footer-top .footer-newsletter{
+            margin-bottom: 30px;
+        }
+        #footer .footer-top .footer-newsletter input[type="email"]{
+            border: 0;
+            padding: 6px 8px;
+            width: 65%;
+        }
+
+        #footer .footer-top .footer-newsletter input[type="submit"]{
+            background: #981295;
+            border: 0;
+            padding: 6px 0;
+            text-align: center;
+            color: #fff;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        #footer .footer-top .footer-newsletter input[type="submit"]:hover{
+            background: #06b00b;
+        
+        }
+
+        #footer .copyright{
+            text-align: center;
+            padding-top: 30px;
+        }
+
+        #footer .credits{
+            text-align: center;
+            font-size: 13px;
+            color: #ddd;
+        }
+    </style>
   </head>
 
   <body>
@@ -58,13 +122,52 @@
     
   
             @yield('content')
-   
-    
-      <div class="navbar navbar-inverse container-fluid">
-        <div class="container">
-          <p class="navbar-text">&copy; Random</p>
+    <!-- footer de nos pages; tkp demande de ne plus toucher a sa -->
+    <footer id = "footer">
+        <div class = "footer-top">
+            <div class = "container">
+                <div class = "row">
+                    <div class = "col-lg-3 col-md-6 footer-info">
+                        <h3>GooG PlanninG</h3>
+                        <p>Notre site permet a tous etudiants de la faculte ainsi qu'aux Enseignant  de consulte
+                            leur planning sans toute fois bouger de leurs chambres ou d'y regarder sur un papier
+                        </p>
+                    </div>
+                    <div class =  "col-lg-3 col-md-6 footer-links">
+                        <h4>Liens Utiles</h4>
+                        <ul>
+                            <li><i class = "ion-ios-arrow-right"></i><a href="/"><span class="glyphicon glyphicon-home"></span> &nbsp;Home</a></li>
+                            <li><i class = "ion-ios-arrow-right"></i><a href="/salle"><span class ="glyphicon glyphicon-inbox"></span> &nbsp;Nos Salles</a></li>
+                            <li><i class = "ion-ios-arrow-right"></i><a href="/materiel"><span class ="glyphicon glyphicon-scissors"></span> &nbsp;Materiels</a></li>
+                            <li><i class = "ion-ios-arrow-right"></i><a href="/enseignant"><span class ="glyphicon glyphicon-briefcase"></span> &nbsp;Enseignant</a></li>
+                            <li><i class = "ion-ios-arrow-right"></i><a href="/classe"><span class ="glyphicon glyphicon-briefcase"></span> &nbsp;Classe</a></li>
+                        </ul>
+                    </div>
+                    <div class =  "col-lg-3 col-md-6 footer-contact">
+                        <h4>Suivez Nous</h4>
+                        <a class="btn btn-social-icon btn-twitter"><span class="fa fa-twitter"></span></a>
+                        <a class="btn btn-social-icon btn-facebook"><span class="fa fa-facebook"></span></a>
+                        <a class="btn btn-social-icon btn-google"><span class="fa fa-google"></span></a>
+                        <a class="btn btn-social-icon btn-instagram"><span class="fa fa-instagram"></span></a>
+
+
+                    </div>
+                    <div class = "col-lg-3 col-md-6 footer-newsletter">
+                        <h4>Notre lettre d'information</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse 
+                            quisquam rerum sit ea dolorem maiores, eveniet, distinctio suscipit soluta fugiat eaque! 
+                            Ab quae non itaque saepe perferendis repudiandae dolor ut!</p>
+                        <form action="" method="POST">
+                            <input type="email" name = "email"><input type="submit" value = "Souscrire">
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
         </div>
-      </div>
+        <p class = "copyright text-muted">Copyright &copy; GooG-PlanninG 2019</p>
+    </footer>
   
     <script src="bootstrap/js/jquery.min.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
