@@ -20,7 +20,9 @@ function rien(){
     $('.rechercheresult').html("<div class=' col-xs-8'><center><h5 class='display-4'>Auqu'une salle trouver</h5><center></div>");
 }
 function result(data){
-    let ul = $('<ul/>').addClass('list-group list-group-flush col-xs-8');
+    let ul = $('<ul/>').addClass('list-group list-group-flush col-xs-7').css({
+        'margin-top':'20px'
+    });
     for(let i of data){
         $(ul).append(
             $('<li/>').addClass('list-group-item').append(
@@ -31,7 +33,7 @@ function result(data){
                 )
         )
     }
-    $('.rechercheresult').html('');
+    $('.rechercheresult').html('').append($('<div/>').addClass('col-xs-3'));
     $('.rechercheresult').append(ul)
 }
 function search_salle(data){
@@ -88,13 +90,13 @@ function get_info(id){
                     $('<div/>').addClass('container')
                     .append(
                         
-                        $('<div/>').addClass('col-xs-4').html('NOM:')
+                        $('<div/>').addClass('col-xs-3').html('NOM:')
                     )    
                     .append(
-                        $('<div/>').addClass('col-xs-6').html('<b>'+val.nom+'</b>')
+                        $('<div/>').addClass('col-xs-7').html('<b>'+val.nom+'</b>')
     
                     ).append(
-                        $('<div/>').addClass('col-xs-4').html('CODE:')
+                        $('<div/>').addClass('col-xs-3').html('CODE:')
                     ).append(
                         $('<div/>').addClass('col-xs-4').html('<b>'+val.code+'</b>')
                     )

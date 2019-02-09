@@ -12,10 +12,10 @@
         <div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
 						<li><a class = "orientation" href="/"><span class="glyphicon glyphicon-home"></span>&nbsp;Accueil</a></li>
-						<li class="active"><a class = "orientation" href="/salle"><span class ="glyphicon glyphicon-inbox"></span> &nbsp;Nos Salles</a></li>
+						<li><a class = "orientation" href="/salle"><span class ="glyphicon glyphicon-inbox"></span> &nbsp;Nos Salles</a></li>
 						<li><a class = "orientation" href="/materiel"><span class ="glyphicon glyphicon-scissors"></span> &nbsp;Matériels</a></li>
-						<li ><a class = "orientation" href="/enseignant"><span class ="glyphicon glyphicon-briefcase"></span> &nbsp;Enseignant</a></li>
-						<li><a class = "orientation" href="/classe"><span class ="glyphicon glyphicon-book"></span> &nbsp;Classe</a></li>
+						<li><a class = "orientation" href="/enseignant"><span class ="glyphicon glyphicon-briefcase"></span> &nbsp;Enseignant</a></li>
+						<li  class="active"><a class = "orientation" href="/classe"><span class ="glyphicon glyphicon-book"></span> &nbsp;Classe</a></li>
 						<li><a class = "orientation" href="/evenement"><span class ="glyphicon glyphicon-bell"></span> &nbsp;Evènement</a></li>
 						
 						
@@ -37,9 +37,9 @@
             RECHERCHER
             </button>
       
-            			@foreach($salles as salle)
+            			@foreach($salles as $salle)
  
-              				<button type="button"  id="{{'s'.$salle->id}}" class="list-group-item list-group-item-action salle" onClick="planning_salle({{$salle->id}},'{{$salle->nom}}')"    title="{{salle->nom}}"> 
+              				<button type="button"  id="{{'s'.$salle->id}}" class="list-group-item list-group-item-action salle" onClick="planning_salle({{$salle->id}},'{{$salle->nom}}')"    title="{{$salle->nom}}"> 
                				 	{{$salle->code}}
               				</button>
             			@endforeach
@@ -51,9 +51,10 @@
        				<center><h4 >RECHERCHE</h4></center><br/>
         			<div class="col-md-2"></div>
         			<div class="col-md-9 ">
-          				<input type="search" class="form-control terme"  placeholder="Entrez le nom ou le code d'une salle" onInput="search_salle({{$salles}})"/>
+          				<input type="search" class="form-control terme"    placeholder="Entrez le nom ou le code d'une classe" onInput="search_salle({{$salles}})"/>
 					</div>
-				</form>
+        </form>
+        <div class="rechercheresult" style="magrin-top:40px;text-align:center"></div>
     		</div>
     		<div class="col-md-9 calendrier">
       			<center><a href="#salleModal" data-toggle="modal" data-target="#salleModal"><h4 id="titreS"></h4></a></center><br/>
@@ -68,8 +69,8 @@
   <div class="modal fade bd-example-modal-xl" tabindex="-1" id="salleModal" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
-    <div class="modal-header" style="text-align:center;">
-        <strong class="modal-title" style="font-size: 30px;"></strong>
+    <div class="modal-header" style="text-align:center">
+        <strong class="modal-title" ></strong>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

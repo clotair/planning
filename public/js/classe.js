@@ -20,7 +20,9 @@ function rien(){
     $('.rechercheresult').html("<div class=' col-xs-8'><center><h5 class='display-4'>Auqu'une classe trouver</h5><center></div>");
 }
 function result(data){
-    let ul = $('<ul/>').addClass('list-group list-group-flush col-xs-7');
+    let ul = $('<ul/>').addClass('list-group list-group-flush col-xs-7').css({
+        'margin-top':'20px'
+    });
     for(let i of data){
         $(ul).append(
             $('<li/>').addClass('list-group-item').append(
