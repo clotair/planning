@@ -50,3 +50,9 @@ Route::prefix('enseignant')->group(function () {
         return view('enseignant.liste')->with(['enseignants'=>DB::table('enseignants')->join('grades','enseignants.grade','=','grades.id')->select('enseignants.id','enseignants.nom as prof','grades.nom as grade')->get()]);;
     });
 });
+Route::prefix('evenement')->group(function () {
+    Route::get('', function () {
+        
+        return view('evenement.liste')->with(['evenements'=>DB::table('evenements')->join('evenement_type','evenements.type','=','evenement_type.id')->select('evenements.id','evenements.description','evenement_type.nom as type')->get()]);;
+    });
+});
