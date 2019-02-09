@@ -152,7 +152,7 @@ function planning_materiel(e,titre){
                                 
                                 height:'100px',
                                 
-                                'background-color':'#00ff11',
+                                'background-color':'#1283f5',
                                 'opacity':'0.8'
                             }).attr('title',y['heure_debut']+'/'+y['heure_fin']).html('<b>'+y['description']['evenement'][0]['type']+'</b>'+
                             '<br/>'+y['description']['evenement'][0]['description']

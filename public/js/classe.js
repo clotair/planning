@@ -151,7 +151,7 @@ function planning_classe(e,titre){
                                 $('<td/>').css({
                                     'font-size': '12px',
                                     height:'50px',
-                                    'background-color':'orange',
+                                    'background-color':'#1283f5',
                                     'opacity':'0.8',
                                     'text-align': 'center'
                                 }).attr('title',y['heure_debut']+'/'+y['heure_fin']).html(
