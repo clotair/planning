@@ -20,7 +20,9 @@ function rien(){
     $('.rechercheresult').html("<div class=' col-xs-8'><center><h5 class='display-4'>Auqu'une classe trouver</h5><center></div>");
 }
 function result(data){
-    let ul = $('<ul/>').addClass('list-group list-group-flush col-xs-8');
+    let ul = $('<ul/>').addClass('list-group list-group-flush col-xs-7').css({
+        'margin-top':'20px'
+    });
     for(let i of data){
         $(ul).append(
             $('<li/>').addClass('list-group-item').append(
@@ -31,7 +33,7 @@ function result(data){
                 )
         )
     }
-    $('.rechercheresult').html('');
+    $('.rechercheresult').html('').append($('<div/>').addClass('col-xs-3'));
     $('.rechercheresult').append(ul)
 }
 function search_classe(data){
@@ -41,17 +43,17 @@ function search_classe(data){
     let tab = [];
     if(val >= prev_mot && prev_mot){
         for(let i of prev_tab){
-            if(i['prof'].indexOf(val)!=-1 || i['prof'].indexOf(valupc)!=-1){
+            if(i['code'].indexOf(val)!=-1 || i['code'].indexOf(valupc)!=-1){
                 tab.push(i)
-            }else if(i['grade'].indexOf(val)!=-1 || i['grade'].indexOf(valupc)!=-1){
+            }else if(i['nom'].indexOf(val)!=-1 || i['nom'].indexOf(valupc)!=-1){
                 tab.push(i)
             }
         }
     }else{
         for(let i of data){
-            if(i['prof'].indexOf(val)!=-1 || i['prof'].indexOf(valupc)!=-1){
+            if(i['code'].indexOf(val)!=-1 || i['code'].indexOf(valupc)!=-1){
                 tab.push(i)
-            }else if(i['grade'].indexOf(val)!=-1 || i['grade'].indexOf(valupc)!=-1){
+            }else if(i['nom'].indexOf(val)!=-1 || i['nom'].indexOf(valupc)!=-1){
                 tab.push(i)
             }
         }
