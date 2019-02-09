@@ -62,12 +62,12 @@
             line-height: 25px;
         }
         #footer .footer-top .footer-newsletter{
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
         #footer .footer-top .footer-newsletter input[type="email"]{
             border: 0;
             padding: 6px 8px;
-            width: 65%;
+            width: 75%;
         }
 
         #footer .footer-top .footer-newsletter input[type="submit"]{
@@ -153,14 +153,19 @@
 
 
                     </div>
-                    <div class = "col-lg-3 col-md-6 footer-newsletter">
-                        <h4>Notre lettre d'information</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse 
-                            quisquam rerum sit ea dolorem maiores, eveniet, distinctio suscipit soluta fugiat eaque! 
-                            Ab quae non itaque saepe perferendis repudiandae dolor ut!</p>
-                        <form action="" method="POST">
-                            <input type="email" name = "email"><input type="submit" value = "Souscrire">
-                        </form>
+                    <div class = "col-lg-4 col-md-6 footer-newsletter">
+                        <h4>Notre liste de membres</h4>
+                        <p><ul>
+                                <li>EYENGA ETOUNGOU Ruth Lydienne - 17R162</li>
+                                <li>DOMCHE NOUNO Maureen     -     17R2956</li>
+                                <li>FEZEU GHOMSI Eugene Clotaire - 17Q2864</li>
+                                <li>TCHUENTE KAMMOGNE PATRICE - 16U2543</li>
+                                <li>POSSEU Jordan         -        17R2196</li>
+                                <li>POUMEYOU Chimssiatou     -     17R2125</li>
+                                <li>TCHUENTE KAMMOGNE PATRICE   -  16U2543</li>
+                            </ul> 
+                        </p>
+
                     </div>
                 </div>
 
