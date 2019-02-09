@@ -88,5 +88,5 @@
 @endsection
 @section('js')
   	<!-- liens js -->
-  	<script src="js/evenement.js"></script>
+  	<script src="js/materiel.js"></script>
 @endsection
