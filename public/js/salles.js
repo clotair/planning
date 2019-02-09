@@ -10,7 +10,7 @@ function mois_n(n){
     return mois[n];
 }
 function jour(n){
-    let jours = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimache'];
+    let jours = ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];
     return jours[n];
 }
 function sup(){
@@ -155,7 +155,7 @@ function planning_salle(e,titre){
                                 $('<td/>').css({
                                     
                                     height:'100px',
-                                    'background-color':'orange',
+                                    'background-color':'#1283f5',
                                     'opacity':'0.8'
                                 }).attr('title',y['heure_debut']+'/'+y['heure_fin']).html(
                                      '<b>'+y['description']['type'][0]['nom']+'</b>'+'<br/>'+' <b>'+ y['description']['matiere'][0]['code']+'</b>'

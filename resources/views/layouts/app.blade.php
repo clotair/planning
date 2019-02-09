@@ -156,13 +156,13 @@
                     <div class = "col-lg-4 col-md-6 footer-newsletter">
                         <h4>Notre liste de membres</h4>
                         <p><ul>
-                                <li>EYENGA ETOUNGOU Ruth Lydienne - 17R162</li>
+                                <li>EYENGA ETOUNGOU Ruth Lydienne -17R2162</li>
                                 <li>DOMCHE NOUNO Maureen     -     17R2956</li>
                                 <li>FEZEU GHOMSI Eugene Clotaire - 17Q2864</li>
-                                <li>TCHUENTE KAMMOGNE PATRICE - 16U2543</li>
+                                <li>GUEBOU BOUYIM Ghislaine    -   17R2256</li>
                                 <li>POSSEU Jordan         -        17R2196</li>
                                 <li>POUMEYOU Chimssiatou     -     17R2125</li>
-                                <li>TCHUENTE KAMMOGNE PATRICE   -  16U2543</li>
+                                <li>TCHUENTE KAMMOGNE Patrice   -  16U2543</li>
                             </ul> 
                         </p>
 
